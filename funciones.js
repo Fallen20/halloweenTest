@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
         button2.setAttribute('id', 'linterna');
 
         // Darle un texto
-        button2.textContent = 'Linterna';
+        button2.textContent = 'Flashlight';
         button2.classList.add('btn', 'btn-secondary', 'mt-2');
 
         //le damos un evento click que llame a turnOnLintern
@@ -241,4 +241,30 @@ document.addEventListener('DOMContentLoaded', function () {
     if (savedNotes) {
         document.getElementById('notes').value = savedNotes;
     }
+
+    var hintIndex = 0;
+    function hints(number) {
+        var hints = [
+            'Hint 1: Seems you can interact with the light switch..',
+            'Hint 2: What is shown in the corner of a regular map?',
+            'Hint 3: I wonder how a compass is read...',
+            'Hint 4: Follow the <a href="https://en.wikipedia.org/wiki/Cardinal_direction">cardinal directions</a>',
+        ];
+
+        var hints = document.getElementById('hints');
+
+        if (number < hintsArray.length) {
+            hintsElement.innerHTML += '<br>' + hintsArray[number];
+        }
+    }
+
+    // Función para ejecutar cada 5 minutos
+    function ejecutarHintsPeriodicamente() {
+        hints(hintIndex); // Ejecutar la función de pistas con el índice actual
+        hintIndex++; // Incrementar el índice para la siguiente pista
+    }
+
+    // Ejecutar cada 5 minutos (300,000 milisegundos)
+    setInterval(ejecutarHintsPeriodicamente, 300000); // 300000 ms = 5 minutos
+
 });
