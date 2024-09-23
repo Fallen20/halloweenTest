@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
+    function addBootstrapLink() {
+        var bootstrapLink = document.createElement('link');
+        bootstrapLink.rel = 'stylesheet';
+        bootstrapLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css';
+        bootstrapLink.integrity = 'sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC';
+        bootstrapLink.crossOrigin = 'anonymous';
+
+        // Añadir el <link> al <head>
+        document.head.appendChild(bootstrapLink);
+    }
+
+    // Llamar a la función para añadir el link de Bootstrap
+    addBootstrapLink();
+
     // const form = document.getElementById('miFormulario');
     // if (form) {
     //     form.addEventListener('submit', function(event) {
