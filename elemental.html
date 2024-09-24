@@ -6,6 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elements</title>
     <script src="elemental.js"></script> <!-- Vincula el archivo JS -->
+    <style>
+        .shake {
+    animation: shake 0.5s infinite; /* Llama a la animación 'shake' */
+}
+
+@keyframes shake {
+    0% { transform: translate(-50%, -50%) translate(0, 0); }
+    10% { transform: translate(-50%, -50%) translate(-5px, -5px); }
+    20% { transform: translate(-50%, -50%) translate(5px, 5px); }
+    30% { transform: translate(-50%, -50%) translate(-5px, 0); }
+    40% { transform: translate(-50%, -50%) translate(5px, -5px); }
+    50% { transform: translate(-50%, -50%) translate(0, 5px); }
+    60% { transform: translate(-50%, -50%) translate(-5px, 5px); }
+    70% { transform: translate(-50%, -50%) translate(5px, 0); }
+    80% { transform: translate(-50%, -50%) translate(0, -5px); }
+    90% { transform: translate(-50%, -50%) translate(-5px, -5px); }
+    100% { transform: translate(-50%, -50%) translate(0, 0); }
+}
+
+    </style>
 </head>
 
 <body>
