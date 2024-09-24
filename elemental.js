@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // entrar en una puerta sin pulsar un boton: muerte
+    // pulsar el boton y entrar en la puerta: muerte pero puedes salir con un timeevent
+    // pulsar el boton pero entrar a la puerta diferente: muerte
+    // pulsar en el orden de la pokedex: una pista
+
 
     function addBootstrapLink() {
         var bootstrapLink = document.createElement('link');
@@ -20,35 +25,104 @@ document.addEventListener('DOMContentLoaded', function () {
 
     createDoorButton();
 
-    var lastButtonTouched = 'Fairy';
-    var acceptFate = null;
+    var lastButtonTouched = '';
+    var acceptFate = true;
     var isPanicClicked = false;
-    var closeDoor = null;
+    var closeDoor = false;
     var textLine = 0;
     var enteredRooms = [];
-
+    var clickedButtons = [];
+    var correctClickedButtons = ['Water', 'Electric', 'Fire', 'Psiquic', 'Dark', 'Grass', 'Ice', 'Fairy'];
+    var isCorrectOrderGuessed = true;//cambiarlo a false
+    //WIP
     var textEnterRoom = [
         {
-            'name': 'Fairy', 'text': ['You decided to enter the Fairy room',
+            'name': 'Fairy', 'text': [
+                'You decided to enter the Fairy room',
                 'You put your ear close to the door, trying to make a sound.',
                 'You can hear a faint breathing. Someone is in there!',
                 'You open the door, determined to find whoever is there.',
                 'But as soon as you do, you hear a clicking sound. When you turn around, the door is closed.',
-                lastButtonTouched == 'Fairy' ? 'You try to open the door and you notice you can open it.' : 'You try to open the door, but doesn\'t brudge an inch'
-                , lastButtonTouched == 'Fairy' ? 'Exit?' : 'You try not to panic as you turn around and take a step deeper into the room.',
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
+                        'You try to open the door and you notice you can open it.' :
+                        'You try to open the door, but it doesn\'t budge an inch';
+                },
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
+                        'Do you want to Exit?' :
+                        'You try not to panic as you turn around and take a step deeper into the room.';
+                },
+
                 'The air feels cold and you can hear the faint breathing closer and closer, each time more heavy.',
                 'You find Sylveon sitting, looking at where you came from. Its ribbons move like tentacles as you notice that aren\'t regular ribbons- but human looking hands.',
                 'They wave at you as you feel force to wave back.',
                 'Sylveon takes a step closer as you noticed it\'s not a regular sylveon. Its teeth are as sharp as sharpedo and you can see a ring of red around it.',
                 'It takes another step, you take one back as you glance over the door.',
-                !acceptFate ? 'You run back and try to open the door, your palms sweaty as you heard its steps closer and closer.' : 'You know there\'s nothing to do as Sylveon is just a breathaway from you. You made a bad decision',
-                !acceptFate && lastButtonTouched == 'Fairy' ? 'You manage to open the door as you hear its claws agains the stone floor. As soon as you manage to take a step outside the room, you see Sylveon launching at you, ready to attack' : 'But was all futile. Your hands manage to turn the rusty doorknob but the door is still closed. Your faith is sealed as you turn around and see Sylveon\'s luminiscent pelt change in the darkness, its bi-colored eyes looking with such happiness you can\'t help but regret what brought you here',
-
-                !closeDoor ? 'Despite your quick reaction time, Sylveon is way quicker as you\'re thrown to the floor in what you thought was a safe room. You can smell the rancid smell of blood as Sylveon makes your world black, white teeth as the last thing you manage to see' : 'You manage to close the door before it manages to enter the safe room, hearing how Sylveon hits the door at the other side. You expect something else to happen but the room grows silent.'
+                function () {
+                    return !acceptFate ?
+                        'You run back and try to open the door, your palms sweaty as you heard its steps closer and closer.' :
+                        'You know there\'s nothing to do as Sylveon is just a breathaway from you. You made a bad decision';
+                },
+                function () {
+                    return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0)) ?
+                        'You manage to open the door as you hear its claws agains the stone floor. As soon as you manage to take a step outside the room, you see Sylveon launching at you, ready to attack' :
+                        'But was all futile. Your hands manage to turn the rusty doorknob but the door is still closed. Your faith is sealed as you turn around and see Sylveon\'s luminiscent pelt change in the darkness, its bi-colored eyes looking with such happiness you can\'t help but regret what brought you here';
+                },
+                function () {
+                    return !closeDoor ?
+                        'Despite your quick reaction time, Sylveon is way quicker as you\'re thrown to the floor in what you thought was a safe room. You can smell the rancid smell of blood as Sylveon makes your world black, white teeth as the last thing you manage to see' :
+                        'You manage to close the door before it manages to enter the safe room, hearing how Sylveon hits the door at the other side. You expect something else to happen but the room grows silent.';
+                }
             ]
         },
-        { 'name': 'Fire', 'text': ['a'] },
+        {
+            'name': 'Fire', 'text': [
+                'You decided to enter the Fire room',
+                'The sound of embers you heard from before gets closer and draws you near',
+                'Somehow, you can\'t make any smell of fire or smoke so you decide to enter the room, as safe as you think it is.',
+                'As soon as you step in, you are illuminated by multiple, fake chimneys all around the walls, as they make the whole room. The sound of crisp seems to be comming from them.',
+                'As fascinated by the safeity of what would have been the most dangerous, you hear a soft clicking sound, somehow managing to hear despite the hard sounds of the chymenis.. When you turn around, the door is closed.',
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fire') == 0) ?
+                        'You go back to the dark corridor and try to open the door, noticing you can open it' :
+                        'You already entered, you decided to ignore the sound but to be safe, you try to turn the rusty knock.';
+                },
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fire') == 0) ?
+                        'The door opens as it\'s paper, letting you outside. Exit?'
+                        : 'The knock doesn\'t budge as you turn it with all your strength. Despite panic fills you, you decide that you made the correct decision to enter.';
+
+                },
+
+                'You leave the door as you decide to continue walking the corridor, all the walls looking the same.',
+                'You notice a bundle of green fur near one of the walls, soft sniffles comming from it as you recognize it as a living being.',
+                'Unable to leave someone as lost as you, you decide to approach as you notice a green furred Flareon.',
+                'The Flareon is crying, one of his paws deep burried in the fake fire as he looks back at you and asks for help.',
+                'He says his cap is there but can\'t reach it as he pushes you down, letting you see the black cap behind realistic flames. You try to back up as the Flareon pushes more and more you in, feeling the heat of flames.',
+                function () {
+                    return !acceptFate ?
+                        'You push yourself back somehow, falling back, a loud hit in your lower back as the Flareon looks at you with a surprise face.' :
+                        'You try to yell, to tell the flareon to release you as you feel the smell of real burning in your hair. As the oxygen start to leave your body, you notice the cap was only a fake image that burns along you.';
+
+                },
+                function () {
+                    return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Fire') == 0)) ?
+                        'The flareon gets up as starts to call you names between growls. An unworthy helper as he grows, their fur spiking as you somehow manage to balance yourself out, managing to get up before his massive paw can get you' :
+                        'The flareon looks in awe as his sad face turns into anger. He flungs to you as he starts growing, telling how he was also leaving him back as his weight starts to crush you. You try to trash around only to for your vision to see green fur before it turns black.';
+
+                },
+                function () {
+                    return !closeDoor ?
+                        'Despite all your efforts, as soon as you get to the door and turn the knock, it starts burning as you can see a burn mark in your hand. With no way out, you can only see the distorted face of the flareon just behind you, his amber and black eyes turning to fire as you feel the heat of the fire.' :
+                        'You manage to get to the door as your hands hardly manage to turn the knock, hearing the struggle of the flareon to try to reach you through the small corridor. You close the door and turn around, trying to not think what could have happened.';
+
+                }
+            ]
+        },
     ];
+
+
     function girarDerecha() {
         clearText(document.getElementById('result'));
 
@@ -107,43 +181,101 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createButtons(position) {
+        resetTurning();
+
         if (position == 'left') {
             deleteTypeButtons();
 
-
-            // Verificar si el botón ya existe y eliminarlo
-            var botonExistente = document.getElementById('getCloserLeft');
-            if (botonExistente) {
-                botonExistente.remove();
-            }
-
             // Crear el botón
             createGetCloserLeftButton();
-
-
         }
         else if (position == 'north') {
-            deleteElement(document.getElementById('getCloserLeft'));
-            // Restablecer la posición del contenedor inmediato de la imagen
-            var contenedorDeImagen = document.querySelector('#imageDiv');
-            contenedorDeImagen.style.position = '';
-
             createDoorButton();
         }
-
-        else {
-            // Eliminar solo el botón si existe
-            deleteElement(document.getElementById('getCloserLeft'));
-            deleteTypeButtons();
-
-
-            // Restablecer la posición del contenedor inmediato de la imagen
-            var contenedorDeImagen = document.querySelector('#imageDiv');
-            contenedorDeImagen.style.position = '';
+        else if (position == 'back') {
+            createUpArrow();
         }
 
 
     }
+
+    function createUpArrow() {
+
+        if (isCorrectOrderGuessed) {
+            // Crear el botón
+            var boton = document.createElement('button');
+            boton.setAttribute('id', 'lookUp');
+            boton.classList.add('btn', 'btn-secondary', 'mt-2');
+            boton.textContent = 'Look up';
+
+            // Obtener la imagen existente
+            var imagen = document.querySelector('#imageDiv img');
+
+            // Estilos para centrar el botón
+            boton.style.position = 'absolute';
+            boton.style.top = '5%';
+            boton.style.left = '50%';
+            boton.style.transform = 'translate(-50%, -50%)';
+            boton.style.zIndex = '10';
+
+            boton.addEventListener('click', lookUp);
+
+            // Asegurarse de que el padre inmediato tenga position relative
+            var contenedorDeImagen = imagen.parentNode;
+            contenedorDeImagen.style.position = 'relative';
+            contenedorDeImagen.appendChild(boton);
+        }
+    }
+    function lookUp() {
+        //quitar el boton de lookUp
+        deleteElement(document.getElementById('lookUp'));
+        document.getElementById('image').src = "elemental/elemental_0008_arriba.png";
+        resetTurning();
+        //añadir pista
+
+        const hintText = 'Seems a light is reflected on the right wall.<br>';
+
+        document.getElementById('hints').innerHTML.includes(hintText) ? null : document.getElementById('hints').innerHTML += hintText;
+
+
+        //tras 2 segundos, que se cree el boton
+        setTimeout(function () {
+            // Crear el botón
+            var boton = document.createElement('button');
+            boton.setAttribute('id', 'returnLookUp');
+            boton.classList.add('btn', 'btn-secondary', 'mt-2');
+            boton.textContent = 'Return';
+
+            // Obtener la imagen existente
+            var imagen = document.querySelector('#imageDiv img');
+
+            // Estilos para centrar el botón
+            boton.style.position = 'absolute';
+            boton.style.top = '70%';
+            boton.style.left = '50%';
+            boton.style.transform = 'translate(-50%, -50%)';
+            boton.style.zIndex = '10';
+
+            boton.addEventListener('click', returnLookUp);
+
+            // Asegurarse de que el padre inmediato tenga position relative
+            var contenedorDeImagen = imagen.parentNode;
+            contenedorDeImagen.style.position = 'relative';
+            contenedorDeImagen.appendChild(boton);
+        }, 2000);
+
+
+    }
+
+    function returnLookUp() {
+        document.getElementById('image').src = "elemental/elemental_0009_detras.png";
+        resetTurning();
+        createUpArrow();
+
+    }
+
+
+
 
     function getCloserLeft() {
         //cambiar la img
@@ -222,6 +354,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //limpiar el texto de result
         clearText(document.getElementById('result'));
+
+        //limpiar la array
+        clickedButtons = [];
     }
 
 
@@ -229,7 +364,19 @@ document.addEventListener('DOMContentLoaded', function () {
     //funciones especificas
     function clickElement(clicked) {
         lastButtonTouched = clicked;
-        document.getElementById('result').textContent = 'Nothing happened';
+        clickedButtons.push(clicked);
+
+        //hay que comprobar si va por buen camino, es decir si el orden de clicked Buttons corresponde con los principios de correctclickedButtons
+
+        const isCorrect = clickedButtons.every((value, index) => value === correctClickedButtons[index]);
+        //si has empezado en el orden correcto, saca una cosa u otra
+        document.getElementById('result').textContent = isCorrect ? 'You heard a soft click.' : 'Nothing seems to be changing here.';
+
+        //si es correcto todo, entonces saca una pista extra
+        if (isCorrect && clickedButtons.length === correctClickedButtons.length) {
+            document.getElementById('hints').textContent += 'Did you look the sky?';
+            isCorrectOrderGuessed = true;
+        }
     }
 
     function createGetCloserLeftButton() {
@@ -293,7 +440,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+
+    //---------------------------------------
+    //HABITACIONES
     function enterRoom(elemento) {
+
         //si ya has entrado, que no siga
         if (enteredRooms.includes(elemento)) {
             //crear la ventana de texto 'You refuse to enter this room again'
@@ -302,6 +453,9 @@ document.addEventListener('DOMContentLoaded', function () {
             deleteTypeButtons();
             return;
         }
+        //desahilitar los botones de ir para los lados
+        disableDivButton(document.getElementById('turnRightButton'));
+        disableDivButton(document.getElementById('turnLeftButton'));
         //quitar los botones
         deleteTypeButtons();
 
@@ -471,38 +625,34 @@ document.addEventListener('DOMContentLoaded', function () {
         imageDiv.appendChild(div);
     }
 
-
-
     function nextText(text) {
 
         // console.log(textLine, text.text[textLine]);
-        if (textLine == 6 && lastButtonTouched == text.name) {
+        //para salir de la sala
+        console.log(textLine, text.text[textLine], lastButtonTouched, text.name);
+        if (textLine == 6 && lastButtonTouched != null && lastButtonTouched.localeCompare(text.name) == 0) {
             createExitButton(text.name);
         }
-        // Si es la posición 11 y el botón no está creado, entra al if
+        // panico
         if (textLine == 11 && document.getElementById('panic') == null) {
             createPanicButton(text.name);
         }
-        if (textLine == 13 && document.getElementById('closeDoor') == null && lastButtonTouched == text.name) {
+        //esta opcion solo sale si has apretado al boton en el panel
+        if (textLine == 13 && document.getElementById('closeDoor') == null && (lastButtonTouched == text.name && lastButtonTouched != '') && acceptFate == false) {
             createCloseDoorButton(text.name);
         }
 
+        //si has llegado al final pero no has apretado al boton, que salga la ultima frase y luego haga un timeout
         if (textLine == 14 && closeDoor == false) {
+            disableDivButton(document.getElementById('next'));
+            textLine--;
+
             setTimeout(function () {
-                //quitar ventana
-                deleteElement(document.getElementById('ventanaDiv'));
-
-                document.getElementById('image').src = 'https://media.tenor.com/ZpBMkWyufhMAAAAM/dead.gif';
-                document.getElementById('image').style.width = '756px';
-                document.getElementById('image').style.height = '453.6px';
-
-                setTimeout(function () {
-                    //al cabo de 1 segundo, hacer f5
-                    window.location.reload();
-                }, "2000");
-            }, "5000");
+                gameOver();
+            }, "4000");
 
         }
+        //has conseguido cerrar la puerta
         else if (textLine == 15 && closeDoor == true) {
             //quitar ventana
             deleteElement(document.getElementById('ventanaDiv'));
@@ -526,7 +676,12 @@ document.addEventListener('DOMContentLoaded', function () {
             isPanicClicked = false;
         }
 
-        document.getElementById('text').textContent = text.text[textLine];
+        if (textLine == 5) {
+            console.log(typeof text.text[textLine] === 'function' ? text.text[textLine]() : text.text[textLine]);
+            // typeof room.text[5] === 'function' ? room.text[textLine]() : room.text[textLine];
+
+        }
+        document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]() : text.text[textLine];
 
 
     }
@@ -553,38 +708,27 @@ document.addEventListener('DOMContentLoaded', function () {
         //poner un timer que si no se clica en 15seg, saque un console log
         //si lo ha clickado, cancelar este timer
         setTimeout(() => {
+
             //esto no se activa si acceptFate=false
             if (!isPanicClicked && acceptFate) {
+                panicButton.remove();
+
                 document.getElementById('next').removeEventListener('click', nextText);
 
                 isPanicClicked = true;
                 acceptFate = true;
                 textLine++;
 
-                const roomObject = textEnterRoom.find(room => room.name === name);
-                document.getElementById('text').textContent = roomObject.text[textLine];
+                const text = textEnterRoom.find(room => room.name === name);
+                document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]() : text.text[textLine];
 
-                console.log(roomObject, roomObject.text[textLine]);
                 //hacer el next posible
                 enableDivButton(document.getElementById('next'));
 
                 document.getElementById('next').addEventListener('click', function () {
-                    textLine = 0;
-                    //cambiar el fondo
-                    document.getElementById('image').src = 'https://media.tenor.com/ZpBMkWyufhMAAAAM/dead.gif';
-                    document.getElementById('image').style.width = '756px';
-                    document.getElementById('image').style.height = '453.6px';
-
-                    //al cabo de 1 segundo, hacer f5
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, "2000");
-
-                    //quitar la ventana-png
-                    deleteElement(document.getElementById('ventanaDiv'));
+                    gameOver();
                 });
 
-                panicButton.remove();
             }
         }, "1000");
 
@@ -633,37 +777,25 @@ document.addEventListener('DOMContentLoaded', function () {
         //si lo ha clickado, cancelar este timer
         setTimeout(() => {
             //esto no se activa si acceptFate=false
-            if (!isPanicClicked && closeDoor == null) {
+            if (!isPanicClicked && !closeDoor) {
+                panicButton.remove();
                 document.getElementById('next').removeEventListener('click', nextText);
 
                 isPanicClicked = true;
                 closeDoor = false;
                 textLine++;
 
-                const roomObject = textEnterRoom.find(room => room.name === name);
-                document.getElementById('text').textContent = roomObject.text[textLine];
+                const text = textEnterRoom.find(room => room.name === name);
+                document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]() : text.text[textLine];
 
-                console.log(isPanicClicked, closeDoor);
+
                 //hacer el next posible
                 enableDivButton(document.getElementById('next'));
 
                 document.getElementById('next').addEventListener('click', function () {
-                    textLine = 0;
-                    //cambiar el fondo
-                    document.getElementById('image').src = 'https://media.tenor.com/ZpBMkWyufhMAAAAM/dead.gif';
-                    document.getElementById('image').style.width = '756px';
-                    document.getElementById('image').style.height = '453.6px';
-
-                    //al cabo de 1 segundo, hacer f5
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, "2000");
-
-                    //quitar la ventana-png
-                    deleteElement(document.getElementById('ventanaDiv'));
+                    gameOver();
                 });
 
-                panicButton.remove();
             }
         }, "1500");
 
@@ -679,7 +811,6 @@ document.addEventListener('DOMContentLoaded', function () {
             textLine++;
 
             const roomObject = textEnterRoom.find(room => room.name === name);
-            console.log(textLine, roomObject.text[textLine]);
             nextText(roomObject);
         });
 
@@ -804,4 +935,33 @@ document.addEventListener('DOMContentLoaded', function () {
         divButton.style.cursor = 'pointer';
     }
 
+    function gameOver() {
+        textLine = 0;
+        //cambiar el fondo
+        document.getElementById('image').src = 'https://media.tenor.com/ZpBMkWyufhMAAAAM/dead.gif';
+        document.getElementById('image').style.width = '756px';
+        document.getElementById('image').style.height = '453.6px';
+
+        //al cabo de 1 segundo, hacer f5
+        setTimeout(function () {
+            window.location.reload();
+        }, "2000");
+
+        //quitar la ventana-png
+        deleteElement(document.getElementById('ventanaDiv'));
+    }
+
+    function resetTurning() {
+        // Eliminar solo el botón si existe
+        deleteElement(document.getElementById('getCloserLeft'));
+        deleteElement(document.getElementById('lookUp'));
+        deleteTypeButtons();
+
+        deleteElement(document.getElementById('lookUp'));
+        deleteElement(document.getElementById('returnLookUp'));
+
+        // Restablecer la posición del contenedor inmediato de la imagen
+        var contenedorDeImagen = document.querySelector('#imageDiv');
+        contenedorDeImagen.style.position = '';
+    }
 });
