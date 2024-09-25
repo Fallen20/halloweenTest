@@ -122,6 +122,167 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             ]
         },
+        {
+            'name': 'Ice', 'text': [
+                'You decided to enter the Ice room',
+                'You can feel the cold of the room by standing outside, your trembling hand in the knock.',
+                'But you made your choice to be here and you push forward, entering a white room.',
+                'Inmediatly, you hear the breaking sound closer than ever, making it as some ice falling off the ceiling. It could be dangerous',
+                'Despite your thoughts, you are forced to jump before a massive ice falls on you and you can see the door is blocked.',
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Ice') == 0) ?
+                        'Somehow, you manage to jump over the block of ice and touch the door. With a gently touch, you can see it opens as normal.' :
+                        'With effort, you get over the cold block and get in front of the door. But as soon as you put your hands in it, you can feel this door doesn\'t seems to be the same as before.';
+                },
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Ice') == 0) ?
+                        'The cold air swallows you whole as you notice you can end this cold torture now if you return to a warmer room. Exit?' :
+                        'You swallow when you notice the door seems more a boulder than a door and you\'re unable to move it. Feeling this was a bad decision, you try to find an exit somewhere else.';
+                },
+
+                'Leaving the door back, you turn back your sight to your back. Somehow, the block of ice is now break out in multiple, small pieces that allows you to walk freely.',
+                'Feeling the cold in your bones you continue, the floor becomming more and more slippery but you mantain your feet.',
+                'In the silence, you make out a sound that is not the ice falling. You look around to see nothing.',
+                'But the more you walk, more this sound is heard, closer and closer. You notice is the sound of a very heavy breathing.',
+                'You make out the origin by looking up. Hidden along the ice with white pelt, you can see blue eyes in the stalagtites as they roll something around the ice and before you can even distinguish who or what is, ice fills your vision. ',
+                function () {
+                    return !acceptFate ?
+                        'Somehow you manage to avoid getting hit by the stalagtite of ice, which breaks in million pieces, hitting you. You lost sight of whoever did this and your un blindy towards the end of the corridor.' :
+                        'Before you can even order your body to move, you\'re hit by the stalagtite of ice. Somehow you\'re not dead but you feel your head lighter as the cold and blood loss soon made you faint forever.';
+                },
+                function () {
+                    return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Ice') == 0)) ?
+                        'You feel you\'re walking in circles as you continue to hear the ice breaking behind you. You sight a familiar block of ice as you manage to see the door you came from and you run as much as you are allowed to, your palms sweaty as you manage to open the door.' :
+                        'You seem to run in circles as all feel familiar and not familiar at the same time. Ice is now everywhere and you trip, slipping through the cold floor as your head hit something. Dizzy, you try to get up but you get inmediatly crushed by a block of ice.';
+                },
+                function () {
+                    return !closeDoor ?
+                        'But you\'re not quick enough to exit as sharp ice falls on your arm, forcing you to recoil and yell in pain. The figure catches you off guard by landing between you and the door, revealing a glaceon with a seemingly weapon. Before you can make what was, you heard your neck snap.':
+                        'You manage to pass through the door as quick as the light as you heard the ice breaking only an inch behind you. Falling to the ground, you can distinguish the figure of whoever attacked you behind it, small frame is all you can make before the door closes.';
+                }
+            ]
+        },
+        {
+            'name': 'Dark', 'text': [
+                'You decided to enter the Dark room',
+                'The howling you heard slowly dies down, as somehow they know you\'re about to enter. When you turn the knock completly, the sounds had disappeard.',
+                'As you expected, is a room as dark as the night and you can\'t really see anything, the faint light of the room behind you being the only light.',
+                'You can sense something near your feet but your eyes nor feet can really distinguish what it is aside of something soft. Looks like it\'sa pile of clothes',
+                'Trying to get used to the darkness you take another step and look around and suddenly, the door closes with a slam, leaving you in real complete darkness.',
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Dark') == 0) ?
+                        'With panic you go back where you know the door is, touching all walls \'till you notice the feeling of wood. Continuing to touch it allows you to feel the knock and turn it.' :
+                        'You stumble to the floor in panic as you get filled with darknes, making it somehow to feel a sensation of wood against your hands. Dispair fills you while looking for the knock as you grasp it like your life depends on it.';
+                },
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Dark') == 0) ?
+                        'White fills your vision as the light returns, calming you down. The room is still as black as ever and you don\'t think the door closing was bad luck. It\'s your only opportunity to get out.' :
+                        'But nothing you do seems to work as the knock refuses to move. You can\'t make out if you\'re turning it in the right direction or not. You lost complete sense as the darkness fill you and you don\'t know anymore if you\'re looking at the right direction.';
+                },
+
+                'The darkness doesn\'t feel to welcome you as your eyes never seem to get used to. Your senses can\'t pick the direction you\'re going and you only hope you don\'t bump ove something.',
+                'A few minutes walking seems like an ethernity as you also lost track of time. The darkness fills you more than you ever imagine.',
+                'But in your dispair, you sense something.. different in the room. A wamr, orange point of light is seen in the distance. Light!',
+                'You run to see the light comming from.. something. It\'s giving you their back and you have the sensation you shouldn\'t be looking at.',
+                'Suddenly, he turns back, revealing an umbreon, the light comming from his marks. But it feels hard to breate as you notice a ghostly figure more than a living being as his blue eyes lock on you with a hunger you never seen before.',
+                function () {
+                    return !acceptFate ?
+                        'You turn your back before your eyes lock as you stumble and fell multiple times, desperate to escape.' :
+                        'You fell back when he takes a step and your fear engulfs you. The sinister smile of the umbreon is only followed by his voice, telling a warm welcome to the death realm as the orange light shuts down. You can only see the faint glow of his blue eyes and gleaming white teeth.';
+                },
+                function () {
+                    return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Dark') == 0)) ?
+                        'You can hear a humming song comming from him as you hit yourself with a wall. When trying to get up you notice it\'s a door! You frantically run your hands over to find the knock, somehow managing to as you turn it with as much strenght as you can, opening what seems to be a heavy door. Light fills your vision as you feel relief.' :
+                        'Running blindinly was not a good idea, but was the only one. You stumble and fall as you heard the umbreon laugh. In the time you manage to recover your feet, he\'s in front of you. With his light, you manage to see what you stumble on, looking at what looked a.. corpse. Was more bones than anything as the umbreon just allows you to see your own fate before turning his lights off.';
+                },
+                function () {
+                    return !closeDoor ?
+                        'The light seems to make you forget you\'re not safe as you are tackled down, your upper half on the light and the rest inside the dark room. You notice the umbreon pulling you back from your feet as you try to hit him, but your feet seems to go through. In a matter of seconds, you experience the true darkness.':
+                        'You hear a roar and you stumble into the room in the last second, your feets barely scratched. The door is not closed but the umbreon screams in pain at the moment his paw touches the light as it turns back running. Using this opportunity, you close the door as strong as possible, resting your back on it as a secure precaution.';
+                }
+            ]
+        },
+        {
+            'name': 'Psiquic', 'text': [
+                'You decided to enter Psiquic the room',
+                'The sound of metal falling is still as hard as ever as you open the door',
+                'Your supersitions were correct to think this was a dangerous room. Despite that, you chose it',
+                'You can see giant axes swinging side to side and massive metal balls rolling and falling, probably the ones that make the sounds. Despite the initial shock, you can only see how this is something you could see in games',
+                'You chuckle a laugh without really knowing how to react as a ball rolls way too near but not enough to hurt you. The falling sound is soon followed by a more rusty sound as you turn back to see two things: the door closed and a peculiar looking pokemon sitting next to it.',
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Psiquic') == 0) ?
+                        'You walk slowly to not disturb the pokemon and try to turn the knock. Maybe because the initial surprise a quick thought of not managing to open the door crosses your mind, but the door knock turns as easly as the first time.' :
+                        'You walk as steady and as slow as possible, your back on the wall where the pokemon is not. Somehow, you can\'t seem to break eye contact as you find yourself in front of the door. But despite your intentions of opening the door, you just know it won\'t open.';
+                },
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Psiquic') == 0) ?
+                        'Maybe you\'re not ready for this room. If this is like the games you played, maybe you need extra levels or another item to get over this room. It would be wise to exit the room now..' :
+                        'And your thoughts were true. You shift your sight between the pokemon and the door and thought this was the way of the pokemon telling you to continue.';
+                },
+
+                'Continue in the room felt more correct than any other thing you did. Maybe the familiarity with this kind of rooms in your life made you confident.',
+                'One of the axes swings in front of you as you jump to the thin platform and you make your way across the room easly. Another door is seen at the end of the path as the pokemon previously sitting back is now there.',
+                'You don\'t put too much thought about it as you continue with caution, finally reaching the other side. The pokemon\'s gaze is still as lost as ever but you somehow can see a flinch in her ear',
+                'You open the door without any more thought as you continue to stare the pokemon.',
+                'Suddenly the bicolor eyes of the pokemon met yours as you can see more faint eyes around. With a shiver you break eye contact and look at the door, only to see a log straight being sent to you.',
+                function () {
+                    return !acceptFate ?
+                        'You close the door and duck in time to avoid the log, feeling somehow as a ninja. The door is broken inmediatly as the log swings on top of you with the same strenght. Suddenly, you remember this is real life. You CAN die. You should not be playing.' :
+                        'Your quick videogame reflexes are not the same in real life. The log hurts less than you expected, only knocking you backwards as you stumble back. Suddenly, as your hand searches for new floor, it slips as you fall into the void. Axes swing above you as the pokemon only stares from the top.';
+                },
+                function () {
+                    return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Psiquic') == 0)) ?
+                        'Not knowing if the first room was luck or not, you can\'t risk to return, now the log desynchronized the axes. You run towards the next room as soon as the log is out, a single path away from the door. You reach it and you open it just in time to feel the log scratch your back.' :
+                        'You take too much to decide as the log starts to follow you, a hard knock throwing you off. Luck or not, is all floor and you manage to walk away hurt. The pokemon soon appears as smoke starts filling your vision. When you return to your senses, you\'re in front of an axe with nothing you can do.';
+                },
+                function () {
+                    return !closeDoor ?
+                        'You throw yourself to avoid any more damage before you see the room, your eyes squeezing hard. You open them to see that was the safe room but unlike the last time, you see the pokemon in the room was now here with you. As the world starts to be filled with smoke, you manage to see the safe room changing slowly as you\'re trapped in an infinite trap.':
+                        'You breath heavely as you recognize the room you\'re in: the safe room. You turn back to see the pokemon staring at you, multiple eyes and smoke all around as you shut the door before anything could enter your head.';
+                },
+                //PLANTILLA
+                {
+                    'name': 'Dark', 'text': [
+                        'You decided to enter the room',
+                        '',
+                        '',
+                        '',
+                        '',
+                        function () {
+                            return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
+                                'You can open the door' :
+                                'You CANT open the door';
+                        },
+                        function () {
+                            return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
+                                'exit?.' :
+                                'no exit';
+                        },
+        
+                        '.',
+                        '',
+                        '',
+                        '',
+                        '.',
+                        function () {
+                            return !acceptFate ?
+                                'dont die' :
+                                'die';
+                        },
+                        function () {
+                            return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0)) ?
+                                'not die' :
+                                'die';
+                        },
+                        function () {
+                            return !closeDoor ?
+                                'die':
+                                'not die.';
+                        }
+                    ]
+                },
+            ]
+        },  
     ];
 
 
