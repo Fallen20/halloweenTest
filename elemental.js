@@ -33,7 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var enteredRooms = [];
     var clickedButtons = [];
     var correctClickedButtons = ['Water', 'Electric', 'Fire', 'Psiquic', 'Dark', 'Grass', 'Ice', 'Fairy'];
-    var isCorrectOrderGuessed = true;//cambiarlo a false
+    var isCorrectOrderGuessed = false;
+    var lookedUp = false;
+
     //WIP
     var textEnterRoom = [
         {
@@ -195,10 +197,14 @@ document.addEventListener('DOMContentLoaded', function () {
         else if (position == 'back') {
             createUpArrow();
         }
-
+        else if (position == 'right') {
+            createMirrorButton();
+        }
 
     }
 
+    //----------------------
+    //UP
     function createUpArrow() {
 
         if (isCorrectOrderGuessed) {
@@ -240,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //tras 2 segundos, que se cree el boton
         setTimeout(function () {
+            lookedUp = true;
             // Crear el botón
             var boton = document.createElement('button');
             boton.setAttribute('id', 'returnLookUp');
@@ -274,9 +281,190 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    //RIGHT
+
+    function createMirrorButton() {
+        if (lookedUp) {
+            // Crear el botón
+            var boton = document.createElement('button');
+            boton.setAttribute('id', 'getCloserMirror');
+            boton.classList.add('btn', 'btn-secondary', 'mt-2');
+            boton.textContent = 'Get Closer';
+
+            // Obtener la imagen existente
+            var imagen = document.querySelector('#imageDiv img');
+
+            // Estilos para centrar el botón
+            boton.style.position = 'absolute';
+            boton.style.top = '50%';
+            boton.style.left = '50%';
+            boton.style.transform = 'translate(-50%, -50%)';
+            boton.style.zIndex = '10';
+
+            boton.addEventListener('click', getCloserMirror);
+
+            // Asegurarse de que el padre inmediato tenga position relative
+            var contenedorDeImagen = imagen.parentNode;
+            contenedorDeImagen.style.position = 'relative';
+            contenedorDeImagen.appendChild(boton);
+        }
+    }
+    function getCloserMirror() {
+        //cambiar imagen
+        document.getElementById('image').src = "elemental/elemental_0006_Capa5.png";
+        //borrar getCloser
+        deleteElement(document.getElementById('getCloserMirror'));
+
+        //crear boton para ir atras
+
+        var boton = document.createElement('button');
+        boton.setAttribute('id', 'getBackMirror');
+        boton.classList.add('btn', 'btn-secondary', 'mt-2');
+        boton.textContent = 'Go back';
+
+        // Obtener la imagen existente
+        var imagen = document.querySelector('#imageDiv img');
+
+        // Estilos para centrar el botón
+        boton.style.position = 'absolute';
+        boton.style.top = '90%';
+        boton.style.left = '50%';
+        boton.style.transform = 'translate(-50%, -50%)';
+        boton.style.zIndex = '10';
+
+        boton.addEventListener('click', getCloserMirror);
+
+        // Asegurarse de que el padre inmediato tenga position relative
+        var contenedorDeImagen = imagen.parentNode;
+        contenedorDeImagen.style.position = 'relative';
+        contenedorDeImagen.appendChild(boton);
+
+        //que al cabo de 5segundos salga un console log
+
+        setTimeout(function () {
+            deleteElement(document.getElementById('getBackMirror'));
 
 
+            // Crear el botón
+            var botonGlich = document.createElement('button');
+            botonGlich.setAttribute('id', 'glichButton');
 
+            // Añadir la clase al botón
+            botonGlich.classList.add('cybr-btn', 'mt-2');
+
+            // Crear el primer span
+            var span1 = document.createElement('span');
+            span1.setAttribute('aria-hidden', 'true');
+            span1.textContent = 'back';  // Texto dentro del primer span
+
+            // Crear el segundo span para el glitch
+            var span2 = document.createElement('span');
+            span2.setAttribute('aria-hidden', 'true');
+            span2.classList.add('cybr-btn__glitch');
+            span2.textContent = 'There\'s no turn back';  // Texto dentro del segundo span
+
+            // Añadir los spans al botón
+            botonGlich.textContent = 'There\'s no turn '; // Texto principal del botón
+            botonGlich.appendChild(span1);
+            botonGlich.appendChild(span2);
+
+
+            // Estilos para centrar el botón
+            botonGlich.style.position = 'absolute';
+            botonGlich.style.top = '90%';
+            botonGlich.style.left = '50%';
+            botonGlich.style.transform = 'translate(-50%, -50%)';
+            botonGlich.style.zIndex = '10';
+
+            //que no se pueda clicar
+            disableDivButton(botonGlich);
+            botonGlich.style.opacity = '1';
+
+            contenedorDeImagen.appendChild(botonGlich);
+            //en 1segundo, que llame a 'pressMirror'
+
+            setTimeout(function () {
+                pressMirror();
+            }, 1000);
+
+        }, 1000);
+
+    }
+
+    function pressMirror() {
+        // Crear un div encima de la imagen y darle ventana.png
+        var div = document.createElement('div');
+        div.setAttribute('id', 'mano');
+
+        div.style.backgroundImage = 'url("elemental/elemental_0003_Capa6.png")';
+        div.style.backgroundRepeat = 'no-repeat';
+        div.style.backgroundSize = 'cover';
+
+
+        // Ajustar el tamaño del div y la imagen 'ventana.png'
+        div.style.position = 'absolute';
+        div.style.top = '0';
+        div.style.left = '12px';
+        div.style.width = '740px';
+        div.style.height = '454px';
+        div.style.zIndex = '1';
+
+        // Asegurarse de que el contenedor sea relative
+        var imageDiv = document.getElementById('imageDiv');
+        imageDiv.style.position = 'relative';
+
+        // Añadir el nuevo div sobre la imagen de fondo
+        imageDiv.appendChild(div);
+
+        //en otro segundo que haga un console log
+
+        setTimeout(function () {
+            document.getElementById('image').src = "elemental/elemental_0005_Capa7.png";
+            
+        }, 1000);
+        setTimeout(function () {
+            deleteElement(document.getElementById('mano'));
+        }, 2000);
+        
+        setTimeout(function () {
+            deleteElement(document.getElementById('glichButton'));
+        }, 3000);
+        
+        setTimeout(function () {
+            document.getElementById('image').src = "elemental/elemental_0004_Capa8.png";
+            //llamar el metodo 'continueCorrect'
+            continueCorrect();
+        }, 3500);
+    }
+
+    function continueCorrect() {
+        var boton = document.createElement('button');
+        boton.setAttribute('id', 'continue');
+        boton.classList.add('btn', 'btn-success', 'mt-2');
+        boton.textContent = 'You can continue';
+
+        // Obtener la imagen existente
+        var imagen = document.querySelector('#imageDiv img');
+
+        // Estilos para centrar el botón
+        boton.style.position = 'absolute';
+        boton.style.top = '50%';
+        boton.style.left = '50%';
+        boton.style.transform = 'translate(-50%, -50%)';
+        boton.style.zIndex = '10';
+
+        boton.addEventListener('click', function () {
+           //abrir una nueva ventana con el link a google.com
+           window.open('https://google.com', '_blank');
+        });
+
+        // Asegurarse de que el padre inmediato tenga position relative
+        var contenedorDeImagen = imagen.parentNode;
+        contenedorDeImagen.style.position = 'relative';
+        contenedorDeImagen.appendChild(boton);
+    }
+    //----------------------
+    //LEFT
     function getCloserLeft() {
         //cambiar la img
         document.getElementById('image').src = "elemental/elemental_0001_Capa9.png";
