@@ -267,8 +267,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var hints = document.getElementById('hints');
 
-        if (number < hintsArray.length) {
-            hintsElement.innerHTML += '<br>' + hintsArray[number];
+        if (number < hints.length) {
+            hints.innerHTML += '<br>' + hints[number];
+        }
+        if (number === hintsArray.length) {
+            clearInterval(intervalId);
         }
     }
 
@@ -279,6 +282,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Ejecutar cada 5 minutos (300,000 milisegundos)
-    setInterval(ejecutarHintsPeriodicamente, 300000); // 300000 ms = 5 minutos
+    var intervalId = setInterval(ejecutarHintsPeriodicamente, 300000); // 300000 ms = 5 minutos
 
 });

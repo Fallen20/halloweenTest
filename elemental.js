@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // pulsar el boton pero entrar a la puerta diferente: muerte
     // pulsar en el orden de la pokedex: una pista
 
+    console.log('Hey, you should not me looking here ;)');
 
     function addBootstrapLink() {
         var bootstrapLink = document.createElement('link');
@@ -33,8 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var enteredRooms = [];
     var clickedButtons = [];
     var correctClickedButtons = ['Water', 'Electric', 'Fire', 'Psiquic', 'Dark', 'Grass', 'Ice', 'Fairy'];
-    var isCorrectOrderGuessed = false;
+    var isCorrectOrderGuessed = true;
     var lookedUp = false;
+    var hintIndex = 0;
+
 
     //WIP
     var textEnterRoom = [
@@ -157,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 function () {
                     return !closeDoor ?
-                        'But you\'re not quick enough to exit as sharp ice falls on your arm, forcing you to recoil and yell in pain. The figure catches you off guard by landing between you and the door, revealing a glaceon with a seemingly weapon. Before you can make what was, you heard your neck snap.':
+                        'But you\'re not quick enough to exit as sharp ice falls on your arm, forcing you to recoil and yell in pain. The figure catches you off guard by landing between you and the door, revealing a glaceon with a seemingly weapon. Before you can make what was, you heard your neck snap.' :
                         'You manage to pass through the door as quick as the light as you heard the ice breaking only an inch behind you. Falling to the ground, you can distinguish the figure of whoever attacked you behind it, small frame is all you can make before the door closes.';
                 }
             ]
@@ -197,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 function () {
                     return !closeDoor ?
-                        'The light seems to make you forget you\'re not safe as you are tackled down, your upper half on the light and the rest inside the dark room. You notice the umbreon pulling you back from your feet as you try to hit him, but your feet seems to go through. In a matter of seconds, you experience the true darkness.':
+                        'The light seems to make you forget you\'re not safe as you are tackled down, your upper half on the light and the rest inside the dark room. You notice the umbreon pulling you back from your feet as you try to hit him, but your feet seems to go through. In a matter of seconds, you experience the true darkness.' :
                         'You hear a roar and you stumble into the room in the last second, your feets barely scratched. The door is not closed but the umbreon screams in pain at the moment his paw touches the light as it turns back running. Using this opportunity, you close the door as strong as possible, resting your back on it as a secure precaution.';
                 }
             ]
@@ -237,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 function () {
                     return !closeDoor ?
-                        'You throw yourself to avoid any more damage before you see the room, your eyes squeezing hard. You open them to see that was the safe room but unlike the last time, you see the pokemon in the room was now here with you. As the world starts to be filled with smoke, you manage to see the safe room changing slowly as you\'re trapped in an infinite trap.':
+                        'You throw yourself to avoid any more damage before you see the room, your eyes squeezing hard. You open them to see that was the safe room but unlike the last time, you see the pokemon in the room was now here with you. As the world starts to be filled with smoke, you manage to see the safe room changing slowly as you\'re trapped in an infinite trap.' :
                         'You breath heavely as you recognize the room you\'re in: the safe room. You turn back to see the pokemon staring at you, multiple eyes and smoke all around as you shut the door before anything could enter your head.';
                 },
                 //PLANTILLA
@@ -258,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 'exit?.' :
                                 'no exit';
                         },
-        
+
                         '.',
                         '',
                         '',
@@ -276,13 +279,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         },
                         function () {
                             return !closeDoor ?
-                                'die':
+                                'die' :
                                 'not die.';
                         }
                     ]
                 },
             ]
-        },  
+        },
     ];
 
 
@@ -348,7 +351,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (position == 'left') {
             deleteTypeButtons();
-
             // Crear el botón
             createGetCloserLeftButton();
         }
@@ -391,6 +393,8 @@ document.addEventListener('DOMContentLoaded', function () {
             var contenedorDeImagen = imagen.parentNode;
             contenedorDeImagen.style.position = 'relative';
             contenedorDeImagen.appendChild(boton);
+
+
         }
     }
     function lookUp() {
@@ -399,11 +403,12 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('image').src = "elemental/elemental_0008_arriba.png";
         resetTurning();
         //añadir pista
-
         const hintText = 'Seems a light is reflected on the right wall.<br>';
 
         document.getElementById('hints').innerHTML.includes(hintText) ? null : document.getElementById('hints').innerHTML += hintText;
 
+        disableDivButton(document.getElementById('turnRightButton'));
+        disableDivButton(document.getElementById('turnLeftButton'));
 
         //tras 2 segundos, que se cree el boton
         setTimeout(function () {
@@ -439,42 +444,46 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('image').src = "elemental/elemental_0009_detras.png";
         resetTurning();
         createUpArrow();
+        enableDivButton(document.getElementById('turnRightButton'));
+        enableDivButton(document.getElementById('turnLeftButton'));
 
     }
 
     //RIGHT
 
     function createMirrorButton() {
-        if (lookedUp) {
-            // Crear el botón
-            var boton = document.createElement('button');
-            boton.setAttribute('id', 'getCloserMirror');
-            boton.classList.add('btn', 'btn-secondary', 'mt-2');
-            boton.textContent = 'Get Closer';
+        // Crear el botón
+        var boton = document.createElement('button');
+        boton.setAttribute('id', 'getCloserMirror');
+        boton.classList.add('btn', 'btn-secondary', 'mt-2');
+        boton.textContent = 'Get Closer to the mirror';
 
-            // Obtener la imagen existente
-            var imagen = document.querySelector('#imageDiv img');
+        // Obtener la imagen existente
+        var imagen = document.querySelector('#imageDiv img');
 
-            // Estilos para centrar el botón
-            boton.style.position = 'absolute';
-            boton.style.top = '50%';
-            boton.style.left = '50%';
-            boton.style.transform = 'translate(-50%, -50%)';
-            boton.style.zIndex = '10';
+        // Estilos para centrar el botón
+        boton.style.position = 'absolute';
+        boton.style.top = '50%';
+        boton.style.left = '45%';
+        boton.style.transform = 'translate(-50%, -50%)';
+        boton.style.zIndex = '10';
 
-            boton.addEventListener('click', getCloserMirror);
+        boton.addEventListener('click', getCloserMirror);
 
-            // Asegurarse de que el padre inmediato tenga position relative
-            var contenedorDeImagen = imagen.parentNode;
-            contenedorDeImagen.style.position = 'relative';
-            contenedorDeImagen.appendChild(boton);
-        }
+
+        // Asegurarse de que el padre inmediato tenga position relative
+        var contenedorDeImagen = imagen.parentNode;
+        contenedorDeImagen.style.position = 'relative';
+        contenedorDeImagen.appendChild(boton);
     }
     function getCloserMirror() {
         //cambiar imagen
         document.getElementById('image').src = "elemental/elemental_0006_Capa5.png";
         //borrar getCloser
         deleteElement(document.getElementById('getCloserMirror'));
+        //deshabilitar los botones deir a los lados
+        disableDivButton(document.getElementById('turnRightButton'));
+        disableDivButton(document.getElementById('turnLeftButton'));
 
         //crear boton para ir atras
 
@@ -493,65 +502,80 @@ document.addEventListener('DOMContentLoaded', function () {
         boton.style.transform = 'translate(-50%, -50%)';
         boton.style.zIndex = '10';
 
-        boton.addEventListener('click', getCloserMirror);
+        boton.addEventListener('click', getBackMirror);
 
         // Asegurarse de que el padre inmediato tenga position relative
         var contenedorDeImagen = imagen.parentNode;
         contenedorDeImagen.style.position = 'relative';
         contenedorDeImagen.appendChild(boton);
 
-        //que al cabo de 5segundos salga un console log
-
-        setTimeout(function () {
-            deleteElement(document.getElementById('getBackMirror'));
-
-
-            // Crear el botón
-            var botonGlich = document.createElement('button');
-            botonGlich.setAttribute('id', 'glichButton');
-
-            // Añadir la clase al botón
-            botonGlich.classList.add('cybr-btn', 'mt-2');
-
-            // Crear el primer span
-            var span1 = document.createElement('span');
-            span1.setAttribute('aria-hidden', 'true');
-            span1.textContent = 'back';  // Texto dentro del primer span
-
-            // Crear el segundo span para el glitch
-            var span2 = document.createElement('span');
-            span2.setAttribute('aria-hidden', 'true');
-            span2.classList.add('cybr-btn__glitch');
-            span2.textContent = 'There\'s no turn back';  // Texto dentro del segundo span
-
-            // Añadir los spans al botón
-            botonGlich.textContent = 'There\'s no turn '; // Texto principal del botón
-            botonGlich.appendChild(span1);
-            botonGlich.appendChild(span2);
-
-
-            // Estilos para centrar el botón
-            botonGlich.style.position = 'absolute';
-            botonGlich.style.top = '90%';
-            botonGlich.style.left = '50%';
-            botonGlich.style.transform = 'translate(-50%, -50%)';
-            botonGlich.style.zIndex = '10';
-
-            //que no se pueda clicar
-            disableDivButton(botonGlich);
-            botonGlich.style.opacity = '1';
-
-            contenedorDeImagen.appendChild(botonGlich);
-            //en 1segundo, que llame a 'pressMirror'
+        //que al cabo de 5segundos salga un console log       
+        if (lookedUp) {
 
             setTimeout(function () {
-                pressMirror();
-            }, 1000);
+                deleteElement(document.getElementById('getBackMirror'));
 
-        }, 1000);
+
+                // Crear el botón
+                var botonGlich = document.createElement('button');
+                botonGlich.setAttribute('id', 'glichButton');
+
+                // Añadir la clase al botón
+                botonGlich.classList.add('cybr-btn', 'mt-2');
+
+                // Crear el primer span
+                var span1 = document.createElement('span');
+                span1.setAttribute('aria-hidden', 'true');
+                span1.textContent = 'back';  // Texto dentro del primer span
+
+                // Crear el segundo span para el glitch
+                var span2 = document.createElement('span');
+                span2.setAttribute('aria-hidden', 'true');
+                span2.classList.add('cybr-btn__glitch');
+                span2.textContent = 'There\'s no turn back';  // Texto dentro del segundo span
+
+                // Añadir los spans al botón
+                botonGlich.textContent = 'There\'s no turn '; // Texto principal del botón
+                botonGlich.appendChild(span1);
+                botonGlich.appendChild(span2);
+
+
+                // Estilos para centrar el botón
+                botonGlich.style.position = 'absolute';
+                botonGlich.style.top = '90%';
+                botonGlich.style.left = '50%';
+                botonGlich.style.transform = 'translate(-50%, -50%)';
+                botonGlich.style.zIndex = '10';
+
+                //que no se pueda clicar
+                disableDivButton(botonGlich);
+                botonGlich.style.opacity = '1';
+
+                contenedorDeImagen.appendChild(botonGlich);
+                //en 1segundo, que llame a 'pressMirror'
+
+                setTimeout(function () {
+                    pressMirror();
+                }, 1000);
+
+            }, 1000);
+        }
 
     }
 
+    function getBackMirror() {
+        //quitar los botones
+        resetTurning();
+        ///quitar getBack
+        deleteElement(document.getElementById('getBackMirror'));
+        //habilitar botones de turning
+        enableDivButton(document.getElementById('turnRightButton'));
+        enableDivButton(document.getElementById('turnLeftButton'));
+        //cambiar la imagen
+        document.getElementById('image').src = "elemental/elemental_0007_derecha.png";
+        //llamar el metodo para crear el getCloser del mirror
+        createMirrorButton();
+    }
     function pressMirror() {
         // Crear un div encima de la imagen y darle ventana.png
         var div = document.createElement('div');
@@ -577,20 +601,20 @@ document.addEventListener('DOMContentLoaded', function () {
         // Añadir el nuevo div sobre la imagen de fondo
         imageDiv.appendChild(div);
 
-        //en otro segundo que haga un console log
 
+        //en otro segundo que haga un console log
         setTimeout(function () {
             document.getElementById('image').src = "elemental/elemental_0005_Capa7.png";
-            
+
         }, 1000);
         setTimeout(function () {
             deleteElement(document.getElementById('mano'));
         }, 2000);
-        
+
         setTimeout(function () {
             deleteElement(document.getElementById('glichButton'));
         }, 3000);
-        
+
         setTimeout(function () {
             document.getElementById('image').src = "elemental/elemental_0004_Capa8.png";
             //llamar el metodo 'continueCorrect'
@@ -615,8 +639,8 @@ document.addEventListener('DOMContentLoaded', function () {
         boton.style.zIndex = '10';
 
         boton.addEventListener('click', function () {
-           //abrir una nueva ventana con el link a google.com
-           window.open('https://google.com', '_blank');
+            //abrir una nueva ventana con el link a google.com
+            window.open('https://google.com', '_blank');
         });
 
         // Asegurarse de que el padre inmediato tenga position relative
@@ -1244,6 +1268,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+    function hints(number) {
+        var hintsArray = [
+            'Hint 1: Maybe the panel is connected to the doors.. did you try clicking a button and enter said room?',
+            'Hint 2: Are the dangers of the doors really worth?',
+            'Hint 3: Did you try following the pokedex?',
+            'Hint 4: Reflect and see yourself.',
+        ];
+
+        var hints = document.getElementById('hintsReal');
+
+        if (number < hintsArray.length) {
+            hints.innerHTML += '<br>' + hintsArray[number];
+        }
+        if (number === hintsArray.length) {
+            clearInterval(intervalId);
+            clearInterval(intervalConsoleLog);
+        }
+    }
+    function ejecutarHintsPeriodicamente() {
+        hints(hintIndex); // Ejecutar la función de pistas con el índice actual
+        hintIndex++; // Incrementar el índice para la siguiente pista
+    }
+
+
+    function ejecutarConsoleHints() {
+        var hintsArray = [
+            '..You\'re still looking here? There\'s nothing for you to see, really.',
+            'You\'re REALLY patient, I see. Maybe if you stick around, I\'ll tell you a hint',
+            'The doors are only funny game over you know..',
+            'Pokedex numbers? You know this room is inspired in eeveevolutions? Is this hint enough?',
+        ];
+
+        if (hintIndex < hintsArray.length) {
+            console.log(hintsArray[hintIndex]);
+        }
+
+    }
+    // Ejecutar cada 5 minutos (300,000 milisegundos)
+    var intervalId = setInterval(ejecutarHintsPeriodicamente, 300000); // 300000 ms = 5 minutos
+    var intervalConsoleLog = setInterval(ejecutarConsoleHints, 299999); // 300000 ms = 5 minutos
 
 
 
@@ -1308,6 +1372,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         deleteElement(document.getElementById('lookUp'));
         deleteElement(document.getElementById('returnLookUp'));
+
+        deleteElement(document.getElementById('getCloserMirror'));
+        deleteElement(document.getElementById('getBackMirror'));
 
         // Restablecer la posición del contenedor inmediato de la imagen
         var contenedorDeImagen = document.querySelector('#imageDiv');
