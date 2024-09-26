@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var enteredRooms = [];
     var clickedButtons = [];
     var correctClickedButtons = ['Water', 'Electric', 'Fire', 'Psiquic', 'Dark', 'Grass', 'Ice', 'Fairy'];
-    var isCorrectOrderGuessed = true;
+    var isCorrectOrderGuessed = false;
     var lookedUp = false;
     var hintIndex = 0;
 
