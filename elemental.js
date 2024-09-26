@@ -43,41 +43,41 @@ document.addEventListener('DOMContentLoaded', function () {
     var textEnterRoom = [
         {
             'name': 'Fairy', 'text': [
-                'You decided to enter the Fairy room',
-                'You put your ear close to the door, trying to make a sound.',
-                'You can hear a faint breathing. Someone is in there!',
-                'You open the door, determined to find whoever is there.',
-                'But as soon as you do, you hear a clicking sound. When you turn around, the door is closed.',
+                ['You decided to enter the Fairy room', 'elemental/fairy/black.png'],
+                ['You put your ear close to the door, trying to make a sound.', 'elemental/fairy/black.png'],
+                ['You can hear a faint breathing. Someone is in there!', 'elemental/fairy/black.png'],
+                ['You open the door, determined to find whoever is there.', 'elemental/fairy/black.png'],
+                ['But as soon as you do, you hear a clicking sound. When you turn around, the door is closed.', 'elemental/fairy/runDoor.png'],
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
-                        'You try to open the door and you notice you can open it.' :
-                        'You try to open the door, but it doesn\'t budge an inch';
+                        ['You try to open the door and you notice you can open it.', 'elemental/fairy/door.png'] :
+                        ['You try to open the door, but it doesn\'t budge an inch', 'elemental/fairy/door.png'];
                 },
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
-                        'Do you want to Exit?' :
-                        'You try not to panic as you turn around and take a step deeper into the room.';
+                        ['Do you want to Exit?', 'elemental/fairy/door.png'] :
+                        ['You try not to panic as you turn around and take a step deeper into the room.', 'elemental/fairy/runDoor.png'];
                 },
 
-                'The air feels cold and you can hear the faint breathing closer and closer, each time more heavy.',
-                'You find Sylveon sitting, looking at where you came from. Its ribbons move like tentacles as you notice that aren\'t regular ribbons- but human looking hands.',
-                'They wave at you as you feel force to wave back.',
-                'Sylveon takes a step closer as you noticed it\'s not a regular sylveon. Its teeth are as sharp as sharpedo and you can see a ring of red around it.',
-                'It takes another step, you take one back as you glance over the door.',
+                ['The air feels cold and you can hear the faint breathing closer and closer, each time more heavy.', 'elemental/fairy/corridor.png'],
+                ['You find Sylveon sitting, looking at where you came from. Its ribbons move like tentacles as you notice that aren\'t regular ribbons- but human looking hands.', 'elemental/fairy/enter.png'],
+                ['They wave at you as you feel force to wave back.', 'elemental/fairy/enter.png'],
+                ['Sylveon takes a step closer as you noticed it\'s not a regular sylveon. Its teeth are as sharp as sharpedo and you can see a ring of red around it.', 'elemental/fairy/salute.png'],
+                ['It takes another step, you take one back as you glance over the door.', 'elemental/fairy/salute.png'],
                 function () {
                     return !acceptFate ?
-                        'You run back and try to open the door, your palms sweaty as you heard its steps closer and closer.' :
-                        'You know there\'s nothing to do as Sylveon is just a breathaway from you. You made a bad decision';
+                        ['You run back and try to open the door, your palms sweaty as you heard its steps closer and closer.' ,'elemental/fairy/runDoor.png'] :
+                        ['You know there\'s nothing to do as Sylveon is just a breathaway from you. You made a bad decision', 'elemental/fairy/badEnding1.png'];
                 },
                 function () {
                     return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0)) ?
-                        'You manage to open the door as you hear its claws agains the stone floor. As soon as you manage to take a step outside the room, you see Sylveon launching at you, ready to attack' :
-                        'But was all futile. Your hands manage to turn the rusty doorknob but the door is still closed. Your faith is sealed as you turn around and see Sylveon\'s luminiscent pelt change in the darkness, its bi-colored eyes looking with such happiness you can\'t help but regret what brought you here';
+                        ['You manage to open the door as you hear its claws agains the stone floor. As soon as you manage to take a step outside the room, you see Sylveon launching at you, ready to attack', 'elemental/fairy/doorClose.png'] :
+                        ['But was all futile. Your hands manage to turn the rusty doorknob but the door is still closed. Your faith is sealed as you turn around and see Sylveon\'s luminiscent pelt change in the darkness, its bi-colored eyes looking with such happiness you can\'t help but regret what brought you here', 'elemental/fairy/badEnding1.png'];
                 },
                 function () {
                     return !closeDoor ?
-                        'Despite your quick reaction time, Sylveon is way quicker as you\'re thrown to the floor in what you thought was a safe room. You can smell the rancid smell of blood as Sylveon makes your world black, white teeth as the last thing you manage to see' :
-                        'You manage to close the door before it manages to enter the safe room, hearing how Sylveon hits the door at the other side. You expect something else to happen but the room grows silent.';
+                        ['Despite your quick reaction time, Sylveon is way quicker as you\'re thrown to the floor in what you thought was a safe room. You can smell the rancid smell of blood as Sylveon makes your world black, white teeth as the last thing you manage to see', 'elemental/fairy/badEnding2.png'] :
+                        ['You manage to close the door before it manages to enter the safe room, hearing how Sylveon hits the door at the other side. You expect something else to happen but the room grows silent.', 'elemental/fairy/black.png'];
                 }
             ]
         },
@@ -971,7 +971,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //recuperar de la array textEnterRoom, donde name == element
         const roomObject = textEnterRoom.find(room => room.name === element);
 
-        text.textContent = roomObject.text[textLine];
+        text.textContent = roomObject.text[textLine][0];
         div.appendChild(text);
 
         //crear un boton con ►
@@ -1000,6 +1000,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function nextText(text) {
 
+        
+      
+        document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]()[0] : text.text[textLine][0];
+        document.getElementById('image').src = typeof text.text[textLine] === 'function' ? text.text[textLine]()[1] : text.text[textLine][1];
+
         // console.log(textLine, text.text[textLine]);
         //para salir de la sala
         console.log(textLine, text.text[textLine], lastButtonTouched, text.name);
@@ -1017,12 +1022,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //si has llegado al final pero no has apretado al boton, que salga la ultima frase y luego haga un timeout
         if (textLine == 14 && closeDoor == false) {
-            disableDivButton(document.getElementById('next'));
-            textLine--;
 
-            setTimeout(function () {
-                gameOver();
-            }, "4000");
+            document.getElementById('next').removeEventListener('click', nextText);
+            document.getElementById('next').addEventListener('click', gameOver);
+
+            textLine--;
 
         }
         //has conseguido cerrar la puerta
@@ -1048,14 +1052,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isPanicClicked == true) {
             isPanicClicked = false;
         }
-
-        if (textLine == 5) {
-            console.log(typeof text.text[textLine] === 'function' ? text.text[textLine]() : text.text[textLine]);
-            // typeof room.text[5] === 'function' ? room.text[textLine]() : room.text[textLine];
-
-        }
-        document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]() : text.text[textLine];
-
 
     }
 
@@ -1093,7 +1089,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 textLine++;
 
                 const text = textEnterRoom.find(room => room.name === name);
-                document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]() : text.text[textLine];
+                nextText(text);
 
                 //hacer el next posible
                 enableDivButton(document.getElementById('next'));
@@ -1159,7 +1155,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 textLine++;
 
                 const text = textEnterRoom.find(room => room.name === name);
-                document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]() : text.text[textLine];
+                nextText(text);
 
 
                 //hacer el next posible
@@ -1358,6 +1354,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //al cabo de 1 segundo, hacer f5
         setTimeout(function () {
             window.location.reload();
+          
         }, "2000");
 
         //quitar la ventana-png
