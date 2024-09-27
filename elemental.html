@@ -5,52 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elements</title>
-    <script src="elemental.js"></script> 
+    <script src="elemental.js"></script>
     <link rel="stylesheet" href="glich.css">
     <style>
         .shake {
-    animation: shake 0.5s infinite; /* Llama a la animación 'shake' */
-}
+            animation: shake 0.5s infinite;
+            /* Llama a la animación 'shake' */
+        }
 
-@keyframes shake {
-    0% { transform: translate(-50%, -50%) translate(0, 0); }
-    10% { transform: translate(-50%, -50%) translate(-5px, -5px); }
-    20% { transform: translate(-50%, -50%) translate(5px, 5px); }
-    30% { transform: translate(-50%, -50%) translate(-5px, 0); }
-    40% { transform: translate(-50%, -50%) translate(5px, -5px); }
-    50% { transform: translate(-50%, -50%) translate(0, 5px); }
-    60% { transform: translate(-50%, -50%) translate(-5px, 5px); }
-    70% { transform: translate(-50%, -50%) translate(5px, 0); }
-    80% { transform: translate(-50%, -50%) translate(0, -5px); }
-    90% { transform: translate(-50%, -50%) translate(-5px, -5px); }
-    100% { transform: translate(-50%, -50%) translate(0, 0); }
-}
+        @keyframes shake {
+            0% {
+                transform: translate(-50%, -50%) translate(0, 0);
+            }
 
+            10% {
+                transform: translate(-50%, -50%) translate(-5px, -5px);
+            }
+
+            20% {
+                transform: translate(-50%, -50%) translate(5px, 5px);
+            }
+
+            30% {
+                transform: translate(-50%, -50%) translate(-5px, 0);
+            }
+
+            40% {
+                transform: translate(-50%, -50%) translate(5px, -5px);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) translate(0, 5px);
+            }
+
+            60% {
+                transform: translate(-50%, -50%) translate(-5px, 5px);
+            }
+
+            70% {
+                transform: translate(-50%, -50%) translate(5px, 0);
+            }
+
+            80% {
+                transform: translate(-50%, -50%) translate(0, -5px);
+            }
+
+            90% {
+                transform: translate(-50%, -50%) translate(-5px, -5px);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) translate(0, 0);
+            }
+        }
     </style>
 </head>
 
 <body>
-    
-      
+
+
 
     <h1 class="text-center">Elemental</h1>
     <div>
         <div class="fw-bold">Additional hints will be added here</div>
-        <div id="hints"></div>
-        <div id="hintsReal"></div>
+        <div style="height: 100px; overflow-y: auto;">
+            <div style="font-style: italic;">Scroll to see all</div>
+            <div id="hints"></div>
+            <div id="hintsReal"></div>
+        </div>
     </div>
     <div id="result" class="text-center"></div>
-    <div class="row">
-        <div class="col-3" >
+    <div class="container" style="max-width: 100%;">
 
-            <div class="btn btn-secondary" id="turnLeftButton">&lt;-</div>
-        </div>
-        <div class="col-6 text-center" id="imageDiv"> <!-- Añadir text-center para centrar el contenido -->
-            <img src="elemental/elemental_0010_delante.png" alt="" class="img-fluid mx-auto d-block"
-                style="max-width: 100%; height: auto;" id="image">
-        </div>
-        <div  id="rightColumn" class="col-3">
-            <div class="btn btn-secondary w-25" id="turnRightButton">-&gt;</div>
+        <div class="row">
+            <div class="col-3">
+
+                <div class="btn btn-secondary" id="turnLeftButton">&lt;-</div>
+            </div>
+            <div class="col-6 text-center" id="imageDiv"> <!-- Añadir text-center para centrar el contenido -->
+                <img src="elemental/elemental_0010_delante.png" alt="" class="img-fluid mx-auto d-block"
+                    style="max-width: 100%; height: auto;" id="image">
+            </div>
+            <div id="rightColumn" class="col-3">
+                <div class="btn btn-secondary w-25" id="turnRightButton">-&gt;</div>
+            </div>
         </div>
     </div>
 
