@@ -1,0 +1,10 @@
+pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp -r * .public/
+  artifacts:
+    paths:
+      - .public
+  only:
+    - main  # Puedes cambiar esto si tu rama principal tiene otro nombre
