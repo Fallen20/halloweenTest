@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku 9x9</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* Cambiar la dirección del flex */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            /* Asegúrate de que los bordes se colapsen */
+        }
+
+        td {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 18px;
+            border: 2px solid transparent;
+            /* Usar bordes transparentes inicialmente */
+        }
+
+        input {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 18px;
+            background-color: #fff;
+        }
+
+        input[readonly] {
+            background-color: #f0f0f0;
+        }
+
+        button {
+            margin-top: 20px; /* Espacio entre la tabla y el botón */
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="sudoku-table"></table>
+    <button id="check-button">Comprobar</button>
+    <div id="salto"></div>
+
+    <script>
+        // Matriz con los números del Sudoku
+        const sudokuNumbers = [
+            [2, 1, 6, 4, 3, 9, 7, 5, 8],
+            [9, 4, 7, 5, 8, 6, 3, 2, 1],
+            [5, 8, 3, 2, 1, 7, 4, 6, 9],
+            [8, 9, 6, 2, 6, 4, 3, 5, 1],
+            [6, 5, 4, 7, 2, 9, 8, 6, 3],
+            [3, 7, 1, 9, 5, 8, 6, 4, 2],
+            [4, 6, 9, 1, 7, 2, 8, 5, 3],
+            [7, 2, 8, 3, 6, 5, 1, 9, 4],
+            [1, 3, 5, 8, 9, 4, 2, 7, 6]
+        ];
+
+        function createSudoku() {
+            const table = document.getElementById('sudoku-table');
+
+            // Crear filas de la tabla
+            for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+                const tr = document.createElement('tr'); // Crear fila
+                const editableIndices = getRandomEditableIndices(); // Obtener índices editables para la fila
+
+                // Cada fila de 9 columnas
+                for (let colIndex = 0; colIndex < 9; colIndex++) {
+                    const td = document.createElement('td'); // Crear celda
+                    const input = document.createElement('input'); // Crear input
+                    input.type = 'number';
+
+                    // Determinar si el input es editable o no
+                    if (editableIndices.includes(colIndex)) {
+                        input.readOnly = false; // Hacer editable
+                        input.value = ''; // Sin valor inicial
+                    } else {
+                        input.readOnly = true; // Hacer no editable
+                        input.value = sudokuNumbers[rowIndex][colIndex]; // Valor del Sudoku
+                    }
+
+                    // Estilos de borde
+                    input.style.borderTop = 'none';
+                    input.style.borderBottom = 'none';
+                    input.style.borderLeft = 'none';
+                    input.style.borderRight = 'none';
+
+                    // Bordes exteriores
+                    if (rowIndex === 0) input.style.borderTop = '2px solid black'; // Borde superior
+                    if (rowIndex === 8) input.style.borderBottom = '2px solid black'; // Borde inferior
+                    if (colIndex === 0) input.style.borderLeft = '2px solid black'; // Borde izquierdo
+                    if (colIndex === 8) input.style.borderRight = '2px solid black'; // Borde derecho
+
+                    // Bordes internos de cada bloque 3x3
+                    if (colIndex === 2 || colIndex === 5) input.style.borderRight = '1px solid black'; // Bordes verticales internos
+                    if (rowIndex === 2 || rowIndex === 5) input.style.borderBottom = '1px solid black'; // Bordes horizontales internos
+
+                    // Añadir el evento de teclado para el input
+                    input.addEventListener('keydown', (event) => {
+                        if (event.key === 'Tab') {
+                            event.preventDefault(); // Evitar el comportamiento por defecto del Tab
+                            focusNextInput(input);
+                        }
+                    });
+
+                    td.appendChild(input); // Añadir input al td
+                    tr.appendChild(td); // Añadir td al tr
+                }
+                table.appendChild(tr); // Añadir fila a la tabla
+            }
+        }
+
+        function focusNextInput(currentInput) {
+            const inputs = document.querySelectorAll('input'); // Seleccionar todos los inputs
+            let nextInput = null;
+            const currentIndex = Array.from(inputs).indexOf(currentInput); // Obtener el índice del input actual
+
+            // Buscar el siguiente input que no sea editable
+            for (let i = currentIndex + 1; i < inputs.length; i++) {
+                if (!inputs[i].readOnly) {
+                    nextInput = inputs[i];
+                    break; // Encontrado el siguiente input no editable
+                }
+            }
+
+            // Si no se encontró, reiniciar la búsqueda desde el principio
+            if (!nextInput) {
+                for (let i = 0; i < currentIndex; i++) {
+                    if (!inputs[i].readOnly) {
+                        nextInput = inputs[i];
+                        break; // Encontrado el siguiente input no editable
+                    }
+                }
+            }
+
+            // Focalizar el siguiente input
+            if (nextInput) {
+                nextInput.focus();
+            }
+        }
+
+        function getRandomEditableIndices() {
+            const indices = [];
+            while (indices.length < 3) {
+                const randomIndex = Math.floor(Math.random() * 9); // Obtener un índice aleatorio de 0 a 8
+                if (!indices.includes(randomIndex)) {
+                    indices.push(randomIndex);
+                }
+            }
+            return indices; // Retornar los índices editables
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('input'); // Seleccionar todos los inputs
+            let allCorrect = true; // Variable para verificar si todos los editables son correctos
+            inputs.forEach((input, index) => {
+                const rowIndex = Math.floor(index / 9); // Obtener el índice de fila
+                const colIndex = index % 9; // Obtener el índice de columna
+
+                if (!input.readOnly) { // Solo comprobar los editables
+                    const correctValue = sudokuNumbers[rowIndex][colIndex];
+                    if (input.value == correctValue) {
+                        input.style.backgroundColor = 'rgba(144, 238, 144, 0.5)'; // Verde claro
+                    } else {
+                        input.style.backgroundColor = 'rgba(255, 99, 71, 0.5)'; // Rojo claro
+                        allCorrect = false; // Al menos un valor es incorrecto
+                    }
+                }
+            });
+
+            // Si todos los editables son correctos, mostrar la alerta
+            if (allCorrect) {
+                alert('La puerta se ha abierto, pasa a la siguiente sala');
+                document.getElementById('salto').innerHTML="La puerta sellada se abre ante ti";
+            }
+        }
+
+        // Añadir evento al botón
+        document.getElementById('check-button').addEventListener('click', checkAnswers);
+
+        createSudoku(); // Llamar a la función para generar el Sudoku
+    </script>
+
+</body>
+
+</html>

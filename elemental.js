@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // pulsar el boton pero entrar a la puerta diferente: muerte
     // pulsar en el orden de la pokedex: una pista
 
+
     console.log('Hey, you should not me looking here ;)');
 
     function addBootstrapLink() {
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 ['It takes another step, you take one back as you glance over the door.', 'elemental/fairy/salute.png'],
                 function () {
                     return !acceptFate ?
-                        ['You run back and try to open the door, your palms sweaty as you heard its steps closer and closer.' ,'elemental/fairy/runDoor.png'] :
+                        ['You run back and try to open the door, your palms sweaty as you heard its steps closer and closer.', 'elemental/fairy/runDoor.png'] :
                         ['You know there\'s nothing to do as Sylveon is just a breathaway from you. You made a bad decision', 'elemental/fairy/badEnding1.png'];
                 },
                 function () {
@@ -244,46 +245,127 @@ document.addEventListener('DOMContentLoaded', function () {
                         'You breath heavely as you recognize the room you\'re in: the safe room. You turn back to see the pokemon staring at you, multiple eyes and smoke all around as you shut the door before anything could enter your head.';
                 },
                 //PLANTILLA
-                {
-                    'name': 'Dark', 'text': [
-                        'You decided to enter the room',
-                        '',
-                        '',
-                        '',
-                        '',
-                        function () {
-                            return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
-                                'You can open the door' :
-                                'You CANT open the door';
-                        },
-                        function () {
-                            return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
-                                'exit?.' :
-                                'no exit';
-                        },
 
-                        '.',
-                        '',
-                        '',
-                        '',
-                        '.',
-                        function () {
-                            return !acceptFate ?
-                                'dont die' :
-                                'die';
-                        },
-                        function () {
-                            return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0)) ?
-                                'not die' :
-                                'die';
-                        },
-                        function () {
-                            return !closeDoor ?
-                                'die' :
-                                'not die.';
-                        }
-                    ]
+            ]
+        },
+        {
+            'name': 'Electric', 'text': [
+                'You decided to enter the Electric room',
+                ['Despite all the buzzing, as soon as you touch the knock a small static electricity forces you to recoil. You didn\'t feel any pain but the surprise was enough',''],
+                ['Using your clothes as a help, you turn the knock, this time without any electricity filling you.',''],
+                ['You expected something very different when you open the door. On the ceiling, you can see stars, galaxies and even comets drawn all around. If it wasn\'t because you knew you\'re insidea a room, you would believe you\'re looking the sky',''],
+                ['But on the walls, is all very different. You see what seems blurr dark figures and things you\'re not able to exactly describe. You put a hand on the hall when suddenly the dark figure in the hall turns and you back up, tripping and closing the door with a hard hit',''],
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Electric') == 0) ?
+                        ['You try to open the door after getting up. The buzzing still fills you as you remember to use your clothes. You sigh with relief when you notice the knock turn.', ''] :
+                        ['You stumble on your feet and try to open the knock in a rush only to get the same static electricity, this time more powerful. You\'re knocked on the ground as you know there\'s no escape now.', ''];
                 },
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Electric') == 0) ?
+                        ['You\'re able to exit if you want. Maybe it\'s for the best, knowing the walls are not even secure. Exit?', ''] :
+                        ['You try again only to get hit again. Your hands hurt an you recoil, defeated.', ''];
+                },
+
+                ['You turn to continue inside the room, not touching or looking at the walls. You feel watched',''],
+                ['You stumble into a yellow bundle of fur. It\'s trembling and you notice is a jolteon. Maybe is as lost as you.',''],
+                ['You try to touch him only to be hit by the same static electricity. You heard them sob as you rub your hurt hand',''],
+                ['You are only able to say a word before his face turns to you, a terrified face with red all around. Now you notice, there\'s also some in his paws.',''],
+                ['The jolteon murmurs something about an accident and as soon as you process all, the jolteon is jumping to you, in could be an innocent hug if it wasn\'t because all the supposed blood and visible electricity',''],
+                function () {
+                    return !acceptFate ?
+                        ['You manage to take a step back, letting the jolteon fell on his face as you turn around, running towards the door. You still hear his sob and you notice gets louder and louder.', ''] :
+                        ['You try to step back only to fall on your back. Despite having a distance, you are not able to crawl away from the fluffy jolteon as it lands on top of you and you feel millions of volts inside your body. You smell the familiar scent of roasted meat as you hear the jolteon say sorry.', ''];
+                },
+                function () {
+                    return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Electric') == 0)) ?
+                        ['You reach the door as you stumble by the electricity now filling all the walls. The dark figures are all now turned and you can see ressemble charizard and vaporeon. But it\'s not time, you force yourself to open the door', ''] :
+                        ['You are knocked as soon as you stumble into a wall. Now all dark figures have shapes as you can see sad eyes. You don\'t know if you\'re making it or not, but the figures exit the wall as they hug you. At first you feel nothing and in a blink, you can see your own body, dark as constant electricity flows to it.', ''];
+                },
+                function () {
+                    return !closeDoor ?
+                        ['Despite all your tries, the electricity is too strong and you see your own hands slowly stopping obeying you. You soon lose all functinality of your arms as the jolteon appears. He\'s standing with sad eyes as he gives you a paw. You decide your fate was always meant to hug him, even if you can\'t as you kneel down.', ''] :
+                        ['Despite hurting you hand, you manage to open and close the door inmediatly and take a few steps back in the safe room before you collapse, your legs paralized by fear or electricity. You don\'t know', ''];
+                }
+            ]
+        },
+        {
+            'name': 'Water', 'text': [
+                'You decided to enter Water the room',
+                ['You know how dangerous water can be, but you feel it\'s the most secure. You can swim away if something happens.',''],
+                ['As soon as you touch the door, you notice a slimy sensation instead of wood. You feel.. dizzy, enough to make you shake. You decide to not bother with it as you turn the knock, this time not getting dizzy.',''],
+                ['As soon as you open the door, the room is unexpectedly big. You can see small pools and for the first time in ages, pokemon that are not aggresive. You can see a vaporeon with a green bandana swimming cheerfully in one as another with mythical marks and darker color observe you with curiousity.',''],
+                ['You\'re in awe as you see more and more far away but suddenly, you hear a soft click and you turn around to see a vaporeon made of water close the door.',''],
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
+                        ['You shoo way the vaporeon, who in a matter of seconds, had became smaller as you look at the knock. It\'s only covered in water and you can turn the knock easly.', ''] :
+                        ['You shoo way the vapereon not before they use a weak water gun in you. You hear them grumble as you try to turn the knock but seems the knock refuses to torn, as somehow someone is turning it to the opposite way.', ''];
+                },
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
+                        ['Despite how friendly this room looks, maybe you should leave it for last. Do you want to exit?', ''] :
+                        ['You fight with the door, accidentally touching the door and finally getting knocked down as you give up in it.', ''];
+                },
+
+                ['.',''],
+                ['',''],
+                ['',''],
+                ['',''],
+                ['.',''],
+                function () {
+                    return !acceptFate ?
+                        ['dont die', ''] :
+                        ['die', ''];
+                },
+                function () {
+                    return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0)) ?
+                        ['not die', ''] :
+                        ['die', ''];
+                },
+                function () {
+                    return !closeDoor ?
+                        ['die', ''] :
+                        ['not die.', ''];
+                }
+            ]
+        },
+        {
+            'name': 'Grass', 'text': [
+                'You decided to enter the room',
+                ['',''],
+                ['',''],
+                ['',''],
+                ['',''],
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
+                        ['You can open the door', ''] :
+                        ['You CANT open the door', ''];
+                },
+                function () {
+                    return (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0) ?
+                        ['exit?.', ''] :
+                        ['no exit', ''];
+                },
+
+                ['.',''],
+                ['',''],
+                ['',''],
+                ['',''],
+                ['.',''],
+                function () {
+                    return !acceptFate ?
+                        ['dont die', ''] :
+                        ['die', ''];
+                },
+                function () {
+                    return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Fairy') == 0)) ?
+                        ['not die', ''] :
+                        ['die', ''];
+                },
+                function () {
+                    return !closeDoor ?
+                        ['die', ''] :
+                        ['not die.', ''];
+                }
             ]
         },
     ];
@@ -1000,8 +1082,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function nextText(text) {
 
-        
-      
+
+
         document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]()[0] : text.text[textLine][0];
         document.getElementById('image').src = typeof text.text[textLine] === 'function' ? text.text[textLine]()[1] : text.text[textLine][1];
 
@@ -1296,6 +1378,7 @@ document.addEventListener('DOMContentLoaded', function () {
             'Pokedex numbers? You know this room is inspired in eeveevolutions? Is this hint enough?',
         ];
 
+        /*asas */
         if (hintIndex < hintsArray.length) {
             console.log(hintsArray[hintIndex]);
         }
@@ -1354,7 +1437,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //al cabo de 1 segundo, hacer f5
         setTimeout(function () {
             window.location.reload();
-          
+
         }, "2000");
 
         //quitar la ventana-png
