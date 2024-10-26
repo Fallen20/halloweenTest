@@ -10,14 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Colores específicos para las piezas
     const colors = [
-        '#FF5733', // Color 1
-        '#33FF57', // Color 2
-        '#3357FF', // Color 3
-        '#F1C40F', // Color 4
-        '#9B59B6', // Color 5
-        '#E67E22', // Color 6
-        '#1ABC9C', // Color 7
-        '#34495E'  // Color 8
+        './deslizar/1.png', // Color 1
+        './deslizar/2.png', // Color 2
+        './deslizar/3.png', // Color 3
+        './deslizar/4.png', // Color 4
+        './deslizar/5.png', // Color 5
+        './deslizar/6.png', // Color 6
+        './deslizar/7.png', // Color 7
+        './deslizar/8.png'  // Color 8
     ];
 
     // Inicializar el puzle
@@ -35,10 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             // Agregar el espacio vacío
             emptyPositionIndex = pieces.length; // Posición del espacio vacío
-            pieces.push({ number: null, color: '' });
+            pieces.push({ number: null, color: './deslizar/resto.png' });
 
             shuffle();
         } while (!isSolvable());
+
 
         renderPuzzle();
     }
@@ -72,14 +73,14 @@ document.addEventListener('DOMContentLoaded', function () {
         pieces.forEach((piece, index) => {
             const div = document.createElement('div');
             div.classList.add('piece');
-            div.style.backgroundColor = piece.color;
-            div.textContent = piece.number !== null ? piece.number : ''; // Mostrar número
-
+            div.style.backgroundImage = `url('${piece.color}')`;
+            div.setAttribute('data-number', piece.number !== null ? piece.number : ''); // Asigna el número como atributo
+    
             // Añadir evento de clic
             div.addEventListener('click', () => {
                 handlePieceClick(div, piece, index);
             });
-
+    
             puzzleContainer.appendChild(div);
         });
     }
@@ -150,17 +151,23 @@ document.addEventListener('DOMContentLoaded', function () {
     // Intercambiar posiciones y colores de las piezas
     function swapPieces(emptyIndex) {
         const firstPieceIndex = pieces.findIndex(p => p.number === firstClickedPiece.number);
-
-        // Intercambiar números
+    
+        // Intercambiar números en el array de piezas
         const tempNumber = pieces[firstPieceIndex].number;
-        pieces[firstPieceIndex].number = null; // Actualizar número al vacío
-        pieces[emptyIndex].number = tempNumber; // Cambiar número
-
-        // Intercambiar colores
-        const tempColor = pieces[firstPieceIndex].color;
-        pieces[firstPieceIndex].color = ''; // Vacío no tiene color
-        pieces[emptyIndex].color = tempColor; // Cambiar color
+        pieces[firstPieceIndex].number = null;
+        pieces[emptyIndex].number = tempNumber;
+    
+        // Intercambiar colores (rutas de imagen) en el array de piezas
+        const tempImage = pieces[firstPieceIndex].color;
+        pieces[firstPieceIndex].color = pieces[emptyIndex].color;
+        pieces[emptyIndex].color = tempImage;
+    
+        // Actualizar inmediatamente el backgroundImage en el DOM
+        const puzzlePieces = document.querySelectorAll('.piece');
+        puzzlePieces[firstPieceIndex].style.backgroundImage = `url('${pieces[firstPieceIndex].color}')`;
+        puzzlePieces[emptyIndex].style.backgroundImage = `url('${pieces[emptyIndex].color}')`;
     }
+    
 
     // Añadir overlay a la pieza clicada
     function addOverlay(pieceElement) {
@@ -181,7 +188,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (winCondition) {
             clicksEnabled = false; // Deshabilitar clics
             setTimeout(() => {
-                alert('¡Has ganado!');
+                alert('You won!');
+                document.getElementById('result').innerHTML="The painting seems to recover its spirit as it slowly fades into the darkness, revealing a hidden hallway behind it. Before you manage to squeze, you notice a small paper behind the painting with the letter "+"<strong>C</strong>"+" behind it";
                 clicksEnabled = true; // Habilitar clics de nuevo
             }, 1000); // Esperar un segundo antes de mostrar el alert
         }
