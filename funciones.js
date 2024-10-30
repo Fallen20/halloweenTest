@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const numeroIngresado = document.getElementById('constellationCode').value;
 
             if (numeroIngresado == numeroCorrecto) {
-                document.getElementById('result').innerHTML = 'A ding is heard, the floor starts to rumble and a new passage is <a href="index.html">open</a>';
+                document.getElementById('result').innerHTML = 'A ding is heard, the floor starts to rumble and a new passage is <a href="https://docs.google.com/document/d/1HUP901tTKt1x5BDM0D52AA76p7VyLAzJtMImMvRQ8MY/edit?tab=t.0">open</a>';
                 // Aquí podrías redirigir a otro sitio si es correcto:
                 // window.location.href = "https://tupagina.com/enlace.html";
             } else {

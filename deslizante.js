@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clicksEnabled = false; // Deshabilitar clics
             setTimeout(() => {
                 alert('You won!');
-                document.getElementById('result').innerHTML="The painting seems to recover its spirit as it slowly fades into the darkness, revealing a hidden hallway behind it. Before you manage to squeze, you notice a small paper behind the painting with the letter "+"<strong>C</strong>"+" behind it";
+                document.getElementById('result').innerHTML="The painting seems to recover its spirit as it slowly fades into the darkness, revealing a hidden hallway behind it.<a href='https://docs.google.com/document/d/1VQW_BwotskAH1uznIA3w26tztSL7uf-VqUtK9m5gcko/edit?tab=t.0'>You can continue</a>";
                 clicksEnabled = true; // Habilitar clics de nuevo
             }, 1000); // Esperar un segundo antes de mostrar el alert
         }

@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.style.color = 'white';
         nextButton.style.border = 'none';
         nextButton.style.cursor = 'pointer';
-        nextButton.onclick = () => window.location.href = 'https://www.google.com';
+        nextButton.onclick = () => window.location.href = 'https://docs.google.com/document/d/1MLNQLFWMMMyVP1udXGkag2OWQyMKEDpmxk_56HUYNDA/edit?tab=t.0';
 
         document.querySelector('.container').appendChild(nextButton);
     }

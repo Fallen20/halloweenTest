@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscar en la Habitación</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f8f9fa;
+      }
+      #contenedor {
+        position: relative;
+        width: 100%;
+        max-width: 800px; /* Limitar el ancho del contenedor */
+        overflow: hidden; /* Ocultar el desbordamiento */
+      }
+      #image {
+        width: 100%; /* Mantener el ancho al 100% */
+        height: auto; /* Mantener la proporción */
+      }
+      .btn {
+        position: absolute;
+        color: white;
+        background-color: #007bff;
+        padding: 10px;
+      }
+      #info-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        width: 80%;
+        flex-wrap: wrap;
+      }
+      .info-box {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 5px;
+        width: 30%;
+        box-sizing: border-box;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .info-box.active {
+        opacity: 1;
+      }
+      .info-box:last-child {
+        width: 80%;
+      }
+      .custom-button {
+        background-color: transparent; /* Sin color de fondo */
+        border: 1px solid #007bff; /* Borde azul */
+        color: #007bff; /* Color del texto azul */
+        margin: 5px; /* Espaciado entre botones */
+        width: 50px; /* Ancho fijo para los botones */
+      }
+      .custom-button:hover {
+        background-color: #007bff; /* Color de fondo al pasar el ratón */
+        color: white; /* Color del texto al pasar el ratón */
+      }
+      .input-like {
+        border: 2px solid black; /* Borde negro */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 10px; /* Espaciado interno */
+        width: 200px; /* Ancho del "input" */
+        height: 20px; /* Altura fija */
+        margin: 0 auto 10px; /* Margen automático para centrar y espacio debajo */
+        text-align: center; /* Texto centrado */
+        font-size: 18px; /* Tamaño del texto */
+        line-height: 1px; /* Centrar verticalmente el texto */
+      }
+      #button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .button-row {
+        display: flex;
+        justify-content: center; /* Centrar botones en la fila */
+        margin: 5px 0; /* Espacio entre filas */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Search in the room</h1>
+    <div class="p-2 mb-5">
+      <div>
+        Suddenly, the door closes behind you. You are left in the room where a
+        panel is located at the other end, next to another door. Seems to only
+        accept numbers
+      </div>
+
+      <!-- PANEL -->
+      <div class="input-like" id="inputNum"></div>
+      <!-- Div que parece un input -->
+
+      <div class="container mx-auto text-center mt-2" id="button-container">
+        <div class="button-row">
+          <button
+            class="custom-button"
+            id="1"
+            onclick="inputCode(this.innerText)"
+          >
+            1
+          </button>
+          <button
+            class="custom-button"
+            id="2"
+            onclick="inputCode(this.innerText)"
+          >
+            2
+          </button>
+          <button
+            class="custom-button"
+            id="3"
+            onclick="inputCode(this.innerText)"
+          >
+            3
+          </button>
+        </div>
+
+        <div class="button-row">
+          <button
+            class="custom-button"
+            id="4"
+            onclick="inputCode(this.innerText)"
+          >
+            4
+          </button>
+          <button
+            class="custom-button"
+            id="5"
+            onclick="inputCode(this.innerText)"
+          >
+            5
+          </button>
+          <button
+            class="custom-button"
+            id="6"
+            onclick="inputCode(this.innerText)"
+          >
+            6
+          </button>
+        </div>
+
+        <div class="button-row">
+          <button
+            class="custom-button"
+            id="7"
+            onclick="inputCode(this.innerText)"
+          >
+            7
+          </button>
+          <button
+            class="custom-button"
+            id="8"
+            onclick="inputCode(this.innerText)"
+          >
+            8
+          </button>
+          <button
+            class="custom-button"
+            id="9"
+            onclick="inputCode(this.innerText)"
+          >
+            9
+          </button>
+        </div>
+
+        <div class="button-row">
+          <button
+            class="custom-button"
+            id="0"
+            style="width: 100px"
+            onclick="inputCode(this.innerText)"
+          >
+            0
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTAINER -->
+    <div id="contenedor">
+      <img
+        id="image"
+        src="https://img.freepik.com/vector-gratis/plantilla-fondo-interior-dormitorio-dibujos-animados-acogedora-habitacion-moderna-luz-manana_33099-171.jpg?semt=ais_hybrid"
+        alt="Imagen de la habitación"
+      />
+    </div>
+    <div id="info-container">
+      <div class="info-box"></div>
+      <div class="info-box"></div>
+      <div class="info-box"></div>
+      <div class="info-box" id="specialBox"></div>
+    </div>
+    
+    <script src="morse.js"></script>
+  </body>
+</html>

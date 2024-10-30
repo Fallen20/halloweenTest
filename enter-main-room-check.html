@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +12,11 @@
             max-width: 500px;
             margin-top: 50px;
         }
+
         .hidden {
             display: none;
         }
+
         .result-message {
             display: none;
             padding: 20px;
@@ -26,10 +29,11 @@
         }
     </style>
 </head>
+
 <body class="bg-light">
 
     <div class="container bg-white shadow p-4 rounded">
-        <h2 class="text-center mb-4">Key Room Check</h2>
+        <h2 class="text-center mb-4">Return to main room check</h2>
 
         <!-- Step 1: Do you have the key? -->
         <div>
@@ -64,6 +68,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        let fieldsVisible = false; // Track whether the additional fields are visible
+
         function checkKey() {
             // Get input values
             const keyInput = document.getElementById("keyInput").value.trim().toLowerCase();
@@ -72,38 +78,48 @@
             const resultMessage = document.getElementById("resultMessage");
             const resultLink = document.getElementById("resultLink");
 
-            // Case "no": show link to test.com and hide other inputs
+            // Case "no": show link to document and hide other inputs
             if (keyInput === "no") {
                 docDiv.classList.add("hidden");
                 solutionDiv.classList.add("hidden");
-                resultLink.href = "https://test.com"; // Redirect to test.com
-                resultMessage.style.display = "block";
+                resultMessage.style.display = "block"; // Show result message
+                resultLink.href = "https://docs.google.com/document/d/1LaLyG4B126CV_J6vG4uIPLPfMx12Hb5BUYCxp56Hjd0/edit?tab=t.0"; // Redirect to document
                 return;
-            } 
-            
-            // Case "yes": show additional inputs for document and solution
+            }
+
+            // Case "yes": toggle visibility of additional inputs
             if (keyInput === "yes") {
-                docDiv.classList.remove("hidden");
-                solutionDiv.classList.remove("hidden");
+                if (!fieldsVisible) {
+                    // If fields are not visible, show them
+                    docDiv.classList.remove("hidden");
+                    solutionDiv.classList.remove("hidden");
+                    fieldsVisible = true; // Mark fields as visible
+                } else {
+                    // If fields are visible, check if they're filled
+                    const docInputV = document.getElementById("docInput").value.trim();
+                    const solutionInputV = document.getElementById("solutionInput").value.trim();
 
-                // Get the other input values only if they're visible
-                const docInput = document.getElementById("docInput").value.trim();
-                const solutionInput = document.getElementById("solutionInput").value.trim();
-
-                // If all fields are filled, check if the answers are correct
-                if (docInput && solutionInput) {
-                    if (docInput === "lockDoc" && solutionInput === "mirror") {
+                    if (docInputV === "lockDoc" && solutionInputV === "mirror") {
                         // Correct answers: link to test2.com
-                        resultLink.href = "https://test2.com";
+                        resultLink.href = "https://docs.google.com/document/d/1ugmAgQIzh41YzqkrAY2D_HjEJme-q61iWud34pometc/edit?tab=t.0";
                     } else {
-                        // Incorrect answers: link to test3.com
-                        resultLink.href = "https://test3.com";
+                        resultLink.href = "https://docs.google.com/document/d/1iiSAT4iz9fNKHuduyQs3L23pAS2R2wjiksXwFkWvQV0/edit?tab=t.0";
                     }
-                    resultMessage.style.display = "block";
+                    resultMessage.style.display = "block"; // Show result message
                 }
+                return; // Exit the function after handling yes case
+            }
+
+            // Reset fields if neither "yes" nor "no"
+            if (keyInput !== "yes" && keyInput !== "no") {
+                docDiv.classList.add("hidden");
+                solutionDiv.classList.add("hidden");
+                resultMessage.style.display = "none"; // Hide result message
+                fieldsVisible = false; // Reset fields visible status
             }
         }
     </script>
 
 </body>
+
 </html>
