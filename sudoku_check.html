@@ -19,17 +19,14 @@
 </head>
 
 <body class="container p-5">
-    <div class="text-center h1 mb-4">Enter the passwords to enter</div>
+    <div class="text-center h1 mb-4">Answer to continue</div>
     <div id="result" class="text-center"></div>
     <div class="row">
         <div class="col-6">
-            <div class="h2">Room of the books</div>
+            <div class="h2">Describe the chest found with 2 words</div>
             <input type="text" id="password1" class="form-control">
         </div>
-        <div class="col-6">
-            <div class="h2">Room of the ancient language</div>
-            <input type="text" id="password2" class="form-control">
-        </div>
+        
     </div>
     <div class="text-center mt-4">
         <button id="checkButton" class="btn btn-primary">Check</button>
@@ -43,11 +40,15 @@
             function checkPasswords() {
                 //recuperar inputs
                 var password1 = document.getElementById('password1').value;
-                var password2 = document.getElementById('password2').value;
 
-                if (password1.toLowerCase() == 'pikachu' && password2 == 1025) {
-                    console.log('Access granted');
-                    document.getElementById('result').innerHTML = 'The ancient door opens, revealing a new <a href="sudoku.html">room</a>';
+                //si contiene la palabra 'small' o 'silver lock'
+
+                if (password1.toLowerCase().includes('small') || password1.toLowerCase().includes('silver lock')) {
+                    document.getElementById('result').innerHTML = 'You can continue <a href="https://docs.google.com/document/d/16dMxadUO5MKZIhqjvxfQyPxQfb0MxlkoyeW5aU_14Yw/edit?tab=t.0">continue</a>';
+                }
+                else{
+                    document.getElementById('result').innerHTML = 'You can <a href="https://docs.google.com/document/d/1DqIgAtrDumjeBKhB9mCIxrnfIrRm0gj_jyAY_-bvKI0/edit?tab=t.0">continue</a>';
+
                 }
             }
         });

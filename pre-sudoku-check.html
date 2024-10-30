@@ -83,12 +83,6 @@
             <button class="btn btn-primary mt-4" onclick="checkCode()">Check</button>
         </div>
 
-        <!-- Result Message for Chest Question -->
-        <div id="chestQuestion" class="result-message result-success" style="display: none;">
-            <p>Did you find the chest? What was special about it?</p>
-            <input type="text" id="chestInput" class="form-control mt-3" placeholder="Two words only">
-            <button class="btn btn-secondary mt-3" onclick="checkChest()">Submit</button>
-        </div>
 
         <!-- Regular Result Message -->
         <div id="resultMessage" class="result-message"></div>
@@ -107,7 +101,6 @@
 
             // Get the result message div
             const resultMessage = document.getElementById("resultMessage");
-            const chestQuestion = document.getElementById("chestQuestion");
 
             // Check if the conditions are met
             if (libraryCode === "pikachu" && 
@@ -116,37 +109,29 @@
                 finalCode === "1025") {
                 
                 // Hide the regular result message and show chest question instead
-                resultMessage.style.display = "none";
-                chestQuestion.style.display = "block";
-
+                checkChest();
             } else {
                 
                 // Incorrect message with link
                 resultMessage.className = "result-message result-fail";
                 resultMessage.innerHTML = `The tablet beeps in a dangerous red. You're not sure if you want to try again, 
-                but you can always <a href="https://example.com/go-back" class=" fw-bold">go back</a>.`;
+                but you can always <a href="https://docs.google.com/document/d/1teD9X3OCGwiZl_hZ_9KillyPgn0AhbJsOqZHZAjRhjY/edit?tab=t.0" class=" fw-bold">go back</a>.`;
                 resultMessage.style.display = "block";
             }
         }
 
         function checkChest() {
             // Retrieve chest input
-            const chestInput = document.getElementById("chestInput").value.trim().toLowerCase();
             const resultMessage = document.getElementById("resultMessage");
             resultMessage.innerHTML = 'The tablet beeps and turns green. The door opens and you are able to go to the next room.';
 
             resultMessage.className = "result-message result-success";
             // Check if the input contains "small" or "silver lock"
-            if (chestInput.includes("small") || chestInput.includes("silver lock")) {
-                resultMessage.innerHTML += '<br> <a href="https://example.com" class="fw-bold">Proceed</a>.';
-            } else {
-                resultMessage.innerHTML += '<br> <a href="https://example.com" class="fw-bold">Proceed</a>.';
-
-            }
+            resultMessage.innerHTML += '<br> <a href="https://docs.google.com/document/d/1pU_H8_840yreLWWR4DNLQGfFUGb3-BC5nZC9vutJ-0k/edit?tab=t.0" class="fw-bold">Proceed</a>.';
+           
 
             // Show the result message div
             resultMessage.style.display = "block";
-            chestQuestion.style.display = "none";
         }
     </script>
 
