@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,123 +8,133 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
         }
+
         #container {
             text-align: center;
         }
+
         #display {
-            width: 100px;
+            width: 100px; /* Ancho fijo */
             height: 30px;
             border: 1px solid #000;
             text-align: center;
             margin-bottom: 10px;
             font-size: 24px;
         }
+
         .row {
             margin: 5px 0;
         }
+
         .button {
             width: 30px;
             height: 30px;
             font-size: 24px;
             cursor: pointer;
         }
+
         .buttonFinal {
             width: 100px;
             height: 30px;
             font-size: 24px;
             cursor: pointer;
         }
+
         #result {
-            margin-top: 10px;
+            margin-top: 20px; /* Espacio arriba del resultado */
             font-size: 20px;
+            text-align: center; /* Centrar texto del resultado */
         }
     </style>
 </head>
+
 <body>
 
-<div id="container">
-    <div id="display"> </div>
-    <div class="row">
-        <button class="button" onclick="addNumber(1)">1</button>
-        <button class="button" onclick="addNumber(2)">2</button>
-        <button class="button" onclick="addNumber(3)">3</button>
-    </div>
-    <div class="row">
-        <button class="button" onclick="addNumber(4)">4</button>
-        <button class="button" onclick="addNumber(5)">5</button>
-        <button class="button" onclick="addNumber(6)">6</button>
-    </div>
-    <div class="row">
-        <button class="button" onclick="addNumber(7)">7</button>
-        <button class="button" onclick="addNumber(8)">8</button>
-        <button class="button" onclick="addNumber(9)">9</button>
-    </div>
-    <div class="row">
-        <button class="buttonFinal" onclick="addNumber(0)">0</button>
+    <div id="container">
+        <div id="display">
+            <span id="displayText"></span> <!-- Contenedor para el texto -->
+        </div>
+        <div class="row">
+            <button class="button" onclick="addNumber(1)">1</button>
+            <button class="button" onclick="addNumber(2)">2</button>
+            <button class="button" onclick="addNumber(3)">3</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="addNumber(4)">4</button>
+            <button class="button" onclick="addNumber(5)">5</button>
+            <button class="button" onclick="addNumber(6)">6</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="addNumber(7)">7</button>
+            <button class="button" onclick="addNumber(8)">8</button>
+            <button class="button" onclick="addNumber(9)">9</button>
+        </div>
+        <div class="row">
+            <button class="buttonFinal" onclick="addNumber(0)">0</button>
+        </div>
     </div>
 
-    <div id="result"></div>
-</div>
+    <div id="result"></div> <!-- Resultado separado del contenedor -->
 
-<script>
-    let input = '';
-    const maxLength = 4;
+    <script>
+        let input = '';
+        const maxLength = 4;
 
-    function addNumber(num) {
-        if (input.length < maxLength) {
-            input += num;
-            document.getElementById('display').innerText = input;
+        function addNumber(num) {
+            if (input.length < maxLength) {
+                input += num;
+                document.getElementById('displayText').innerText = input; // Cambiado aquí
 
-            if (input.length === maxLength) {
-                checkResult();
+                if (input.length === maxLength) {
+                    checkResult();
+                }
             }
         }
-    }
 
-    function checkResult() {
-        const resultDiv = document.getElementById('result');
-        const displayDiv = document.getElementById('display');
-        
-         const buttons = document.querySelectorAll('.button');
+        function checkResult() {
+            const resultDiv = document.getElementById('result');
+            const displayDiv = document.getElementById('displayText'); // Ajustar para usar el texto
+
+            const buttons = document.querySelectorAll('.button');
             const buttonsF = document.querySelectorAll('.buttonFinal');
             buttons.forEach(button => button.disabled = true);
             buttonsF.forEach(button => button.disabled = true);
-        
 
-        if (input === '0722') {
-            resultDiv.innerText = '<a href="https://docs.google.com/document/d/14g0u09d3865WgXYzAmnOfYIQYyc1mghx5Wm4QGYJfeo/edit?tab=t.0">You hear a soft click</a>';
-            resultDiv.style.color = 'green';
-        } else {
-            resultDiv.innerText = '';
-            flashDisplay(displayDiv);
+            if (input === '0722') {
+                resultDiv.innerHTML = "<a href='https://docs.google.com/document/d/14g0u09d3865WgXYzAmnOfYIQYyc1mghx5Wm4QGYJfeo/edit?tab=t.0'>You hear a soft click</a>";
+            } else {
+                resultDiv.innerText = '';
+                flashDisplay(displayDiv);
+            }
+
+            // Reiniciar input después de verificar
+            input = '';
         }
 
-        // Reiniciar input después de verificar
-        input = '';
-    }
+        function flashDisplay(displayDiv) {
+            const originalColor = displayDiv.style.color;
+            displayDiv.style.color = 'red';
 
-    function flashDisplay(displayDiv) {
-        const originalColor = displayDiv.style.color;
-        displayDiv.style.color = 'red';
-        
-        setTimeout(() => {
-            displayDiv.style.color = originalColor;
-            // Borrar el texto del result
-            displayDiv.innerHTML = "";
-            // Habilitar botones
-            const buttons = document.querySelectorAll('.button');
-            const buttonsF = document.querySelectorAll('.buttonFinal');
-            buttons.forEach(button => button.disabled = false);
-            buttonsF.forEach(button => button.disabled = false);
-        }, 1000);
-    }
-</script>
+            setTimeout(() => {
+                displayDiv.style.color = originalColor;
+                // Borrar el texto del result
+                displayDiv.innerHTML = "";
+                // Habilitar botones
+                const buttons = document.querySelectorAll('.button');
+                const buttonsF = document.querySelectorAll('.buttonFinal');
+                buttons.forEach(button => button.disabled = false);
+                buttonsF.forEach(button => button.disabled = false);
+            }, 1000);
+        }
+    </script>
 
 </body>
+
 </html>
