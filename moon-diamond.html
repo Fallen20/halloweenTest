@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrastrar y Soltar</title>
+    <script src="script.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            overflow: hidden;
+            border: 2px solid #ccc;
+            background-image: url('https://media.istockphoto.com/id/919781838/es/foto/dos-puertas-cerradas-en-el-frente-en-la-sala-de.jpg?s=612x612&w=0&k=20&c=MeVL_ZbQpB_xLXXcDfIiCQ7j5KLPxWl5-ucM5WB-jgU=');
+            background-size: cover;
+            background-position: center;
+        }
+        .draggable {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+        }
+        .button {
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            cursor: grab;
+        }
+        .button1 {
+            background-image: url('https://ethic.es/wp-content/uploads/2023/03/imagen.jpg');
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+        .button2 {
+            background-image: url('https://ethic.es/wp-content/uploads/2023/03/imagen.jpg');
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .img1 {
+            width: 50px;
+            height: 50px;
+        }
+        #actionButton1 {
+            display: none;
+            position: absolute;
+            top: calc(40% + 60px); /* Separación de img1 */
+            left: 15%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #actionButton2 {
+            display: none;
+            position: absolute;
+            top: calc(40% + 60px); /* Separación de img2 */
+            right: 15%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://www.asturtalla.com/roseton_04.jpg" class="draggable img1" id="img1" style="top: 40%; left: 20%;">
+        <img src="https://www.zsierra.com/images/articulos/Z6581-2.jpg" class="draggable" id="img2" style="top: 40%; right: 20%;">
+        <div class="button button1" id="button1"></div>
+        <div class="button button2" id="button2"></div>
+        <button id="actionButton1">Cambiar Fondo Img1</button>
+        <button id="actionButton2">Cambiar Fondo Img2</button>
+    </div>
+
+    
+</body>
+</html>
