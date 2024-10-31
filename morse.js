@@ -1,11 +1,11 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const places = [
-      { name: "Papelera", searched: false },
-      { name: "Cajón", searched: false },
-      { name: "Armario", searched: false },
-      { name: "Escritorio", searched: false },
-      { name: "Estantería", searched: false },
+      { name: "Bed", searched: false },
+      { name: "Pillow", searched: false },
+      { name: "Under the bed", searched: false },
+      { name: "Bucket", searched: false },
+      { name: "Trophy rack", searched: false },
     ]
   
     const phrases = [
@@ -40,30 +40,30 @@ document.addEventListener("DOMContentLoaded", function () {
       button2.classList.add("btn")
       button3.classList.add("btn")
       button4.classList.add("btn")
-      specialButton.classList.add("btn", "disabled")
+      specialButton.classList.add("btn", "disabled");
   
       //texto interior
       button.innerText = places[0].name // Cambia el texto para que coincida con los lugares
       button2.innerText = places[1].name
       button3.innerText = places[2].name
       button4.innerText = places[3].name
-      specialButton.innerText = places[specialButtonIndex].name // Cambia el texto del botón especial
+      specialButton.innerText = places[4].name // Cambia el texto del botón especial
   
       // Asignar posiciones (ajusta según tus necesidades)
-      button.style.top = "10%" // Ajusta la posición Y
-      button.style.left = "20%" // Ajusta la posición X
+      button.style.top = "50%" // Ajusta la posición Y
+      button.style.left = "60%" // Ajusta la posición X
   
-      button2.style.top = "20%" // Ajusta la posición Y
-      button2.style.left = "85%" // Ajusta la posición X
+      button2.style.top = "40%" // Ajusta la posición Y
+      button2.style.left = "80%" // Ajusta la posición X
   
-      button3.style.top = "30%" // Ajusta la posición Y
+      button3.style.top = "75%" // Ajusta la posición Y
       button3.style.left = "45%" // Ajusta la posición X
   
-      button4.style.top = "80%" // Ajusta la posición Y
-      button4.style.left = "80%" // Ajusta la posición X
+      button4.style.top = "70%" // Ajusta la posición Y
+      button4.style.left = "10%" // Ajusta la posición X
   
-      specialButton.style.top = "70%" // Ajusta la posición Y
-      specialButton.style.left = "10%" // Ajusta la posición X
+      specialButton.style.top = "25%" // Ajusta la posición Y
+      specialButton.style.left = "5%" // Ajusta la posición X
   
       // evento
       button.addEventListener("click", () => {
@@ -102,10 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
   
     function clickRegularButtons(index) {
       if (index === buttonNotFillingIndex) {
-        alert(`No se llenará nada al buscar en: ${places[index].name}`)
+        // alert(`No se llenará nada al buscar en: ${places[index].name}`)
+        document.getElementById('text').innerHTML='Ras Ras.. there\'s nothing here';
         places[index].searched = true // Marcar como buscado aunque no llene
         searchedCount++ // Contar búsqueda
       } else {
+        document.getElementById('text').innerHTML="";
         handleSearch(index)
       }
   
@@ -119,13 +121,13 @@ document.addEventListener("DOMContentLoaded", function () {
   
     function handleSearch(index) {
       if (places[index].searched) {
-        console.log(`Ya has buscado en: ${places[index].name}`)
+        // console.log(`Ya has buscado en: ${places[index].name}`)
         return // No hacer nada si ya se buscó
       }
   
       places[index].searched = true // Marcar como buscado
       searchedCount++
-      console.log(`Buscado en: ${places[index].name}`)
+      // console.log(`Buscado en: ${places[index].name}`)
   
       // Encontrar un div de información aleatorio
       const infoBoxes = document.querySelectorAll(".info-box")
@@ -147,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
         usedPhrases.push(randomPhraseIndex)
         selectedBox.innerText = phrases[randomPhraseIndex]
       } else {
-        alert("No hay más cajas disponibles para llenar.")
+        alert("ERROR- please contact fallen with the code Morse-150")
       }
     }
   
@@ -174,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
     function checkFinalResult(value) {
+      document.getElementById('text').innerHTML='';
       if (value === "1025") {
         // Es correcto, pon ok
         document.getElementById('result').innerHTML = 'A beep is heard and the screen turns green <a href="https://docs.google.com/document/d/1tVsDuMMllzG3Xyw24NhCIQ9ZyKOMceihtmbGXs3xpW4/edit?tab=t.0">and you can go throught.</a>.'
