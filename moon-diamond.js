@@ -12,17 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let overlay2 = false;
 
     const originalImages = [
-        'https://ethic.es/wp-content/uploads/2023/03/imagen.jpg',
-        'https://www.asturtalla.com/roseton_04.jpg',
-        'https://ethic.es/wp-content/uploads/2023/03/imagen.jpg',
-        'https://www.zsierra.com/images/articulos/Z6581-2.jpg'
+        'habitaciones/moonDrag.png',
+        'habitaciones/moonNone.png',
+        'habitaciones/diamondDrag.png',
+        'habitaciones/diamondNone.png',
+        
     ];
 
     const newImages = [
-        'https://www.hartz.com/wp-content/uploads/2022/04/small-dog-owners-1.jpg',
-        'https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_square.jpg',
-        'https://www.hartz.com/wp-content/uploads/2022/04/small-dog-owners-1.jpg',
-        'https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_square.jpg'
+        'habitaciones/moonDrag.png',
+        'habitaciones/moonFill.png',
+        'habitaciones/diamondDrag.png',
+        'habitaciones/diamondFill.png',
+        
     ];
 
     let initialPositions = {
@@ -95,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     actionButton1.addEventListener('click', () => {
         if (overlay1 && overlay2) {
-            document.querySelector('.container').style.backgroundImage = "url('https://img.freepik.com/fotos-premium/mansion-embrujada-casa-terror-ojos-rojos-parpadeantes-pasillo-iluminado-velas_124507-91997.jpg')";
+            document.querySelector('.container').style.backgroundImage = "url('habitaciones/pastWall.png')";
             hideElements(); // Ocultar elementos cuando se muestra la segunda imagen
             createNextButton();
         } else {
@@ -105,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     actionButton2.addEventListener('click', () => {
         if (overlay1 && overlay2) {
-            document.querySelector('.container').style.backgroundImage = "url('https://img.freepik.com/fotos-premium/mansion-embrujada-casa-terror-ojos-rojos-parpadeantes-pasillo-iluminado-velas_124507-91997.jpg')";
+            document.querySelector('.container').style.backgroundImage = "url('habitaciones/pastWall.png')";
             hideElements(); // Ocultar elementos cuando se muestra la segunda imagen
             createNextButton();
         } else {
@@ -130,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createNextButton() {
         const nextButton = document.createElement('button');
-        nextButton.textContent = 'Next';
+        nextButton.textContent = 'Continue to the next room';
         nextButton.style.position = 'absolute';
         nextButton.style.top = '50%';
         nextButton.style.left = '50%';

@@ -12,15 +12,15 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: white;
         }
         .container {
             position: relative;
             width: 600px;
             height: 400px;
-            overflow: hidden;
-            border: 2px solid #ccc;
-            background-image: url('https://media.istockphoto.com/id/919781838/es/foto/dos-puertas-cerradas-en-el-frente-en-la-sala-de.jpg?s=612x612&w=0&k=20&c=MeVL_ZbQpB_xLXXcDfIiCQ7j5KLPxWl5-ucM5WB-jgU=');
+            overflow: visible;
+            border: 2px solid white;
+            background-image: url('habitaciones/moonDiamond_room.png');
             background-size: cover;
             background-position: center;
         }
@@ -32,17 +32,19 @@
         .button {
             width: 50px;
             height: 50px;
-            background-size: cover;
+            background-size: contain; /* Ajusta el tamaño para que la imagen esté completamente visible */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que se repita */
             cursor: grab;
         }
         .button1 {
-            background-image: url('https://ethic.es/wp-content/uploads/2023/03/imagen.jpg');
+            background-image: url('habitaciones/moonDrag.png');
             position: absolute;
             bottom: 10px;
             left: 10px;
         }
         .button2 {
-            background-image: url('https://ethic.es/wp-content/uploads/2023/03/imagen.jpg');
+            background-image: url('habitaciones/diamondDrag.png');
             position: absolute;
             bottom: 10px;
             right: 10px;
@@ -77,12 +79,12 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://www.asturtalla.com/roseton_04.jpg" class="draggable img1" id="img1" style="top: 40%; left: 20%;">
-        <img src="https://www.zsierra.com/images/articulos/Z6581-2.jpg" class="draggable" id="img2" style="top: 40%; right: 20%;">
+        <img src="habitaciones/moonNone.png" class="draggable img1" id="img1" style="top: 40%; left: 20%;">
+        <img src="habitaciones/diamondNone.png" class="draggable" id="img2" style="top: 40%; right: 20%;">
         <div class="button button1" id="button1"></div>
         <div class="button button2" id="button2"></div>
-        <button id="actionButton1">Cambiar Fondo Img1</button>
-        <button id="actionButton2">Cambiar Fondo Img2</button>
+        <button id="actionButton1">Open left door</button>
+        <button id="actionButton2">Open right door</button>
     </div>
 
     
