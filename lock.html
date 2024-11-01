@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lock</title>
-    
+
     <style>
         body {
             display: flex;
@@ -22,7 +22,8 @@
         }
 
         #display {
-            width: 100px; /* Ancho fijo */
+            width: 100px;
+            /* Ancho fijo */
             height: 30px;
             border: 1px solid #000;
             text-align: center;
@@ -49,9 +50,11 @@
         }
 
         #result {
-            margin-top: 20px; /* Espacio arriba del resultado */
+            margin-top: 20px;
+            /* Espacio arriba del resultado */
             font-size: 20px;
-            text-align: center; /* Centrar texto del resultado */
+            text-align: center;
+            /* Centrar texto del resultado */
         }
     </style>
 </head>
@@ -83,8 +86,14 @@
             <button class="buttonFinal" onclick="addNumber(0)">0</button>
         </div>
     </div>
+    <div id="result"></div>
 
-    <div id="result"></div> <!-- Resultado separado del contenedor -->
+    <div id="hints" style="margin-top: 2rem;">
+        <div
+            style="font-size: 1.1rem; margin-bottom:10px; text-align: center; border-bottom: 1px solid black; font-style: italic; ">
+            Additional hints will be added here each 5 minutes</div>
+        <div id="hintsReal"></div>
+    </div>
 
     <script>
         let input = '';
@@ -136,6 +145,28 @@
                 buttonsF.forEach(button => button.disabled = false);
             }, 1000);
         }
+
+        let numberHints = 0;
+        const hintsArray = [
+            "You notice that maybe what the hint you've might not be refering to this game",
+            "You feel like you should know how to crack the code if you had the thought of a developer. Alas, you don't and the number '993904762229628968' pops up in your mind",
+            "You think in what that number would mean. Is an ID of some sort? Maybe from the so called place 'origin' the voice mention?",
+            "Maybe an external help like this <a href='https://discord.id/'>page</a> will help know what this number means"
+        ];
+
+        function addHints(number) {
+            document.getElementById('hintsReal').innerHTML += '<br>' + hintsArray[number];
+        }
+
+        const intervalId = setInterval(() => {
+            addHints(numberHints);
+            numberHints++;
+
+            if (numberHints === 4) {
+                clearInterval(intervalId);
+            }
+        }, 300000);  
+
     </script>
 
 </body>
