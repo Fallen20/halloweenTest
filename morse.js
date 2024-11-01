@@ -83,8 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
       specialButton.addEventListener("click", () => {
         var special = document.getElementById("specialBox")
         special.classList.add("active")
-        special.innerHTML = "<strong>First letter, from more to less.</strong> <br> A voice whispers and behind the note, the sudden text appears: <br>"+
+        special.innerHTML = "<strong>First letter, from more to less.</strong> <br>"+
+        "A voice whispers and behind the note, the sudden text appears: <br>"+
         "<a href='https://morsecode.world/international/translator.html'>Language of the war</a>"+
+        "<br> First letter must be in lowercase"+
         "<br>A=0, B=1, C=1."+
         "<br> <a href='https://www.rapidtables.com/convert/number/base-converter.html'>Language of the numbers</a>"+
         
