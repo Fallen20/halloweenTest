@@ -87,11 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "A voice whispers and behind the note, the sudden text appears: <br>"+
         "<a href='https://morsecode.world/international/translator.html'>Language of the war</a>"+
         "<br> First letter must be in lowercase"+
-        "<br>A=0, B=1, C=1."+
+        "<br>A=0, B=1, C=1. Maybe this page will <a href='./transform.html'>help</a>"+
         "<br> <a href='https://www.rapidtables.com/convert/number/base-converter.html'>Language of the numbers</a>"+
         
-        "<br> Make sure to chose 10 as base and to convert it to the lower case Q"
-      })
+        "<br> Make sure to chose 10 as base and to convert it to the lower case Q <br>"
+        +"<img src='lowerQ.png' class='img-fluid mx-auto text-center d-block' height='100'>";
+      });
   
       //dar al padre
       var container = document.getElementById("contenedor")

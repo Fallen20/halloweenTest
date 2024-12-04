@@ -108,19 +108,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 ['He says his cap is there but can\'t reach it as he pushes you down, letting you see the black cap behind realistic flames. You try to back up as the Flareon pushes more and more you in, feeling the heat of flames.', 'elemental/fairy/black.png'],
                 function () {
                     return !acceptFate ?
-                        ['You push yourself back somehow, falling back, a loud hit in your lower back as the Flareon looks at you with a surprise face.' , 'elemental/fairy/black.png']:
+                        ['You push yourself back somehow, falling back, a loud hit in your lower back as the Flareon looks at you with a surprise face.', 'elemental/fairy/black.png'] :
                         ['You try to yell, to tell the flareon to release you as you feel the smell of real burning in your hair. As the oxygen start to leave your body, you notice the cap was only a fake image that burns along you.', 'elemental/fairy/black.png'];
 
                 },
                 function () {
                     return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Fire') == 0)) ?
-                        ['The flareon gets up as starts to call you names between growls. An unworthy helper as he grows, their fur spiking as you somehow manage to balance yourself out, managing to get up before his massive paw can get you' , 'elemental/fairy/black.png']:
+                        ['The flareon gets up as starts to call you names between growls. An unworthy helper as he grows, their fur spiking as you somehow manage to balance yourself out, managing to get up before his massive paw can get you', 'elemental/fairy/black.png'] :
                         ['The flareon looks in awe as his sad face turns into anger. He flungs to you as he starts growing, telling how he was also leaving him back as his weight starts to crush you. You try to trash around only to for your vision to see green fur before it turns black.', 'elemental/fairy/black.png'];
 
                 },
                 function () {
                     return !closeDoor ?
-                        ['Despite all your efforts, as soon as you get to the door and turn the knock, it starts burning as you can see a burn mark in your hand. With no way out, you can only see the distorted face of the flareon just behind you, his amber and black eyes turning to fire as you feel the heat of the fire.' , 'elemental/fairy/black.png']:
+                        ['Despite all your efforts, as soon as you get to the door and turn the knock, it starts burning as you can see a burn mark in your hand. With no way out, you can only see the distorted face of the flareon just behind you, his amber and black eyes turning to fire as you feel the heat of the fire.', 'elemental/fairy/black.png'] :
                         ['You manage to get to the door as your hands hardly manage to turn the knock, hearing the struggle of the flareon to try to reach you through the small corridor. You close the door and turn around, trying to not think what could have happened.', 'elemental/fairy/black.png'];
 
                 }
@@ -135,12 +135,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 ['Despite your thoughts, you are forced to jump before a massive ice falls on you and you can see the door is blocked.', 'elemental/fairy/black.png'],
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Ice') == 0) ?
-                        ['Somehow, you manage to jump over the block of ice and touch the door. With a gently touch, you can see it opens as normal.' , 'elemental/fairy/black.png']:
+                        ['Somehow, you manage to jump over the block of ice and touch the door. With a gently touch, you can see it opens as normal.', 'elemental/fairy/black.png'] :
                         ['With effort, you get over the cold block and get in front of the door. But as soon as you put your hands in it, you can feel this door doesn\'t seems to be the same as before.', 'elemental/fairy/black.png'];
                 },
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Ice') == 0) ?
-                        ['The cold air swallows you whole as you notice you can end this cold torture now if you return to a warmer room. Exit?' , 'elemental/fairy/black.png']:
+                        ['The cold air swallows you whole as you notice you can end this cold torture now if you return to a warmer room. Exit?', 'elemental/fairy/black.png'] :
                         ['You swallow when you notice the door seems more a boulder than a door and you\'re unable to move it. Feeling this was a bad decision, you try to find an exit somewhere else.', 'elemental/fairy/black.png'];
                 },
 
@@ -151,12 +151,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 ['You make out the origin by looking up. Hidden along the ice with white pelt, you can see blue eyes in the stalagtites as they roll something around the ice and before you can even distinguish who or what is, ice fills your vision. ', 'elemental/fairy/black.png'],
                 function () {
                     return !acceptFate ?
-                        ['Somehow you manage to avoid getting hit by the stalagtite of ice, which breaks in million pieces, hitting you. You lost sight of whoever did this and your un blindy towards the end of the corridor.' , 'elemental/fairy/black.png']:
+                        ['Somehow you manage to avoid getting hit by the stalagtite of ice, which breaks in million pieces, hitting you. You lost sight of whoever did this and your un blindy towards the end of the corridor.', 'elemental/fairy/black.png'] :
                         ['Before you can even order your body to move, you\'re hit by the stalagtite of ice. Somehow you\'re not dead but you feel your head lighter as the cold and blood loss soon made you faint forever.', 'elemental/fairy/black.png'];
                 },
                 function () {
                     return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Ice') == 0)) ?
-                        ['You feel you\'re walking in circles as you continue to hear the ice breaking behind you. You sight a familiar block of ice as you manage to see the door you came from and you run as much as you are allowed to, your palms sweaty as you manage to open the door.' , 'elemental/fairy/black.png']:
+                        ['You feel you\'re walking in circles as you continue to hear the ice breaking behind you. You sight a familiar block of ice as you manage to see the door you came from and you run as much as you are allowed to, your palms sweaty as you manage to open the door.', 'elemental/fairy/black.png'] :
                         ['You seem to run in circles as all feel familiar and not familiar at the same time. Ice is now everywhere and you trip, slipping through the cold floor as your head hit something. Dizzy, you try to get up but you get inmediatly crushed by a block of ice.', 'elemental/fairy/black.png'];
                 },
                 function () {
@@ -175,12 +175,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 ['Trying to get used to the darkness you take another step and look around and suddenly, the door closes with a slam, leaving you in real complete darkness.', 'elemental/fairy/black.png'],
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Dark') == 0) ?
-                        ['With panic you go back where you know the door is, touching all walls \'till you notice the feeling of wood. Continuing to touch it allows you to feel the knock and turn it.' , 'elemental/fairy/black.png']:
+                        ['With panic you go back where you know the door is, touching all walls \'till you notice the feeling of wood. Continuing to touch it allows you to feel the knock and turn it.', 'elemental/fairy/black.png'] :
                         ['You stumble to the floor in panic as you get filled with darknes, making it somehow to feel a sensation of wood against your hands. Dispair fills you while looking for the knock as you grasp it like your life depends on it.', 'elemental/fairy/black.png'];
                 },
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Dark') == 0) ?
-                        ['White fills your vision as the light returns, calming you down. The room is still as black as ever and you don\'t think the door closing was bad luck. It\'s your only opportunity to get out.' , 'elemental/fairy/black.png']:
+                        ['White fills your vision as the light returns, calming you down. The room is still as black as ever and you don\'t think the door closing was bad luck. It\'s your only opportunity to get out.', 'elemental/fairy/black.png'] :
                         ['But nothing you do seems to work as the knock refuses to move. You can\'t make out if you\'re turning it in the right direction or not. You lost complete sense as the darkness fill you and you don\'t know anymore if you\'re looking at the right direction.', 'elemental/fairy/black.png'];
                 },
 
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 ['Suddenly, he turns back, revealing an umbreon, the light comming from his marks. But it feels hard to breate as you notice a ghostly figure more than a living being as his blue eyes lock on you with a hunger you never seen before.', 'elemental/fairy/black.png'],
                 function () {
                     return !acceptFate ?
-                        ['You turn your back before your eyes lock as you stumble and fell multiple times, desperate to escape.' , 'elemental/fairy/black.png']:
+                        ['You turn your back before your eyes lock as you stumble and fell multiple times, desperate to escape.', 'elemental/fairy/black.png'] :
                         ['You fell back when he takes a step and your fear engulfs you. The sinister smile of the umbreon is only followed by his voice, telling a warm welcome to the death realm as the orange light shuts down. You can only see the faint glow of his blue eyes and gleaming white teeth.', 'elemental/fairy/black.png'];
                 },
                 function () {
@@ -201,33 +201,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 function () {
                     return !closeDoor ?
-                        ['The light seems to make you forget you\'re not safe as you are tackled down, your upper half on the light and the rest inside the dark room. You notice the umbreon pulling you back from your feet as you try to hit him, but your feet seems to go through. In a matter of seconds, you experience the true darkness.' , 'elemental/fairy/black.png']:
+                        ['The light seems to make you forget you\'re not safe as you are tackled down, your upper half on the light and the rest inside the dark room. You notice the umbreon pulling you back from your feet as you try to hit him, but your feet seems to go through. In a matter of seconds, you experience the true darkness.', 'elemental/fairy/black.png'] :
                         ['You hear a roar and you stumble into the room in the last second, your feets barely scratched. The door is not closed but the umbreon screams in pain at the moment his paw touches the light as it turns back running. Using this opportunity, you close the door as strong as possible, resting your back on it as a secure precaution.', 'elemental/fairy/black.png'];
                 }
             ]
         },
         {
             'name': 'Psiquic', 'text': [
-                ['You decided to enter Psiquic the room', 'elemental/fairy/black.png']
+                ['You decided to enter the Psiquic room', 'elemental/fairy/black.png'],
                 ['The sound of metal falling is still as hard as ever as you open the door', 'elemental/fairy/black.png'],
                 ['Your supersitions were correct to think this was a dangerous room. Despite that, you chose it', 'elemental/fairy/black.png'],
                 ['You can see giant axes swinging side to side and massive metal balls rolling and falling, probably the ones that make the sounds. Despite the initial shock, you can only see how this is something you could see in games', 'elemental/fairy/black.png'],
                 ['You chuckle a laugh without really knowing how to react as a ball rolls way too near but not enough to hurt you. The falling sound is soon followed by a more rusty sound as you turn back to see two things: the door closed and a peculiar looking pokemon sitting next to it.', 'elemental/fairy/black.png'],
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Psiquic') == 0) ?
-                        ['You walk slowly to not disturb the pokemon and try to turn the knock. Maybe because the initial surprise a quick thought of not managing to open the door crosses your mind, but the door knock turns as easly as the first time.' , 'elemental/fairy/black.png']:
+                        ['You walk slowly to not disturb the pokemon and try to turn the knock. Maybe because the initial surprise a quick thought of not managing to open the door crosses your mind, but the door knock turns as easly as the first time.', 'elemental/fairy/black.png'] :
                         ['You walk as steady and as slow as possible, your back on the wall where the pokemon is not. Somehow, you can\'t seem to break eye contact as you find yourself in front of the door. But despite your intentions of opening the door, you just know it won\'t open.', 'elemental/fairy/black.png'];
                 },
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Psiquic') == 0) ?
-                        ['Maybe you\'re not ready for this room. If this is like the games you played, maybe you need extra levels or another item to get over this room. It would be wise to exit the room now..' , 'elemental/fairy/black.png']:
+                        ['Maybe you\'re not ready for this room. If this is like the games you played, maybe you need extra levels or another item to get over this room. It would be wise to exit the room now..', 'elemental/fairy/black.png'] :
                         ['And your thoughts were true. You shift your sight between the pokemon and the door and thought this was the way of the pokemon telling you to continue.', 'elemental/fairy/black.png'];
                 },
 
                 ['Continue in the room felt more correct than any other thing you did. Maybe the familiarity with this kind of rooms in your life made you confident.', 'elemental/fairy/black.png'],
                 ['One of the axes swings in front of you as you jump to the thin platform and you make your way across the room easly. Another door is seen at the end of the path as the pokemon previously sitting back is now there.', 'elemental/fairy/black.png'],
                 ['You don\'t put too much thought about it as you continue with caution, finally reaching the other side. The pokemon\'s gaze is still as lost as ever but you somehow can see a flinch in her ear', 'elemental/fairy/black.png'],
-                ['You open the door without any more thought as you continue to stare the pokemon.',, 'elemental/fairy/black.png']
+                ['You open the door without any more thought as you continue to stare the pokemon.', , 'elemental/fairy/black.png']
                 ['Suddenly the bicolor eyes of the pokemon met yours as you can see more faint eyes around. With a shiver you break eye contact and look at the door, only to see a log straight being sent to you.', 'elemental/fairy/black.png'],
                 function () {
                     return !acceptFate ?
@@ -241,18 +241,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 function () {
                     return !closeDoor ?
-                        ['You throw yourself to avoid any more damage before you see the room, your eyes squeezing hard. You open them to see that was the safe room but unlike the last time, you see the pokemon in the room was now here with you. As the world starts to be filled with smoke, you manage to see the safe room changing slowly as you\'re trapped in an infinite trap.' , 'elemental/fairy/black.png']:
+                        ['You throw yourself to avoid any more damage before you see the room, your eyes squeezing hard. You open them to see that was the safe room but unlike the last time, you see the pokemon in the room was now here with you. As the world starts to be filled with smoke, you manage to see the safe room changing slowly as you\'re trapped in an infinite trap.', 'elemental/fairy/black.png'] :
                         ['You breath heavely as you recognize the room you\'re in: the safe room. You turn back to see the pokemon staring at you, multiple eyes and smoke all around as you shut the door before anything could enter your head.', 'elemental/fairy/black.png'];
                 },
             ]
         },
         {
             'name': 'Electric', 'text': [
-                'You decided to enter the Electric room',
-                ['Despite all the buzzing, as soon as you touch the knock a small static electricity forces you to recoil. You didn\'t feel any pain but the surprise was enough','elemental/fairy/black.png'],
-                ['Using your clothes as a help, you turn the knock, this time without any electricity filling you.','elemental/fairy/black.png'],
-                ['You expected something very different when you open the door. On the ceiling, you can see stars, galaxies and even comets drawn all around. If it wasn\'t because you knew you\'re insidea a room, you would believe you\'re looking the sky','elemental/fairy/black.png'],
-                ['But on the walls, is all very different. You see what seems blurr dark figures and things you\'re not able to exactly describe. You put a hand on the hall when suddenly the dark figure in the hall turns and you back up, tripping and closing the door with a hard hit','elemental/fairy/black.png'],
+                ['You decided to enter the Electric room', 'elemental/fairy/black.png'],
+                ['Despite all the buzzing, as soon as you touch the knock a small static electricity forces you to recoil. You didn\'t feel any pain but the surprise was enough', 'elemental/fairy/black.png'],
+                ['Using your clothes as a help, you turn the knock, this time without any electricity filling you.', 'elemental/fairy/black.png'],
+                ['You expected something very different when you open the door. On the ceiling, you can see stars, galaxies and even comets drawn all around. If it wasn\'t because you knew you\'re insidea a room, you would believe you\'re looking the sky', 'elemental/fairy/black.png'],
+                ['But on the walls, is all very different. You see what seems blurr dark figures and things you\'re not able to exactly describe. You put a hand on the hall when suddenly the dark figure in the hall turns and you back up, tripping and closing the door with a hard hit', 'elemental/fairy/black.png'],
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Electric') == 0) ?
                         ['You try to open the door after getting up. The buzzing still fills you as you remember to use your clothes. You sigh with relief when you notice the knock turn.', 'elemental/fairy/black.png'] :
@@ -264,11 +264,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         ['You try again only to get hit again. Your hands hurt an you recoil, defeated.', 'elemental/fairy/black.png'];
                 },
 
-                ['You turn to continue inside the room, not touching or looking at the walls. You feel watched','elemental/fairy/black.png'],
-                ['You stumble into a yellow bundle of fur. It\'s trembling and you notice is a jolteon. Maybe is as lost as you.','elemental/fairy/black.png'],
-                ['You try to touch him only to be hit by the same static electricity. You heard them sob as you rub your hurt hand','elemental/fairy/black.png'],
-                ['You are only able to say a word before his face turns to you, a terrified face with red all around. Now you notice, there\'s also some in his paws.','elemental/fairy/black.png'],
-                ['The jolteon murmurs something about an accident and as soon as you process all, the jolteon is jumping to you, in could be an innocent hug if it wasn\'t because all the supposed blood and visible electricity','elemental/fairy/black.png'],
+                ['You turn to continue inside the room, not touching or looking at the walls. You feel watched', 'elemental/fairy/black.png'],
+                ['You stumble into a yellow bundle of fur. It\'s trembling and you notice is a jolteon. Maybe is as lost as you.', 'elemental/fairy/black.png'],
+                ['You try to touch him only to be hit by the same static electricity. You heard them sob as you rub your hurt hand', 'elemental/fairy/black.png'],
+                ['You are only able to say a word before his face turns to you, a terrified face with red all around. Now you notice, there\'s also some in his paws.', 'elemental/fairy/black.png'],
+                ['The jolteon murmurs something about an accident and as soon as you process all, the jolteon is jumping to you, in could be an innocent hug if it wasn\'t because all the supposed blood and visible electricity', 'elemental/fairy/black.png'],
                 function () {
                     return !acceptFate ?
                         ['You manage to take a step back, letting the jolteon fell on his face as you turn around, running towards the door. You still hear his sob and you notice gets louder and louder.', 'elemental/fairy/black.png'] :
@@ -289,10 +289,10 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             'name': 'Water', 'text': [
                 ['You decided to enter Water the room', 'elemental/fairy/black.png'],
-                ['You know how dangerous water can be, but you feel it\'s the most secure. You can swim away if something happens.','elemental/fairy/black.png'],
-                ['As soon as you touch the door, you notice a slimy sensation instead of wood. You feel.. dizzy, enough to make you tremble. You decide to not bother with it as you turn the knock, this time not getting dizzy.','elemental/fairy/black.png'],
-                ['As soon as you open the door, the room is unexpectedly big. You can see small pools and for the first time in ages, pokemon that are not aggresive. You can see a vaporeon with a green bandana swimming cheerfully in one as another with mythical marks and darker color observe you with curiousity.','elemental/fairy/black.png'],
-                ['You\'re in awe as you see more and more far away but suddenly, you hear a soft click and you turn around to see a vaporeon made of water close the door.','elemental/fairy/black.png'],
+                ['You know how dangerous water can be, but you feel it\'s the most secure. You can swim away if something happens.', 'elemental/fairy/black.png'],
+                ['As soon as you touch the door, you notice a slimy sensation instead of wood. You feel.. dizzy, enough to make you tremble. You decide to not bother with it as you turn the knock, this time not getting dizzy.', 'elemental/fairy/black.png'],
+                ['As soon as you open the door, the room is unexpectedly big. You can see small pools and for the first time in ages, pokemon that are not aggresive. You can see a vaporeon with a green bandana swimming cheerfully in one as another with mythical marks and darker color observe you with curiousity.', 'elemental/fairy/black.png'],
+                ['You\'re in awe as you see more and more far away but suddenly, you hear a soft click and you turn around to see a vaporeon made of water close the door.', 'elemental/fairy/black.png'],
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Water') == 0) ?
                         ['You shoo way the vaporeon, who in a matter of seconds, had became smaller as you look at the knock. It\'s only covered in water and you can turn the knock easly.', 'elemental/fairy/black.png'] :
@@ -304,11 +304,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         ['You fight with the door, accidentally touching the door and finally getting knocked down as you give up in it.', 'elemental/fairy/black.png'];
                 },
 
-                ['You leave the door to return to the door as you continue walking, making sure to not step in any of the water.','elemental/fairy/black.png'],
-                ['As you walk and see more vaporeon, you notice one at what you think it\'s the end of the room, her back at you.','elemental/fairy/black.png'],
-                ['You are sure this vaporeon is also friendly as you get closer without any sense of danger.','elemental/fairy/black.png'],
-                ['As you touch her vibrant colored scales, you notice a beautiful raninbow of water all around her','elemental/fairy/black.png'],
-                ['You are so in awe with the color of the water that you barely have time to realize that the colors turn more grey.','elemental/fairy/black.png'],
+                ['You leave the door to return to the door as you continue walking, making sure to not step in any of the water.', 'elemental/fairy/black.png'],
+                ['As you walk and see more vaporeon, you notice one at what you think it\'s the end of the room, her back at you.', 'elemental/fairy/black.png'],
+                ['You are sure this vaporeon is also friendly as you get closer without any sense of danger.', 'elemental/fairy/black.png'],
+                ['As you touch her vibrant colored scales, you notice a beautiful raninbow of water all around her', 'elemental/fairy/black.png'],
+                ['You are so in awe with the color of the water that you barely have time to realize that the colors turn more grey.', 'elemental/fairy/black.png'],
                 function () {
                     return !acceptFate ?
                         ['You barely manage to jump back as a ring of fire covers the vaporeon, who turns back at you with rage in her eyes. But the attack doesn\'t end there', 'elemental/fairy/black.png'] :
@@ -328,11 +328,11 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         {
             'name': 'Grass', 'text': [
-                ['You decided to enter the Grass room','elemental/fairy/black.png'],
-                ['As soon as the doors open slightly a smell of grass and flowers comes out. Could this be a secret exit?','elemental/fairy/black.png'],
-                ['With excitement, you open it fully to reveal what seems a secret garden.','elemental/fairy/black.png'],
-                ['There\'s many pokemon, not only eeveevolutions. You can see a breloom with wings resting with a leavanny with an eyepatch next to it like they\'re old friends.','elemental/fairy/black.png'],
-                ['You can even see a green ekans with a hat which name immediately pops up in your mind: Mr. Noodle. But there\'s another, real click behind you as the door is now closed','elemental/fairy/black.png'],
+                ['You decided to enter the Grass room', 'elemental/fairy/black.png'],
+                ['As soon as the doors open slightly a smell of grass and flowers comes out. Could this be a secret exit?', 'elemental/fairy/black.png'],
+                ['With excitement, you open it fully to reveal what seems a secret garden.', 'elemental/fairy/black.png'],
+                ['There\'s many pokemon, not only eeveevolutions. You can see a breloom with wings resting with a leavanny with an eyepatch next to it like they\'re old friends.', 'elemental/fairy/black.png'],
+                ['You can even see a green ekans with a hat which name immediately pops up in your mind: Mr. Noodle. But there\'s another, real click behind you as the door is now closed', 'elemental/fairy/black.png'],
                 function () {
                     return (lastButtonTouched != null && lastButtonTouched.localeCompare('Grass') == 0) ?
                         ['The door has a sun symbol, now you notice. But seems nothing is wrong as you try to open it, doing it with relative ease.', 'elemental/fairy/black.png'] :
@@ -343,23 +343,23 @@ document.addEventListener('DOMContentLoaded', function () {
                         ['You can still exit, maybe you should leave this room for last. Exit?', 'elemental/fairy/black.png'] :
                         ['You try again and again and manage to turn it a bit but nothing more. There\'s no way back', 'elemental/fairy/black.png'];
                 },
-        
-                ['You decide to leave the door alone as you turn back to the peaceful room, starting to explore it. You find nothing of interest except more pokemon hidden between the grass and leaves.','elemental/fairy/black.png'],
-                ['The aroma of flowers and the gentle rustling of leaves calm you. You almost forget why you came here...','elemental/fairy/black.png'],
-                ['You continue to seach but you feel this is being useless, feeling lay down in the grass would be better','elemental/fairy/black.png'],
-                ['For a moment, you feel like staying here forever wouldn\'t be so bad.','elemental/fairy/black.png'],
+
+                ['You decide to leave the door alone as you turn back to the peaceful room, starting to explore it. You find nothing of interest except more pokemon hidden between the grass and leaves.', 'elemental/fairy/black.png'],
+                ['The aroma of flowers and the gentle rustling of leaves calm you. You almost forget why you came here...', 'elemental/fairy/black.png'],
+                ['You continue to seach but you feel this is being useless, feeling lay down in the grass would be better', 'elemental/fairy/black.png'],
+                ['For a moment, you feel like staying here forever wouldn\'t be so bad.', 'elemental/fairy/black.png'],
                 function () {
                     return !acceptFate ?
                         ['A strange haze fills your mind. You feel the urge to just stay and enjoy the tranquility. But you shake your head and turn around. This is not right.', 'elemental/fairy/black.png'] :
                         ['Your vision blurs, the garden\'s allure overtakes you. You feel yourself surrendering to the peace.', 'elemental/fairy/black.png'];
                 },
-                
+
                 function () {
                     return (!acceptFate && (lastButtonTouched != null && lastButtonTouched.localeCompare('Grass') == 0)) ?
                         ['You try to shake this sensation off, knowing it\'s not right and with woobly steps you make your way to the door with the sun symbol. Somehow you manage to locate and turn the knock as you take a step out.', 'elemental/fairy/black.png'] :
                         ['You hesitate,the fog clouding your judgement. Is it really bad being here? The door has now a moon symbol and your eyes feel heavy and you manage to turn the knock one last time before falling, but nothing happens', 'elemental/fairy/black.png'];
                 },
-                
+
                 function () {
                     return !closeDoor ?
                         ['You manage to open the door, but you can\'t shake off anything of your mind. You take a step in as you hear rushing and giant vines grab you before you can even close the door, making you return to your ethernal peace.', 'elemental/fairy/black.png'] :
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             ]
         }
-        
+
     ];
 
 
@@ -1083,6 +1083,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function nextText(text) {
 
 
+        console.log(text);
 
         document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]()[0] : text.text[textLine][0];
         document.getElementById('image').src = typeof text.text[textLine] === 'function' ? text.text[textLine]()[1] : text.text[textLine][1];
@@ -1090,6 +1091,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // console.log(textLine, text.text[textLine]);
         //para salir de la sala
         console.log(textLine, text.text[textLine], lastButtonTouched, text.name);
+
         if (textLine == 6 && lastButtonTouched != null && lastButtonTouched.localeCompare(text.name) == 0) {
             createExitButton(text.name);
         }
@@ -1104,7 +1106,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //si has llegado al final pero no has apretado al boton, que salga la ultima frase y luego haga un timeout
         if (textLine == 14 && closeDoor == false) {
-
             document.getElementById('next').removeEventListener('click', nextText);
             document.getElementById('next').addEventListener('click', gameOver);
 
@@ -1112,22 +1113,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
         //has conseguido cerrar la puerta
-        else if (textLine == 15 && closeDoor == true) {
-            //quitar ventana
-            deleteElement(document.getElementById('ventanaDiv'));
-            //cambiar src por delante
-            document.getElementById('image').src = 'elemental/elemental_0010_delante.png';
-            //quitar posicion relative de imageDiv
-            document.getElementById('imageDiv').style.position = '';
-            //crear botones
-            createDoorButton();
-            //reset lineas
-            textLine = 0;
-            acceptFate = null;
-            isPanicClicked = false;
-            closeDoor = null;
-            //meter que has entrado en este
-            enteredRooms.push(text.name);
+        else if (closeDoor == true) {
+            document.getElementById('text').textContent = typeof text.text[textLine] === 'function' ? text.text[textLine]()[0] : text.text[textLine][0];
+
+
+            //borrar el boton next
+            deleteElement(document.getElementById('next'));
+            //crear un boton igual a next
+            var botonNext = document.createElement('div');
+            botonNext.setAttribute('id', 'nextFinal');
+            botonNext.textContent = ' ► ';
+            botonNext.style.position = 'absolute';
+            botonNext.style.top = '80%';
+            botonNext.style.right = '5%';
+            botonNext.style.fontSize = '18px';
+            botonNext.classList.add('btn', 'btn-secondary');
+
+            botonNext.addEventListener('click', function () {
+                // //quitar ventana
+                deleteElement(document.getElementById('ventanaDiv'));
+                //cambiar src por delante
+                document.getElementById('image').src = 'elemental/elemental_0010_delante.png';
+                //quitar posicion relative de imageDiv
+                document.getElementById('imageDiv').style.position = '';
+                //crear botones
+                createDoorButton();
+                //reset lineas
+                textLine = 0;
+                acceptFate = null;
+                isPanicClicked = false;
+                closeDoor = null;
+                //meter que has entrado en este
+                enteredRooms.push(text.name);
+                //borrar el boton
+                deleteElement(document.getElementById('nextFinal'));
+            });
+            document.getElementById('ventanaDiv').appendChild(botonNext);
+        }
+        else {
+            if (textLine >= 13) {
+                // alert('You are in a panic!');
+                document.getElementById('next').addEventListener('click', gameOver);
+            }
+            else {
+                console.log(textLine);
+                console.log('error! tell fallen');
+            }
+
 
         }
 
@@ -1164,6 +1196,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!isPanicClicked && acceptFate) {
                 panicButton.remove();
 
+                //quitar el event listener
                 document.getElementById('next').removeEventListener('click', nextText);
 
                 isPanicClicked = true;
@@ -1181,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
             }
-        }, "1000");
+        }, "3000");
 
         //añadirle un event listener click
         panicButton.addEventListener('click', function () {

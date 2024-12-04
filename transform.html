@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformation</title>
+</head>
+
+<body>
+    <h1 class="text-center">Transformation of letter to numbers</h1>
+    <div class="text-center mt-3">
+        <div>Write the letter(s) to transform separated by a whitespace below</div>
+        <textarea name="" id="area" class="form-control w-75 mx-auto mt-3 mb-5" placeholder="Write here"></textarea>
+        <button class="btn btn-primary ">Transform</button>
+
+        <hr class="w-75 mx-auto">
+        <div class="text-center h3 mb-3">Result</div>
+        <div id="result" class="text-center border w-50 mx-auto border-primary" style="min-height: 70px;"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function addBootstrapLink() {
+                var bootstrapLink = document.createElement('link');
+                bootstrapLink.rel = 'stylesheet';
+                bootstrapLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css';
+                bootstrapLink.integrity = 'sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC';
+                bootstrapLink.crossOrigin = 'anonymous';
+
+                // Añadir el <link> al <head>
+                document.head.appendChild(bootstrapLink);
+            }
+
+            addBootstrapLink();
+
+
+            document.querySelector('#area').addEventListener('input', function (event) {
+                // Expresión regular: solo permite letras (mayúsculas y minúsculas), espacios y saltos de línea
+                const allowedPattern = /[^a-zA-Z \n]/g;
+
+                // Reemplaza caracteres no permitidos con una cadena vacía
+                this.value = this.value.replace(allowedPattern, '');
+            });
+
+
+            transformation =
+            {
+                'A': 0, 'B': 1, 'C': 2, 'D': 3,
+                'E': 4, 'F': 5,
+                'G': 6, 'H': 7,
+                'I': 8, 'J': 9,
+                'K': 10, 'L': 11,
+                'M': 12, 'N': 13,
+                'O': 14, 'P': 15,
+                'Q': 16, 'R': 17,
+                'S': 18, 'T': 19,
+                'U': 20, 'V': 21,
+                'W': 22, 'X': 23,
+                'Y': 24, 'Z': 25,
+                ' ': ' '
+            };
+            document.querySelector('button').addEventListener('click', () => {
+                //recuperar texto del textarea
+                let text = document.querySelector('#area').value;
+
+                //separar el texto por espacios
+                let textSplited = text.split(' ');
+
+                let resultadoArray = [];
+                //recorrer el array de espacios
+                let result = textSplited.map(word => {
+
+                    //buscar en transformation donde equivalga
+                    let transformedLetter = transformation[word.toUpperCase()];
+
+                    //meterlo en la array resultadoArray
+                    resultadoArray.push(transformedLetter);
+                });
+                console.log(resultadoArray);
+
+                document.getElementById('result').innerHTML = resultadoArray.join(' ');
+            });
+
+        });
+    </script>
+</body>
+
+</html>
