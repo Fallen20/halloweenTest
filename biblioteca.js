@@ -647,7 +647,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         if (isCorrect) {
-            document.getElementById("result").innerHTML = "The room starts to tremble as the shelf reveals a <a href='your-link-here'>secret passage</a>.";
+            document.getElementById("result").innerHTML = "The room starts to tremble as the shelf reveals a <a href='https://docs.google.com/document/d/1lq7xlJnkiVBhbIAxBrox-3QYjlPPb8_pGACY03xqgLQ/edit?usp=drivesdk'>secret passage</a>.";
         }
 
     }
