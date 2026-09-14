@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById('text').innerHTML='';
       if (value === "1025") {
         // Es correcto, pon ok
-        document.getElementById('result').innerHTML = 'A beep is heard and the screen turns green <a href="https://docs.google.com/document/d/1tVsDuMMllzG3Xyw24NhCIQ9ZyKOMceihtmbGXs3xpW4/edit?tab=t.0">and you can go throught.</a>.'
+        document.getElementById('result').innerHTML = 'A beep is heard and the screen turns green <a href="./LORE/Morse.html">and you can go throught.</a>.'
       } else {
         // No es correcto, pon error
         value = "ERROR"

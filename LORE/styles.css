@@ -1,0 +1,167 @@
+/* =========================================
+   THE SCARLET NEST
+   Global CSS — Part 1
+   ========================================= */
+
+:root {
+  /* Colors */
+  --color-background: #0d0b0b;
+  --color-background-light: #171212;
+
+  --color-text: #d8d0ca;
+  --color-text-muted: #928783;
+
+  --color-red: #8f1d1d;
+  --color-red-dark: #4d1010;
+  --color-red-light: #b52a2a;
+
+  --color-gold: #b99a5b;
+  --color-gold-dark: #6f5932;
+
+  --color-black: #080707;
+
+  /* Typography */
+  --font-body: Georgia, "Times New Roman", serif;
+  --font-title: Georgia, "Times New Roman", serif;
+
+  /* Layout */
+  --content-width: 900px;
+  --content-padding: 2rem;
+
+  /* Effects */
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  --transition: 0.25s ease;
+}
+
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  min-height: 100vh;
+
+  background: radial-gradient(
+    circle at center,
+    var(--color-background-light) 0%,
+    var(--color-background) 70%
+  );
+
+  color: var(--color-text);
+
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.8;
+
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+body > div {
+  width: 70%;
+
+  margin: 5rem auto;
+  border-radius: 10px;
+
+  padding: var(--content-padding);
+
+  background: rgba(30, 24, 24, 0.95);
+
+  border: 1px solid rgba(185, 154, 91, 0.25);
+
+  position: relative;
+}
+
+/* =========================================
+   PARAGRAPHS
+   ========================================= */
+
+p {
+  margin: 0 0 2rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   TEXT HIERARCHY
+   ========================================= */
+
+p {
+  /* max-width: 75ch; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================================
+   EMPHASIS
+   ========================================= */
+
+em {
+  color: #c99cb2;
+
+  font-style: italic;
+
+  display: block;
+
+  padding: 1.5rem 2rem;
+
+  margin: 2rem 0;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  border-left: 5px solid purple;
+
+  box-shadow: inset 20px 0 40px rgba(0, 0, 0, 0.15);
+
+  line-height: 1.9;
+}
+
+img{
+  width: 100%;
+}
+
+
+/* =========================================
+   DIALOGUE
+   ========================================= */
+
+strong {
+  color: #c52f9a;
+
+  font-weight: 600;
+}
+
+/* Dialogue inside paragraphs */
+
+/* =========================================
+   SCENE BREAKS
+   ========================================= */
+
+p + p {
+  position: relative;
+}
+
+
+a{
+    color: #fe5d5d;
+    text-decoration: underline;
+    text-decoration-color: #fe5d5d;
+    text-decoration-thickness: 1px;
+}

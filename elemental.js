@@ -722,7 +722,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         boton.addEventListener('click', function () {
             //abrir una nueva ventana con el link a google.com
-            window.open('https://docs.google.com/document/d/1Dj7hG_MuMrONwoDVA_UmFQR2Tb0l1mBAH6d6GUp3wcY/edit?tab=t.0', '_blank');
+            window.open('./LORE/Mirror_path.html', '_blank');
         });
 
         // Asegurarse de que el padre inmediato tenga position relative

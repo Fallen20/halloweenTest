@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.style.color = 'white';
         nextButton.style.border = 'none';
         nextButton.style.cursor = 'pointer';
-        nextButton.onclick = () => window.location.href = 'https://docs.google.com/document/d/1MLNQLFWMMMyVP1udXGkag2OWQyMKEDpmxk_56HUYNDA/edit?tab=t.0';
+        nextButton.onclick = () => window.location.href = './LORE/Moon_corridor.html';
 
         document.querySelector('.container').appendChild(nextButton);
     }
