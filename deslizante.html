@@ -1,89 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="deslizante.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <style>
-        /* Estilos para centrar todo el contenido de la página */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center; /* Centra el texto dentro del contenedor */
-        }
+     html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
 
-        /* Contenedor que envuelve el título y el puzzle */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px; /* Espacio entre el título y el puzzle */
-        }
+body {
+    min-height: 100vh;
 
-        /* Puzzle */
-        #puzzle {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-template-rows: repeat(3, 100px);
-            gap: 5px;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        /* Ajustes en cada pieza */
-        .piece {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    text-align: center;
+}
 
-        /* Contorno negro en el texto */
-        .piece::before {
-            content: attr(data-number);
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            text-shadow:
-                -1px -1px 0 #000,
-                 1px -1px 0 #000,
-                -1px  1px 0 #000,
-                 1px  1px 0 #000;
-        }
+/* Contenedor de todo */
+#game {
+    width: 100%;
+    max-width: 900px;
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.5);
-            pointer-events: none;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Título */
+#title {
+    width: 100%;
+
+    color: #d8d0ca;
+    font-size: 2.5rem;
+    font-family: Georgia, "Times New Roman", serif;
+
+    text-align: center;
+}
+
+/* Línea */
+#game hr {
+    width: 100%;
+}
+
+/* Resultado */
+#result {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* PUZZLE */
+#puzzle {
+    display: grid;
+
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+
+    gap: 5px;
+
+    /* Esto centra el grid */
+    margin: 0 auto;
+
+    width: max-content;
+}
+
+/* PIEZAS */
+.piece {
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 24px;
+    color: white;
+
+    cursor: pointer;
+
+    position: relative;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Número */
+.piece::before {
+    content: attr(data-number);
+
+    position: absolute;
+
+    top: 5px;
+    left: 5px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    color: white;
+
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(255, 255, 255, 0.5);
+
+    pointer-events: none;
+}
+
     </style>
-</head>
+    <title>A familiar figure</title>
+    <link rel="stylesheet" href="./LORE/styles.css" />
+  </head>
 
 <body>
-    <div class="container">
-        <div class="fw-bold h1">Complete the puzzle to unlock the path</div>
-        <div id="result"></div>
-        <div id="puzzle"></div>
+
+  <div id="game">
+
+    <div
+      id="title"
+      class="fw-bold h1"
+    >
+      Complete the puzzle to unlock the path
     </div>
+
+    <hr>
+
+    <div id="result"></div>
+
+    <div id="puzzle"></div>
+
+  </div>
+
 </body>
+
 
 </html>
