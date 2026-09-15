@@ -1,58 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
+      var bootstrapLink = document.createElement("link");
+      bootstrapLink.rel = "stylesheet";
+      bootstrapLink.href = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css";
+      bootstrapLink.integrity = "sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC";
+      bootstrapLink.crossOrigin = "anonymous";
 
-        var bootstrapLink = document.createElement('link');
-        bootstrapLink.rel = 'stylesheet';
-        bootstrapLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css';
-        bootstrapLink.integrity = 'sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC';
-        bootstrapLink.crossOrigin = 'anonymous';
-
-        // Añadir el <link> al <head>
-        document.head.appendChild(bootstrapLink);
+      // Añadir el <link> al <head>
+      document.head.appendChild(bootstrapLink);
     </script>
-</head>
 
-<body class="container p-5">
-    <div class="text-center h1 mb-4">Answer to continue</div>
-    <div id="result" class="text-center"></div>
-    <div class="row">
-        <div class="col">
-            <div class="h2">Describe the chest found with 2 words</div>
-            <input type="text" id="password1" class="form-control">
-        </div>
-        
+    <link rel="stylesheet" href="./LORE/styles.css" />
+  </head>
+
+  <body class="container p-5">
+    <div class="">
+      <div class="text-center h1 mb-4" style="">Answer to continue</div>
+      <hr class="">
+      <h2 style="font-size: 1.3rem;" class="mt-4 mb-3">Describe the chest found with 2 words</h2>
+      <input type="text" id="password1" class="form-control" />
+      
+      
+      <div id="resultSudokuCheck" class="mt-4 text-center"></div>
+      <button id="checkButton" class="btn btn-primary">Check</button>
     </div>
-    <div class="text-center mt-4">
-        <button id="checkButton" class="btn btn-primary">Check</button>
-    </div>
+    <!-- <div class="text-center mt-4"> -->
+    <!-- </div> -->
 
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("checkButton").addEventListener("click", checkPasswords);
+        function checkPasswords() {
+          //recuperar inputs
+          var password1 = document.getElementById("password1").value;
 
-        document.addEventListener('DOMContentLoaded', function () {
+          //si contiene la palabra 'small' o 'silver lock'
 
-            document.getElementById('checkButton').addEventListener('click', checkPasswords);
-            function checkPasswords() {
-                //recuperar inputs
-                var password1 = document.getElementById('password1').value;
-
-                //si contiene la palabra 'small' o 'silver lock'
-
-                if (password1.toLowerCase().includes('small') || password1.toLowerCase().includes('silver lock')) {
-                    document.getElementById('result').innerHTML = 'You can <a href="./LORE/Room5/Room5_v2.html">continue</a>';
-                }
-                else{
-                    document.getElementById('result').innerHTML = 'You can <a href="./LORE/Room5/Room5_v1.html">continue</a>';
-
-                }
-            }
-        });
+          if (password1.toLowerCase().includes("small") || password1.toLowerCase().includes("silver lock")) {
+            document.getElementById("resultSudokuCheck").innerHTML = 'You can <a href="./LORE/Room5/Room5_v2.html">continue</a>';
+          } else {
+            document.getElementById("resultSudokuCheck").innerHTML = 'You can <a href="./LORE/Room5/Room5_v1.html">continue</a>';
+          }
+          document.getElementById("resultSudokuCheck").style.display = "block";
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>

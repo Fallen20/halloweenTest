@@ -1214,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
             }
-        }, "3000");
+        }, 10000);
 
         //añadirle un event listener click
         panicButton.addEventListener('click', function () {
@@ -1281,7 +1281,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
             }
-        }, "1500");
+        }, 10000);
 
         //añadirle un event listener click
         panicButton.addEventListener('click', function () {

@@ -1,0 +1,184 @@
+document.addEventListener("DOMContentLoaded", function () {
+// Añadir evento al botón
+document.getElementById("check-button").addEventListener("click", checkAnswers);
+
+createSudoku(); // Llamar a la función para generar el Sudoku
+
+});
+
+// Matriz con los números del Sudoku
+// const sudokuNumbers = [
+//     [2, 1, 6, 4, 3, 9, 7, 5, 8],
+//     [9, 4, 7, 5, 8, 6, 3, 2, 1],
+//     [5, 8, 3, 2, 1, 7, 4, 6, 9],
+//     [8, 9, 6, 2, 6, 4, 3, 5, 1],
+//     [6, 5, 4, 7, 2, 9, 8, 6, 3],
+//     [3, 7, 1, 9, 5, 8, 6, 4, 2],
+//     [4, 6, 9, 1, 7, 2, 8, 5, 3],
+//     [7, 2, 8, 3, 6, 5, 1, 9, 4],
+//     [1, 3, 5, 8, 9, 4, 2, 7, 6]
+// ];
+
+const sudokuNumbers1 = [
+  [1, 7, 8, 4, 6, 2, 5, 9, 3],
+  [4, 6, 5, 7, 9, 3, 2, 8, 1],
+  [9, 2, 3, 1, 5, 8, 7, 4, 6],
+  [2, 9, 4, 6, 8, 1, 3, 7, 5],
+  [6, 8, 1, 3, 7, 5, 9, 2, 4],
+  [5, 3, 7, 9, 2, 4, 6, 1, 8],
+  [8, 4, 2, 5, 3, 7, 1, 6, 9],
+  [7, 5, 9, 8, 1, 6, 4, 3, 2],
+  [3, 1, 6, 2, 4, 9, 8, 5, 7],
+];
+const sudokuNumbers2 = [
+  [8, 4, 1, 6, 9, 7, 2, 5, 3],
+  [9, 2, 3, 1, 5, 8, 4, 6, 7],
+  [5, 7, 6, 2, 3, 4, 9, 8, 1],
+  [2, 5, 8, 7, 4, 9, 1, 3, 6],
+  [6, 9, 7, 5, 1, 3, 8, 4, 2],
+  [1, 3, 4, 8, 2, 6, 7, 9, 5],
+  [3, 8, 5, 4, 7, 1, 6, 2, 9],
+  [7, 6, 9, 3, 8, 2, 5, 1, 4],
+  [4, 1, 2, 9, 6, 5, 3, 7, 8],
+];
+const sudokuNumbers3 = [
+  [9, 6, 4, 8, 7, 2, 5, 1, 3],
+  [1, 2, 3, 6, 5, 9, 8, 4, 7],
+  [8, 7, 5, 4, 1, 3, 9, 6, 2],
+  [3, 5, 7, 9, 6, 4, 2, 8, 1],
+  [6, 1, 2, 5, 3, 8, 4, 7, 9],
+  [4, 9, 8, 7, 2, 1, 3, 5, 6],
+  [2, 4, 1, 3, 8, 7, 6, 9, 5],
+  [7, 8, 6, 2, 9, 5, 1, 3, 4],
+  [5, 3, 9, 1, 4, 6, 7, 2, 8],
+];
+
+const sudokus = [sudokuNumbers1, sudokuNumbers2, sudokuNumbers3];
+
+let currentSudoku;
+
+function createSudoku() {
+  const table = document.getElementById("sudoku-table");
+
+  // Elegir uno de los sudokus aleatoriamente
+  const randomIndex = Math.floor(Math.random() * sudokus.length);
+  currentSudoku = sudokus[randomIndex];
+
+  // Crear filas de la tabla
+  for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+    const tr = document.createElement("tr");
+    const editableIndices = getRandomEditableIndices();
+
+    for (let colIndex = 0; colIndex < 9; colIndex++) {
+      const td = document.createElement("td");
+      const input = document.createElement("input");
+
+      input.type = "number";
+
+      if (editableIndices.includes(colIndex)) {
+        input.readOnly = false;
+        input.value = "";
+      } else {
+        input.readOnly = true;
+        input.value = currentSudoku[rowIndex][colIndex];
+      }
+
+      input.style.borderTop = "none";
+      input.style.borderBottom = "none";
+      input.style.borderLeft = "none";
+      input.style.borderRight = "none";
+
+      if (rowIndex === 0) input.style.borderTop = "2px solid black";
+      if (rowIndex === 8) input.style.borderBottom = "2px solid black";
+      if (colIndex === 0) input.style.borderLeft = "2px solid black";
+      if (colIndex === 8) input.style.borderRight = "2px solid black";
+
+      if (colIndex === 2 || colIndex === 5) input.style.borderRight = "1px solid black";
+
+      if (rowIndex === 2 || rowIndex === 5) input.style.borderBottom = "1px solid black";
+
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Tab") {
+          event.preventDefault();
+          focusNextInput(input);
+        }
+      });
+
+      td.appendChild(input);
+      tr.appendChild(td);
+    }
+
+    table.appendChild(tr);
+  }
+}
+
+function focusNextInput(currentInput) {
+  const inputs = document.querySelectorAll("input"); // Seleccionar todos los inputs
+  let nextInput = null;
+  const currentIndex = Array.from(inputs).indexOf(currentInput); // Obtener el índice del input actual
+
+  // Buscar el siguiente input que no sea editable
+  for (let i = currentIndex + 1; i < inputs.length; i++) {
+    if (!inputs[i].readOnly) {
+      nextInput = inputs[i];
+      break; // Encontrado el siguiente input no editable
+    }
+  }
+
+  // Si no se encontró, reiniciar la búsqueda desde el principio
+  if (!nextInput) {
+    for (let i = 0; i < currentIndex; i++) {
+      if (!inputs[i].readOnly) {
+        nextInput = inputs[i];
+        break; // Encontrado el siguiente input no editable
+      }
+    }
+  }
+
+  // Focalizar el siguiente input
+  if (nextInput) {
+    nextInput.focus();
+  }
+}
+
+function getRandomEditableIndices() {
+  const indices = [];
+  while (indices.length < 3) {
+    const randomIndex = Math.floor(Math.random() * 9); // Obtener un índice aleatorio de 0 a 8
+    if (!indices.includes(randomIndex)) {
+      indices.push(randomIndex);
+    }
+  }
+  return indices; // Retornar los índices editables
+}
+
+function checkAnswers() {
+  const inputs = document.querySelectorAll("input"); // Seleccionar todos los inputs
+  let allCorrect = true; // Variable para verificar si todos los editables son correctos
+  inputs.forEach((input, index) => {
+    const rowIndex = Math.floor(index / 9); // Obtener el índice de fila
+    const colIndex = index % 9; // Obtener el índice de columna
+
+    if (!input.readOnly) {
+      // Solo comprobar los editables
+      const correctValue = currentSudoku[rowIndex][colIndex];
+
+      if (input.value == correctValue) {
+        input.style.backgroundColor = "rgba(144, 238, 144, 0.5)"; // Verde claro
+      } else {
+        input.style.backgroundColor = "rgba(255, 99, 71, 0.5)"; // Rojo claro
+        allCorrect = false; // Al menos un valor es incorrecto
+      }
+    }
+  });
+
+  // Si todos los editables son correctos, mostrar la alerta
+  if (allCorrect) {
+    var final = document.getElementById("salto");
+    document.getElementById("salto").style.display = "block";
+    document.getElementById("salto").innerHTML = "<a href='./sudoku_check.html' class='fw-bold'> The sealed door opens</a>";
+  }
+}
+
+
+
