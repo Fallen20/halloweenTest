@@ -1,174 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lock</title>
+    <link rel="stylesheet" href="./LORE/styles.css" />
 
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
 
-        #container {
-            text-align: center;
-        }
+      #container {
+        text-align: center;
+      }
 
-        #display {
-            width: 100px;
-            /* Ancho fijo */
-            height: 30px;
-            border: 1px solid #000;
-            text-align: center;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
+      #displayText {
+          /* Ancho fijo */
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        margin: 0 auto 10px auto; /* Centrar horizontalmente */
+      }
 
-        .row {
-            margin: 5px 0;
-        }
+      /* botones */
+      #button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-        .button {
-            width: 30px;
-            height: 30px;
-            font-size: 24px;
-            cursor: pointer;
-        }
+      .button-row {
+        display: flex;
+        justify-content: center;
+        margin: 4px 0;
+      }
 
-        .buttonFinal {
-            width: 100px;
-            height: 30px;
-            font-size: 24px;
-            cursor: pointer;
-        }
+      .button,
+      .buttonFinal {
+        width: 30px;
+        height: 48px;
 
-        #result {
-            margin-top: 20px;
-            /* Espacio arriba del resultado */
-            font-size: 20px;
-            text-align: center;
-            /* Centrar texto del resultado */
-        }
+        margin: 0 4px;
+
+        background: #5a0e0e;
+
+        color: #f0d9a0;
+
+        border: 1px solid var(--gold);
+        border-radius: 5px;
+
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.1rem;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          transform 0.1s ease;
+      }
+
+      .button:hover,
+      .buttonFinal:hover {
+        background: #761414;
+
+        color: white;
+
+        border-color: #f8f2cc;
+      }
+
+      .button:active {
+        transform: scale(0.95);
+      }
+
+      .buttonFinal {
+        width: 100px;
+        height: 30px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      #result {
+        margin-top: 20px;
+        /* Espacio arriba del resultado */
+        font-size: 20px;
+        text-align: center;
+        /* Centrar texto del resultado */
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
-    <div style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 10px;">Enter the code</div>
-    <div style="margin-bottom: 20px;">You look around to see the text '4 numbers' engraved on the wall.</div>
+  <body>
     <div id="container">
-        <div id="display">
-            <span id="displayText"></span> <!-- Contenedor para el texto -->
+      <div style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 10px; font-family: &quot;Georgia, Times New Roman, serif&quot;">Enter the code</div>
+      <hr />
+      <h2 style="font-size: 1.2rem; margin-top: 30px; margin-bottom: 20px">You look around to see the text '4 numbers' engraved on the wall.</h2>
+      <!-- Contenedor para el texto -->
+      <div id="displayText"></div>
+      <div id="button-container">
+        <div class="button-row">
+          <button class="button" onclick="addNumber(1)">1</button>
+          <button class="button" onclick="addNumber(2)">2</button>
+          <button class="button" onclick="addNumber(3)">3</button>
         </div>
-        <div class="row">
-            <button class="button" onclick="addNumber(1)">1</button>
-            <button class="button" onclick="addNumber(2)">2</button>
-            <button class="button" onclick="addNumber(3)">3</button>
-        </div>
-        <div class="row">
-            <button class="button" onclick="addNumber(4)">4</button>
-            <button class="button" onclick="addNumber(5)">5</button>
-            <button class="button" onclick="addNumber(6)">6</button>
-        </div>
-        <div class="row">
-            <button class="button" onclick="addNumber(7)">7</button>
-            <button class="button" onclick="addNumber(8)">8</button>
-            <button class="button" onclick="addNumber(9)">9</button>
-        </div>
-        <div class="row">
-            <button class="buttonFinal" onclick="addNumber(0)">0</button>
-        </div>
-    </div>
-    <div id="result"></div>
 
-    <div id="hints" style="margin-top: 2rem;">
-        <div
-            style="font-size: 1.1rem; margin-bottom:10px; text-align: center; border-bottom: 1px solid black; font-style: italic; ">
-            Additional hints will be added here each 5 minutes</div>
+        <div class="button-row">
+          <button class="button" onclick="addNumber(4)">4</button>
+          <button class="button" onclick="addNumber(5)">5</button>
+          <button class="button" onclick="addNumber(6)">6</button>
+        </div>
+        <div class="button-row">
+          <button class="button" onclick="addNumber(7)">7</button>
+          <button class="button" onclick="addNumber(8)">8</button>
+          <button class="button" onclick="addNumber(9)">9</button>
+        </div>
+        <div class="button-row">
+          <button class="buttonFinal" onclick="addNumber(0)">0</button>
+        </div>
+      </div>
+
+      <div id="result"></div>
+
+      <div id="hints" style="margin-top: 2rem">
+        <div style="font-size: 1.1rem; margin-bottom: 10px; text-align: center; ; font-style: italic">Additional hints will be added here each 5 minutes</div>
         <div id="hintsReal"></div>
+      </div>
     </div>
 
     <script>
-        let input = '';
-        const maxLength = 4;
+      let input = "";
+      const maxLength = 4;
 
-        function addNumber(num) {
-            if (input.length < maxLength) {
-                input += num;
-                document.getElementById('displayText').innerText = input; // Cambiado aquí
+      function addNumber(num) {
+        if (input.length < maxLength) {
+          input += num;
+          document.getElementById("displayText").innerText = input; // Cambiado aquí
 
-                if (input.length === maxLength) {
-                    checkResult();
-                }
-            }
+          if (input.length === maxLength) {
+            checkResult();
+          }
+        }
+      }
+
+      function checkResult() {
+        const resultDiv = document.getElementById("result");
+        const displayDiv = document.getElementById("displayText"); // Ajustar para usar el texto
+
+        const buttons = document.querySelectorAll(".button");
+        const buttonsF = document.querySelectorAll(".buttonFinal");
+        buttons.forEach((button) => (button.disabled = true));
+        buttonsF.forEach((button) => (button.disabled = true));
+
+        if (input === "0722") {
+          resultDiv.innerHTML = "<a href='./LORE/Lock_proceed.html'>You hear a soft click</a>";
+        } else {
+          resultDiv.innerText = "";
+          flashDisplay(displayDiv);
         }
 
-        function checkResult() {
-            const resultDiv = document.getElementById('result');
-            const displayDiv = document.getElementById('displayText'); // Ajustar para usar el texto
+        // Reiniciar input después de verificar
+        input = "";
+      }
 
-            const buttons = document.querySelectorAll('.button');
-            const buttonsF = document.querySelectorAll('.buttonFinal');
-            buttons.forEach(button => button.disabled = true);
-            buttonsF.forEach(button => button.disabled = true);
+      function flashDisplay(displayDiv) {
+        const originalColor = displayDiv.style.color;
+        displayDiv.style.color = "red";
 
-            if (input === '0722') {
-                resultDiv.innerHTML = "<a href='./LORE/Lock_proceed.html'>You hear a soft click</a>";
-            } else {
-                resultDiv.innerText = '';
-                flashDisplay(displayDiv);
-            }
+        setTimeout(() => {
+          displayDiv.style.color = originalColor;
+          // Borrar el texto del result
+          displayDiv.innerHTML = "";
+          // Habilitar botones
+          const buttons = document.querySelectorAll(".button");
+          const buttonsF = document.querySelectorAll(".buttonFinal");
+          buttons.forEach((button) => (button.disabled = false));
+          buttonsF.forEach((button) => (button.disabled = false));
+        }, 1000);
+      }
 
-            // Reiniciar input después de verificar
-            input = '';
+      let numberHints = 0;
+      const hintsArray = [
+        "You notice that maybe what the hint you've might not be refering to this game",
+        "You feel like you should know how to crack the code if you had the thought of a developer. Alas, you don't and the number '993904762229628968' pops up in your mind",
+        "You think in what that number would mean. Is an ID of some sort? Maybe from the so called place 'origin' the voice mention?",
+        "Maybe an external help like this <a href='https://discord.id/'>page</a> will help know what this number means",
+      ];
+
+      function addHints(number) {
+        document.getElementById("hintsReal").innerHTML += "<br>" + hintsArray[number];
+      }
+
+      const intervalId = setInterval(() => {
+        addHints(numberHints);
+        numberHints++;
+
+        if (numberHints === 4) {
+          clearInterval(intervalId);
         }
-
-        function flashDisplay(displayDiv) {
-            const originalColor = displayDiv.style.color;
-            displayDiv.style.color = 'red';
-
-            setTimeout(() => {
-                displayDiv.style.color = originalColor;
-                // Borrar el texto del result
-                displayDiv.innerHTML = "";
-                // Habilitar botones
-                const buttons = document.querySelectorAll('.button');
-                const buttonsF = document.querySelectorAll('.buttonFinal');
-                buttons.forEach(button => button.disabled = false);
-                buttonsF.forEach(button => button.disabled = false);
-            }, 1000);
-        }
-
-        let numberHints = 0;
-        const hintsArray = [
-            "You notice that maybe what the hint you've might not be refering to this game",
-            "You feel like you should know how to crack the code if you had the thought of a developer. Alas, you don't and the number '993904762229628968' pops up in your mind",
-            "You think in what that number would mean. Is an ID of some sort? Maybe from the so called place 'origin' the voice mention?",
-            "Maybe an external help like this <a href='https://discord.id/'>page</a> will help know what this number means"
-        ];
-
-        function addHints(number) {
-            document.getElementById('hintsReal').innerHTML += '<br>' + hintsArray[number];
-        }
-
-        const intervalId = setInterval(() => {
-            addHints(numberHints);
-            numberHints++;
-
-            if (numberHints === 4) {
-                clearInterval(intervalId);
-            }
-        }, 300000);  
-
+      }, 300000);
     </script>
-
-</body>
-
+  </body>
 </html>
