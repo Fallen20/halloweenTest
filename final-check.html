@@ -1,207 +1,210 @@
 <!doctype html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduce Everything to Continue</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./LORE/styles.css" />
     <style>
-        body {
-            margin: 20px;
-            background-color: #f8f9fa;
-        }
+      body {
+        margin: 20px;
+        background-color: #f8f9fa;
+      }
+      body > div {
+        width: 100%;
+      }
 
-        .section {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+      body > div > div.row > div > div {
+        background-color: rgba(15, 10, 10, 0.5);
+        border-color: rgb(128, 65, 65);
+      }
+      .section {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
 
-        .input-field {
-            margin-bottom: 10px;
-        }
+      .input-field {
+        margin-bottom: 10px;
+      }
 
-        .btn-check {
-            margin-top: 20px;
-        }
+      .btn-check {
+        margin-top: 20px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <h1>Introduce Everything to Continue</h1>
-
-    <div class="row">
+  <body>
+    <div>
+      <h1 class="text-center" style="color: #d8d0ca; font-size: 2.5rem; font-family: Georgia, &quot;Times New Roman&quot;, serif; text-align: center">Introduce Everything to Continue</h1>
+      <hr style="color: #d8d8d8 !important; border-top-color: #d8d0ca; margin-bottom: 3rem" />
+      <div class="row">
         <div class="col-md-4">
-            <div class="section">
-                <h2>EEVEE Room</h2>
-                <div class="input-field">
-                    <label for="eevee-solution">Solution</label>
-                    <input type="text" id="eevee-solution" class="form-control" />
-                </div>
-                <div class="input-field">
-                    <label for="eevee-letter">Letter Obtained</label>
-                    <input type="text" id="eevee-letter" class="form-control" />
-                </div>
+          <div class="section">
+            <h2>EEVEE Room</h2>
+            <div class="input-field">
+              <label for="eevee-solution">Solution</label>
+              <input type="text" id="eevee-solution" class="form-control" />
             </div>
+            <div class="input-field">
+              <label for="eevee-letter">Letter Obtained</label>
+              <input type="text" id="eevee-letter" class="form-control" />
+            </div>
+          </div>
         </div>
 
         <div class="col-md-4">
-            <div class="section">
-                <h2>Moon and Diamond Room</h2>
-                <div class="input-field">
-                    <label for="moon-diamond-solution">Solution</label>
-                    <input type="text" id="moon-diamond-solution" class="form-control" />
-                </div>
-                <div class="input-field">
-                    <label for="moon-diamond-letter">Letter Obtained</label>
-                    <input type="text" id="moon-diamond-letter" class="form-control" />
-                </div>
+          <div class="section">
+            <h2>Moon and Diamond Room</h2>
+            <div class="input-field">
+              <label for="moon-diamond-solution">Solution</label>
+              <input type="text" id="moon-diamond-solution" class="form-control" />
             </div>
+            <div class="input-field">
+              <label for="moon-diamond-letter">Letter Obtained</label>
+              <input type="text" id="moon-diamond-letter" class="form-control" />
+            </div>
+          </div>
         </div>
 
         <div class="col-md-4">
-            <div class="section">
-                <h2>Lock</h2>
-                <div class="input-field">
-                    <label for="lock-solution">Solution</label>
-                    <input type="text" id="lock-solution" class="form-control" />
-                </div>
-                <div class="input-field">
-                    <label for="lock-obtained">Obtained</label>
-                    <input type="text" id="lock-obtained" class="form-control" />
-                </div>
+          <div class="section">
+            <h2>Lock</h2>
+            <div class="input-field">
+              <label for="lock-solution">Solution</label>
+              <input type="text" id="lock-solution" class="form-control" />
             </div>
+            <div class="input-field">
+              <label for="lock-obtained">Obtained</label>
+              <input type="text" id="lock-obtained" class="form-control" />
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="row">
+      <div class="row">
         <div class="col-md-4">
-            <div class="section">
-                <h2>Constellation Room</h2>
-                <div class="input-field">
-                    <label for="constellation-solution">Solution</label>
-                    <input type="text" id="constellation-solution" class="form-control" />
-                </div>
-                <div class="input-field">
-                    <label for="constellation-letter">Letter Obtained</label>
-                    <input type="text" id="constellation-letter" class="form-control" />
-                </div>
+          <div class="section">
+            <h2>Constellation Room</h2>
+            <div class="input-field">
+              <label for="constellation-solution">Solution</label>
+              <input type="text" id="constellation-solution" class="form-control" />
             </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="section">
-                <h2>Library</h2>
-                <div class="input-field">
-                    <label for="library-solution">Solution</label>
-                    <input type="text" id="library-solution" class="form-control" />
-                </div>
-                <div class="input-field">
-                    <label for="library-letter">Letter Obtained</label>
-                    <input type="text" id="library-letter" class="form-control" />
-                </div>
+            <div class="input-field">
+              <label for="constellation-letter">Letter Obtained</label>
+              <input type="text" id="constellation-letter" class="form-control" />
             </div>
+          </div>
         </div>
 
         <div class="col-md-4">
-            <div class="section">
-                <h2>Morse</h2>
-                <div class="input-field">
-                    <label for="morse-solution">Solution</label>
-                    <input type="text" id="morse-solution" class="form-control" />
-                </div>
-                <div class="input-field">
-                    <label for="morse-letter">Letter Obtained</label>
-                    <input type="text" id="morse-letter" class="form-control" />
-                </div>
+          <div class="section">
+            <h2>Library</h2>
+            <div class="input-field">
+              <label for="library-solution">Solution</label>
+              <input type="text" id="library-solution" class="form-control" />
             </div>
+            <div class="input-field">
+              <label for="library-letter">Letter Obtained</label>
+              <input type="text" id="library-letter" class="form-control" />
+            </div>
+          </div>
         </div>
-    </div>
 
-    <div class="row">
+        <div class="col-md-4">
+          <div class="section">
+            <h2>Morse</h2>
+            <div class="input-field">
+              <label for="morse-solution">Solution</label>
+              <input type="text" id="morse-solution" class="form-control" />
+            </div>
+            <div class="input-field">
+              <label for="morse-letter">Letter Obtained</label>
+              <input type="text" id="morse-letter" class="form-control" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <div class="section">
-                <h2>Sudoku</h2>
-                <div class="input-field">
-                    <label for="sudoku-solution">Solution</label>
-                    <input type="text" id="sudoku-solution" class="form-control" />
-                </div>
-                <div class="input-field">
-                    <label for="sudoku-letter">Obtained</label>
-                    <input type="text" id="sudoku-letter" class="form-control" />
-                </div>
+          <div class="section">
+            <h2>Sudoku</h2>
+            <div class="input-field">
+              <label for="sudoku-solution">Solution</label>
+              <input type="text" id="sudoku-solution" class="form-control" />
             </div>
+            <div class="input-field">
+              <label for="sudoku-letter">Obtained</label>
+              <input type="text" id="sudoku-letter" class="form-control" />
+            </div>
+          </div>
         </div>
-        <div class="col-md-4 align-self-center text-center">
-            <div id="result"></div>
-            <button class="btn btn-primary btn-check" onclick="checkInputs()">Check</button>
-
-        </div>
-
+      </div>
+      <div class="col-12 align-self-center text-center">
+        <div id="result"></div>
+        <button class="btn btn-primary btn-check" onclick="checkInputs()">Check</button>
+      </div>
     </div>
 
-
     <script>
-        function checkInputs() {
-            // Recuperar los inputs de solution
-            const eeveeSolution = document.getElementById("eevee-solution").value.toLowerCase();
-            const moonDiamondSolution = document.getElementById("moon-diamond-solution").value.toLowerCase();
-            const lockSolution = document.getElementById("lock-solution").value.toLowerCase();
-            const constellationSolution = document.getElementById("constellation-solution").value.toLowerCase();
-            const librarySolution = document.getElementById("library-solution").value.toLowerCase();
-            const morseSolution = document.getElementById("morse-solution").value.toLowerCase();
-            const sudokuSolution = document.getElementById("sudoku-solution").value.toLowerCase();
+      function checkInputs() {
+        // Recuperar los inputs de solution
+        const eeveeSolution = document.getElementById("eevee-solution").value.toLowerCase();
+        const moonDiamondSolution = document.getElementById("moon-diamond-solution").value.toLowerCase();
+        const lockSolution = document.getElementById("lock-solution").value.toLowerCase();
+        const constellationSolution = document.getElementById("constellation-solution").value.toLowerCase();
+        const librarySolution = document.getElementById("library-solution").value.toLowerCase();
+        const morseSolution = document.getElementById("morse-solution").value.toLowerCase();
+        const sudokuSolution = document.getElementById("sudoku-solution").value.toLowerCase();
 
-            // Input de letter
-            const eeveeLetter = document.getElementById("eevee-letter").value.toLowerCase();
-            const moonDiamondLetter = document.getElementById("moon-diamond-letter").value.toLowerCase();
-            const lockLetter = document.getElementById("lock-obtained").value.toLowerCase();
-            const constellationLetter = document.getElementById("constellation-letter").value.toLowerCase();
-            const libraryLetter = document.getElementById("library-letter").value.toLowerCase();
-            const morseLetter = document.getElementById("morse-letter").value.toLowerCase();
-            const sudokuLetter = document.getElementById("sudoku-letter").value.toLowerCase();
+        // Input de letter
+        const eeveeLetter = document.getElementById("eevee-letter").value.toLowerCase();
+        const moonDiamondLetter = document.getElementById("moon-diamond-letter").value.toLowerCase();
+        const lockLetter = document.getElementById("lock-obtained").value.toLowerCase();
+        const constellationLetter = document.getElementById("constellation-letter").value.toLowerCase();
+        const libraryLetter = document.getElementById("library-letter").value.toLowerCase();
+        const morseLetter = document.getElementById("morse-letter").value.toLowerCase();
+        const sudokuLetter = document.getElementById("sudoku-letter").value.toLowerCase();
 
-            // Definir las respuestas correctas
-            const correctAnswers = [
-                { solution: "mirror", letter: "t" },
-                { solution: "both", letter: "c" },
-                { solution: "0722", letter: "key" },
-                { solution: "0598", letter: "u" },
-                { solution: "pikachu", letter: "s" },
-                { solution: "1025", letter: "m" },
-                { solution: "sudoku", letter: "two u" }
-            ];
+        // Definir las respuestas correctas
+        const correctAnswers = [
+          { solution: "mirror", letter: "t" },
+          { solution: "both", letter: "c" },
+          { solution: "0722", letter: "key" },
+          { solution: "0598", letter: "u" },
+          { solution: "pikachu", letter: "s" },
+          { solution: "1025", letter: "m" },
+          { solution: "sudoku", letter: "two u" },
+        ];
 
-            // Verificar si todos los inputs son correctos
-            const inputs = [
-                { solution: eeveeSolution, letter: eeveeLetter },
-                { solution: moonDiamondSolution, letter: moonDiamondLetter },
-                { solution: lockSolution, letter: lockLetter },
-                { solution: constellationSolution, letter: constellationLetter },
-                { solution: librarySolution, letter: libraryLetter },
-                { solution: morseSolution, letter: morseLetter },
-                { solution: sudokuSolution, letter: sudokuLetter }
-            ];
+        // Verificar si todos los inputs son correctos
+        const inputs = [
+          { solution: eeveeSolution, letter: eeveeLetter },
+          { solution: moonDiamondSolution, letter: moonDiamondLetter },
+          { solution: lockSolution, letter: lockLetter },
+          { solution: constellationSolution, letter: constellationLetter },
+          { solution: librarySolution, letter: libraryLetter },
+          { solution: morseSolution, letter: morseLetter },
+          { solution: sudokuSolution, letter: sudokuLetter },
+        ];
 
-            // Comprobar si todos los inputs coinciden
-            const allCorrect = inputs.every((input, index) => {
-                return input.solution.includes(correctAnswers[index].solution) && input.letter === correctAnswers[index].letter;
-            });
+        // Comprobar si todos los inputs coinciden
+        const allCorrect = inputs.every((input, index) => {
+          return input.solution.includes(correctAnswers[index].solution) && input.letter === correctAnswers[index].letter;
+        });
 
-            // Mostrar resultado en consola
-            if (allCorrect) {
-                document.getElementById('result').innerHTML="Everything is correct as you hear a sound, far far away. <a href='./LORE/Final_Room.html'>You are suddenly inside</a>";
-                console.log("Todos los inputs son correctos.");
-            }
-            else{
-                document.getElementById('result').innerHTML="You are pushed away by the door. You have done something wrong";
-            }
+        // Mostrar resultado en consola
+        if (allCorrect) {
+          document.getElementById("result").innerHTML = "Everything is correct as you hear a sound, far far away. <a href='./LORE/Final_Room.html'>You are suddenly inside</a>";
+          console.log("Todos los inputs son correctos.");
+        } else {
+          document.getElementById("result").innerHTML = "You are pushed away by the door. You have done something wrong";
         }
-
+      }
     </script>
-</body>
-
+  </body>
 </html>
