@@ -176,7 +176,8 @@ a.links:focus {
 button.btn,
 .botonSobreImagen,
 .botonSobreImagen,
-input.btn {
+input.btn,
+div.botonLados {
   display: block;
   width: fit-content;
   min-width: 220px;
