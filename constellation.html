@@ -1,50 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="funciones.js"></script> <!-- Vincula el archivo JS -->
+    <script src="funciones.js"></script>
+    <!-- Vincula el archivo JS -->
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./LORE/styles.css" />
+    <style>
+      .resultWrong {
+        background: #180909;
+        color: #d8bebe;
+        border-radius: 5px;
+        border: 1px solid #ff0000;
+      }
+      .resultCorrect {
+        background: #283021;
+        color: #d7dcbf;
+        border-radius: 5px;
+        border: 1px solid #8c9b56;
+      }
+      body {
+        background: radial-gradient(circle at center, #554848 0%, #302727 75%);
+      }
 
-</head>
+      body > div {
+        background-color: rgba(75, 62, 62, 0.9);
+      }
 
-<body>
-    <h1>Constellation room</h1>
+      button.btn,
+      input.botonesConst {
+        background: #963b7c !important;
+        color: #fff1d6 !important;
+      }
+
+      button.btn.flashLight {
+        background: #5a0e0e !important;
+        color: #f0d9a0 !important;
+      }
+    </style>
+  </head>
+
+  <body>
     <div>
-        Near the entrance, you can read the following text:
-        'Follow the stars and guide yourself with a map.'
+      <h1 class="whiteTitle">Constellation room</h1>
+      <hr class="hrWhiteTitle" />
+
+      <h2 style="font-size: 19px; font-style: italic">Near the entrance, you can read the following text:</h2>
+
+      <h2 class="text-center" style="color: white; font-size: 25px; font-style: italic">'Follow the stars and guide yourself with a map.'</h2>
     </div>
-    <div class="container row mt-3">
-        <!-- Columna para el formulario -->
-        <div class="col-md-2">
-            <h3>Enter the code</h3>
-            <form id="constellationForm" class="text-center">
-                <input type="number" id="constellationCode" class="form-control">
-                <input type="submit" value="Submit" class="mb-5 mt-2 btn btn-primary">
-                <p id="result" class="mt-0"></p>
-                <textarea id="notes" class="form-control" rows="4" placeholder="Take your notes here. Will be keep while you dont delete your cookies"></textarea>
-            </form>
+    <div class="container row mt-3 mx-auto">
+      <!-- Columna para el formulario -->
+      <div class="col-md-2">
+        <h3 class="whiteTitleLittle" style="">Enter the code</h3>
+        <form id="constellationForm" class="text-center">
+          <input type="number" id="constellationCode" class="form-control" />
+          <input type="submit" value="Submit" class="botonesConst mb-3 mt-2 btn" style="min-width: 100px !important" />
+          <p id="result" class="mt-0"></p>
+          <textarea id="notes" class="form-control" rows="4" placeholder="Take your notes here. Will be keep while you dont delete your cookies"></textarea>
+        </form>
 
-            <div id="buttons" class="mt-5 text-center">
-                <h3>Controls:</h3>
-                <button id="turnRightButton" class="btn btn-secondary">Turn right</button>
-                <button id="turnLeftButton" class="btn btn-secondary">Turn left</button>
-            </div>
+        <div id="buttons" class="mt-5 text-center">
+          <h3 class="whiteTitleLittle mb-0">Controls:</h3>
+          <button id="turnRightButton" class="botonesConst btn mt-3" style="min-width: 100px !important">Turn right</button>
+          <button id="turnLeftButton" class="botonesConst btn mb-5 mt-2" style="min-width: 100px !important">Turn left</button>
         </div>
-        <!-- Columna para la imagen -->
-        <div class="col-md-10 text-center">
-            <img class="img-fluid" src="constellationRoom/on/o.png" alt="Image" id="image">
-
-        </div>
+        <hr class="hrWhiteTitle" />
+        <button class="botonesConst btn mt-2" style="min-width: 100px !important" onclick="window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })">Hints</button>
+      </div>
+      <!-- Columna para la imagen -->
+      <div class="col-md-10 text-center">
+        <img class="img-fluid" src="constellationRoom/on/o.png" alt="Image" id="image" />
+      </div>
     </div>
     <div id="hints">
-        <div>Each 5 minutes, a new hint will appear here</div>
+      <div class="whiteTitleLittle">Each 5 minutes, a new hint will appear here</div>
     </div>
-
-
-</body>
-
+  </body>
 </html>

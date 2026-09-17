@@ -157,17 +157,26 @@ p + p {
   position: relative;
 }
 
-a, a:hover, a:active, a:focus {
+a,
+a:hover,
+a:active,
+a:focus,
+a.links,
+a.links:hover,
+a.links:active,
+a.links:focus {
   color: #fe5d5d;
   text-decoration: underline;
   text-decoration-color: #fe5d5d;
   text-decoration-thickness: 1px;
 }
 
-
 /* BOTONES */
 
-button.btn, .botonSobreImagen, .botonSobreImagen {
+button.btn,
+.botonSobreImagen,
+.botonSobreImagen,
+input.btn {
   display: block;
   width: fit-content;
   min-width: 220px;
@@ -175,27 +184,30 @@ button.btn, .botonSobreImagen, .botonSobreImagen {
   margin: 2.5rem auto 1rem;
   padding: 0.8rem 2rem;
 
-  background: #5a0e0e;
+  background: #5a0e0e !important;
 
-  color: #f0d9a0;
+  color: #f0d9a0 !important;
 
   font-family: var(--font-title);
   font-size: 1.1rem;
   font-weight: bold;
   letter-spacing: 0.08em;
 
-  border: 1px solid var(--color-gold);
+  border: 1px solid var(--color-gold) !important;
   border-radius: 5px;
 }
 
 /* hover*/
-button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover, .botonSobreImagen {
+button.btn:hover,
+button.btn:focus,
+button.btn:active,
+.botonSobreImagen:hover,
+.botonSobreImagen {
   background: #5a0e0e;
 
   border-color: rgb(248, 242, 204);
   color: rgb(248, 242, 204);
 }
-
 
 /* =========================================
    CODE PUZZLE PANELS
@@ -208,21 +220,20 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
 
   padding: 2rem !important;
 
-  background: #110c0c  !important;
+  background: #110c0c !important;
 
   border: 1px solid rgba(185, 91, 91, 0.45);
   border-radius: 6px !important;
 
-
   color: var(--color-text);
 }
-
 
 /* =========================================
    TITLES
    ========================================= */
 
-.column h2, h2 {
+.column h2,
+h2 {
   margin-bottom: 1.5rem;
 
   color: var(--color-gold);
@@ -255,7 +266,12 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
    INPUTS
    ========================================= */
 
-.column .form-control, textarea, #resultTransform, input, .input-like, #displayText {
+.column .form-control,
+textarea,
+#resultTransform,
+input,
+.input-like,
+#displayText {
   min-height: 48px;
 
   padding: 0.65rem 0.9rem;
@@ -269,17 +285,19 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
 
   font-family: var(--font-body);
   font-size: 1rem;
-
 }
 
 /* Placeholder */
 
-.column .form-control::placeholder, textarea, #resultTransform, input,.input-like {
+.column .form-control::placeholder,
+textarea,
+#resultTransform,
+input,
+.input-like {
   color: #625754;
 
   font-style: italic;
 }
-
 
 /* =========================================
    RESULT MESSAGE
@@ -323,11 +341,10 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
 
 /* Sudoku check */
 
-#resultSudokuCheck{
-    display: none;
-    margin: 0 auto;
+#resultSudokuCheck {
+  display: none;
+  margin: 0 auto;
 }
-
 
 /* SUDOKU */
 
@@ -349,7 +366,6 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
     inset 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
-
 /* =========================================
    CELDAS
    ========================================= */
@@ -362,7 +378,6 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
 
   border: 1px solid #493b30;
 }
-
 
 /* =========================================
    INPUTS
@@ -392,7 +407,6 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
   appearance: textfield;
 }
 
-
 /* Quitar flechas de los inputs number */
 
 #sudoku-table input::-webkit-outer-spin-button,
@@ -405,7 +419,6 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
   appearance: textfield;
 }
 
-
 /* =========================================
    NÚMEROS ORIGINALES
    ========================================= */
@@ -417,10 +430,8 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
 
   font-weight: bold;
 
-  text-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
-
 
 /* =========================================
    CASILLAS EDITABLES
@@ -434,13 +445,11 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
   cursor: text;
 }
 
-
 /* Hover */
 
 #sudoku-table input:not([readonly]):hover {
   background: #1a1010;
 }
-
 
 /* Casilla seleccionada */
 
@@ -454,7 +463,6 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
     inset 0 0 12px rgba(143, 29, 29, 0.35);
 }
 
-
 /* =========================================
    BLOQUES 3 × 3
    ========================================= */
@@ -466,14 +474,12 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
   border-right: 2px solid var(--color-gold);
 }
 
-
 /* Líneas horizontales */
 
 #sudoku-table tr:nth-child(3) td,
 #sudoku-table tr:nth-child(6) td {
   border-bottom: 2px solid var(--color-gold);
 }
-
 
 /* =========================================
    CORRECTO / INCORRECTO
@@ -484,27 +490,22 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
 
   color: #dce8b8 !important;
 
-  box-shadow:
-    inset 0 0 10px rgba(120, 160, 70, 0.2);
+  box-shadow: inset 0 0 10px rgba(120, 160, 70, 0.2);
 }
-
 
 #sudoku-table input[style*="255, 99, 71"] {
   background: rgba(110, 20, 20, 0.55) !important;
 
   color: #ffd0d0 !important;
 
-  box-shadow:
-    inset 0 0 10px rgba(180, 30, 30, 0.25);
+  box-shadow: inset 0 0 10px rgba(180, 30, 30, 0.25);
 }
-
 
 /* =========================================
    RESPONSIVE
    ========================================= */
 
 @media (max-width: 600px) {
-
   #sudoku-table td {
     width: 38px;
     height: 38px;
@@ -513,4 +514,24 @@ button.btn:hover, button.btn:focus, button.btn:active,  .botonSobreImagen:hover,
   #sudoku-table input {
     font-size: 1rem;
   }
+}
+
+/* ------------- */
+.whiteTitle {
+  color: #d8d0ca;
+  font-size: 2.5rem;
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
+}
+
+.hrWhiteTitle {
+  color: #d8d0ca;
+}
+
+.whiteTitleLittle {
+  color: #d8d0ca;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
 }
