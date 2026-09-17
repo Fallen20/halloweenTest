@@ -7,6 +7,7 @@
     <title>Key Room Check</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./LORE/styles.css">
     <style>
         .container {
             max-width: 500px;
@@ -30,9 +31,9 @@
     </style>
 </head>
 
-<body class="bg-light">
+<body class="">
 
-    <div class="container bg-white shadow p-4 rounded">
+    <div class="container  p-4 rounded">
         <h2 class="text-center mb-4">Return to main room check</h2>
 
         <!-- Step 1: Do you have the key? -->
@@ -83,7 +84,7 @@
                 docDiv.classList.add("hidden");
                 solutionDiv.classList.add("hidden");
                 resultMessage.style.display = "block"; // Show result message
-                resultLink.href = "https://docs.google.com/document/d/1LaLyG4B126CV_J6vG4uIPLPfMx12Hb5BUYCxp56Hjd0/edit?tab=t.0"; // Redirect to document
+                resultLink.href = "./LORE/Main/Main_v1.html"; // Redirect to document
                 return;
             }
 
@@ -101,9 +102,9 @@
 
                     if (docInputV === "lockDoc" && solutionInputV === "mirror") {
                         // Correct answers: link to test2.com
-                        resultLink.href = "https://docs.google.com/document/d/1ugmAgQIzh41YzqkrAY2D_HjEJme-q61iWud34pometc/edit?tab=t.0";
+                        resultLink.href = "./LORE/Main/Main_v3.html";
                     } else {
-                        resultLink.href = "https://docs.google.com/document/d/1iiSAT4iz9fNKHuduyQs3L23pAS2R2wjiksXwFkWvQV0/edit?tab=t.0";
+                        resultLink.href = "./LORE/Main/Main_v2.html";
                     }
                     resultMessage.style.display = "block"; // Show result message
                 }
